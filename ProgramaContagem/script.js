@@ -16,5 +16,10 @@ resetButton.onclick = function() {
     numberCounter.textContent = count;
 }
 
+increaseButton.onclick = function() {
+    count++
+    numberCounter.textContent = count;
+}
+
 
 
