@@ -1,30 +1,23 @@
-const numberText = document.querySelector(".number");
-const numberButton = document.querySelector(".button");
+const button = document.querySelector(".button");
+
+const label = document.querySelector(".number");
 
 
-
-
-numberButton.onclick = () => {
-    let randomNumber = Math.floor(Math.random() * 3);
+button.onclick = () => {
+    let randomNumber = Math.floor( Math.random() * 3)
+    console.log(randomNumber);
 
     if(randomNumber == 0) {
-        numberText.textContent = "pedra"
+        label.textContent = "pedra";
+
     }
-    else if(randomNumber == 1 ) {
-        numberText.textContent = "papel"
+
+    else if(randomNumber == 1) {
+        label.textContent = "papel";
     }
 
     else {
-        numberText.textContent = "tesoura"
+        label.textContent = "tesoura";
     }
 
-
-
-
-
-
-
 }
-
-
-console.log(randomNumber)

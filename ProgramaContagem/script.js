@@ -1,25 +1,30 @@
 const decreaseButton = document.querySelector("#drecrease");
-const resetButton = document.querySelector("#reset");
 const increaseButton = document.querySelector("#increase");
-const numberCounter = document.querySelector(".number");
-let initialCount = 0
-let count = 0;
+const resetButton = document.querySelector("#reset");
 
-decreaseButton.onclick = function() {
-    count--;
-    numberCounter.textContent = count;
+const textLabel = document.querySelector(".number");
+const initialContage = 0;
+let currentContage = 0;
 
-}
 
-resetButton.onclick = function() {
-    count = initialCount;
-    numberCounter.textContent = count;
+
+
+decreaseButton.onclick = () => {
+    currentContage--;
+    textLabel.textContent = currentContage;
+   
 }
 
 increaseButton.onclick = function() {
-    count++
-    numberCounter.textContent = count;
+    currentContage++;
+    textLabel.textContent = currentContage;
 }
+
+resetButton.onclick = function() {
+    currentContage = initialContage;
+    textLabel.textContent = initialContage;
+}
+
 
 
 
