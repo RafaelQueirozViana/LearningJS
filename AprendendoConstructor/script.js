@@ -1,7 +1,12 @@
 
-const circlePath = document.querySelector(".ball");
 
-document.documentElement.addEventListener("click",)
+// const circlePath = document.querySelector(".ball");
+
+// const circleMove = ({ clientY, clientX }) => {
+//     circlePath.style.transform = `translate(${clientX - 25}px, ${clientY - 25}px)`;
+// }
+
+// document.documentElement.addEventListener("mousemove", circleMove)
 
 // DESTRUCTION EX1
 
