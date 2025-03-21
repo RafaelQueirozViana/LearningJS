@@ -6,6 +6,7 @@
 
 body {
     background-color: rgb(60, 60, 60);
+    padding: 50px;
 }
 
 .ball {
@@ -13,4 +14,39 @@ body {
     width: 50px;
     height: 50px;
     border-radius: 50%;
+}
+
+.dice-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    margin: 30px 0;
+
+}
+
+.dice-container img {
+    height: 200px;
+}
+
+.dice-sides {
+    display: flex;
+    gap: 30px;
+}
+
+.dice-sides button {
+    width: 50PX;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    transition: all .3s ease;
+    height: 50px;
+
+}
+
+.dice-sides button:hover {
+    opacity: .6;
+}
+
+p {
+    color: white;
 }
