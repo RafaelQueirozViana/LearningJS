@@ -4,35 +4,46 @@ const diceContainer = document.querySelector(".dice-container");
 const totalText = document.getElementById("total-txt");
 
 let dicesArray = [];
+let onColdown = false;
 
 class Dice {
-    constructor(sides) {
+    constructor(sides, color) {
         this.sides = sides;
         this.currentNumber = Math.floor(Math.random() * (this.sides) + 1);
-        this.img = document.createElement('img');
-        this.img.src = `./Imagens/${this.currentNumber}.jpg`;
-        this.img.addEventListener("click", () => this.remove());
+        this.color = color;
 
-        diceContainer.appendChild(this.img);
+        this.face = document.createElement('p');
+        this.face.className = "dice-content";
+        this.face.style.backgroundColor = this.color;
+        this.face.textContent = this.currentNumber;
+        this.face.addEventListener("click", () => this.remove());
+
+        diceContainer.appendChild(this.face);
         dicesArray.push(this);
     }
 
     roll() {
-        this.currentNumber = Math.floor(Math.random() * (this.sides) + 1);
-        this.img.src = `./Imagens/${this.currentNumber}.jpg`;
+        this.face.classList.add('rolando');
+        this.face.textContent = '';
+        setTimeout(() => {
+            this.currentNumber = Math.floor(Math.random() * (this.sides) + 1);
+            this.face.textContent = this.currentNumber;
+            this.face.classList.remove('rolando');
+        }, 1000)
+
+
     }
 
     remove() {
-        diceContainer.removeChild(this.img);
+        diceContainer.removeChild(this.face);
         let index = dicesArray.indexOf((this));
         dicesArray.splice(index, 1)
     }
 
 }
 
-const dado1 = new Dice(6);
+const dado1 = new Dice(6, "cyan");
 
-const dado2 = new Dice(8);
 
 
 function totalValue() {
@@ -40,26 +51,36 @@ function totalValue() {
         return total + current.currentNumber;
     }, 0);
 
-    totalText.textContent = soma
+    totalText.textContent = `Total:  ${soma} `;
 
 }
 
 sideButtons.forEach(currentButton => {
     currentButton.addEventListener("click", function () {
         const sides = parseInt(currentButton.textContent);
-        const newDice = new Dice(sides);
+        const color = window.getComputedStyle(currentButton).backgroundColor;
+        const newDice = new Dice(sides, color);
     })
 })
 
 
 
 rollButton.addEventListener("click", function () {
-    dicesArray.forEach(dice => {
-        dice.roll();
 
-    })
-    totalValue()
-    console.log(dicesArray);
+    if (onColdown === false) {
+        onColdown = true;
+
+        dicesArray.forEach(dice => {
+            dice.roll();
+        })
+
+        setTimeout(() => {
+            totalValue()
+            onColdown = false;
+        }, 1000);
+
+    }
+
 
 })
 
@@ -67,6 +88,19 @@ rollButton.addEventListener("click", function () {
 
 
 
+const dado = document.querySelector('.dice-content');
+
+dado.addEventListener('click', () => {
+    dado.classList.add('rolando');
+
+    setTimeout(() => {
+        dado.classList.remove('rolando');
+    }, 1000)
+
+
+
+
+});
 
 
 
