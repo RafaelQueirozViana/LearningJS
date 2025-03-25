@@ -44,8 +44,6 @@ class Dice {
 
 const dado1 = new Dice(6, "cyan");
 
-
-
 function totalValue() {
     const soma = dicesArray.reduce((total, current) => {
         return total + current.currentNumber;
@@ -64,7 +62,6 @@ sideButtons.forEach(currentButton => {
 })
 
 
-
 rollButton.addEventListener("click", function () {
 
     if (onColdown === false) {
@@ -78,33 +75,8 @@ rollButton.addEventListener("click", function () {
             totalValue()
             onColdown = false;
         }, 1000);
-
     }
-
-
 })
-
-
-
-
-
-const dado = document.querySelector('.dice-content');
-
-dado.addEventListener('click', () => {
-    dado.classList.add('rolando');
-
-    setTimeout(() => {
-        dado.classList.remove('rolando');
-    }, 1000)
-
-
-
-
-});
-
-
-
-
 
 
 

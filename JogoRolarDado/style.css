@@ -16,6 +16,7 @@ body {
 
 .conteudo {
     border: 1px solid rgba(128, 128, 128, 0.406);
+    width: 1300px;
 
     border-radius: 5px;
     height: max-content;
@@ -43,7 +44,7 @@ body {
     margin: 30px 0;
     background-color: #30343c;
     padding: 1rem;
-    width: 1300px;
+
 
 }
 
@@ -145,5 +146,11 @@ p {
 
     100% {
         transform: rotateX(720deg) rotateY(720deg);
+    }
+}
+
+@media(max-width:1400px) {
+    .conteudo {
+        width: 100%;
     }
 }
