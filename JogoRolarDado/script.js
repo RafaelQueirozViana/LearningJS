@@ -5,7 +5,6 @@ const totalText = document.getElementById("total-txt");
 
 let dicesArray = [];
 let onColdown = false;
-
 class Dice {
     constructor(sides, color) {
         this.sides = sides;
