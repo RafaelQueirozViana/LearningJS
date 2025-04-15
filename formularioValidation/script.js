@@ -135,7 +135,6 @@ submitButton.addEventListener("click", function () {
                 submitMessage.textContent = 'formulário enviado'
             }, 3000)
 
-
         }
     })
 
