@@ -13,21 +13,37 @@ function paperGame(choice) {
     }
 
     if (choice === computerChoice) {
-        console.log('draw');
+        window.alert('draw');
     }
 
     else if (choice === 'rock') {
         if (computerChoice === 'paper') {
-            console.log('you are the loser');
+            alert('you are the loser');
         }
 
         else if (computerChoice === 'scissors') {
-            console.log('you are the winner');
+            alert('you are the winner');
         }
     }
 
-    else if(choice === 'paper') {
-        
+    else if (choice === 'paper') {
+        if (computerChoice === 'rock') {
+            alert('you are the winner');
+        }
+
+        else if (computerChoice === 'scissors') {
+            alert('you are the loser');
+        }
+    }
+
+    else if (choice === 'scissors') {
+        if (computerChoice === 'paper') {
+            alert('you are the winner');
+        }
+
+        else if (computerChoice === 'rock') {
+            alert('you are the loser');
+        }
     }
 
     console.log(computerChoice);
