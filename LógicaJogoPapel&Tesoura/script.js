@@ -1,3 +1,9 @@
+const score = {
+    wins: 0,
+    loses: 0,
+    ties: 0
+}
+
 function paperGame(choice) {
     let computerChoice = '';
     const randomNum = Math.round(Math.random() * 3)
@@ -13,16 +19,19 @@ function paperGame(choice) {
     }
 
     if (choice === computerChoice) {
-        window.alert('draw');
+        score.ties++
+        window.alert(`draw, check your score: Ties: ${score.ties},Loses: ${score.loses}, Wins: ${score.wins}`);
     }
 
     else if (choice === 'rock') {
         if (computerChoice === 'paper') {
-            alert('you are the loser');
+            score.loses++
+            window.alert(`you are the loser, check your score: Ties: ${score.ties},Loses: ${score.loses}, Wins: ${score.wins}`);
         }
 
         else if (computerChoice === 'scissors') {
-            alert('you are the winner');
+            score.wins++
+            window.alert(`your win, check your score: Ties: ${score.ties},Loses: ${score.loses}, Wins: ${score.wins}`);
         }
     }
 
@@ -46,6 +55,6 @@ function paperGame(choice) {
         }
     }
 
-    console.log(computerChoice);
+
 }
 
