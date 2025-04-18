@@ -20,41 +20,49 @@ function paperGame(choice) {
 
     if (choice === computerChoice) {
         score.ties++
-        window.alert(`draw, check your score: Ties: ${score.ties},Loses: ${score.loses}, Wins: ${score.wins}`);
+        Message('tied', choice, computerChoice);
     }
 
     else if (choice === 'rock') {
         if (computerChoice === 'paper') {
             score.loses++
-            window.alert(`you are the loser, check your score: Ties: ${score.ties},Loses: ${score.loses}, Wins: ${score.wins}`);
+            Message('loser', choice, computerChoice);
         }
 
         else if (computerChoice === 'scissors') {
             score.wins++
-            window.alert(`your win, check your score: Ties: ${score.ties},Loses: ${score.loses}, Wins: ${score.wins}`);
+            Message('win', choice, computerChoice);
         }
     }
 
     else if (choice === 'paper') {
         if (computerChoice === 'rock') {
-            alert('you are the winner');
+            Message('win', choice, computerChoice);
+
         }
 
         else if (computerChoice === 'scissors') {
-            alert('you are the loser');
+            Message('loser', choice, computerChoice);
+
         }
     }
 
     else if (choice === 'scissors') {
         if (computerChoice === 'paper') {
-            alert('you are the winner');
+            Message('win', choice, computerChoice);
+
         }
 
         else if (computerChoice === 'rock') {
-            alert('you are the loser');
+            Message('loser', choice, computerChoice);
+
         }
     }
 
 
 }
 
+
+const Message = (result, choice, computerChoice) => {
+    window.alert(` you picked ${choice}, the computer picked ${computerChoice}. your ${result}, check your score: Ties: ${score.ties},Loses: ${score.loses}, Wins: ${score.wins}`)
+}
