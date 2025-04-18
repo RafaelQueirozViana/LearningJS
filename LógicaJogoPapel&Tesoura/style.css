@@ -25,3 +25,9 @@ button {
     border: none;
     cursor: pointer;
 }
+
+#result {
+    width: 600px;
+    line-height: 60px;
+    font-size: 2rem;
+}

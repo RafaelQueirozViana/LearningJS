@@ -1,7 +1,11 @@
-const score = {
-    wins: 0,
-    loses: 0,
-    ties: 0
+let score = JSON.parse(localStorage.getItem('score'));
+
+if (score === null) {
+    score = {
+        wins: 0,
+        loses: 0,
+        ties: 0,
+    }
 }
 
 function paperGame(choice) {
@@ -37,11 +41,13 @@ function paperGame(choice) {
 
     else if (choice === 'paper') {
         if (computerChoice === 'rock') {
+            score.wins++
             Message('win', choice, computerChoice);
 
         }
 
         else if (computerChoice === 'scissors') {
+            score.loses++
             Message('loser', choice, computerChoice);
 
         }
@@ -49,20 +55,37 @@ function paperGame(choice) {
 
     else if (choice === 'scissors') {
         if (computerChoice === 'paper') {
+            score.wins++
             Message('win', choice, computerChoice);
 
         }
 
         else if (computerChoice === 'rock') {
+            score.loses++
             Message('loser', choice, computerChoice);
 
         }
     }
 
+    localStorage.setItem('score', JSON.stringify(score));
 
+
+
+
+}
+
+function resetScore() {
+    console.log('s')
+    score.wins = 0;
+    score.loses = 0;
+    score.ties = 0;
+    localStorage.removeItem('score');
 }
 
 
 const Message = (result, choice, computerChoice) => {
     window.alert(` you picked ${choice}, the computer picked ${computerChoice}. your ${result}, check your score: Ties: ${score.ties},Loses: ${score.loses}, Wins: ${score.wins}`)
 }
+
+
+
