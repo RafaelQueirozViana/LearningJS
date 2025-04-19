@@ -1,12 +1,11 @@
-let score = JSON.parse(localStorage.getItem('score'));
 
-if (score === null) {
-    score = {
-        wins: 0,
-        loses: 0,
-        ties: 0,
-    }
+let score = JSON.parse(localStorage.getItem('score')) || { 
+    wins: 0,
+    loses: 0,
+    ties: 0,
 }
+
+
 
 function paperGame(choice) {
     let computerChoice = '';
@@ -71,15 +70,14 @@ function paperGame(choice) {
 
 
 
-
 }
 
 function resetScore() {
-    console.log('s')
     score.wins = 0;
-    score.loses = 0;
     score.ties = 0;
+    score.loses = 0;
     localStorage.removeItem('score');
+    alert('reset sucessful');
 }
 
 
