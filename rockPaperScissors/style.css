@@ -1,0 +1,111 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: #fff;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    background-color: #262626;
+}
+
+.website-container {
+    display: flex;
+    flex-direction: column;
+    gap: 80px;
+}
+
+.choose-content {}
+
+.choice-container {
+
+    display: flex;
+    gap: 40px;
+    align-items: center;
+
+}
+
+.choice-container img {
+    height: 150px;
+    border: 2px solid #ffffff;
+    border-radius: 50%;
+    box-sizing: initial;
+    padding: 2rem;
+    margin-top: 60px;
+    cursor: pointer;
+    transition: opacity .3s ease;
+}
+
+.choice-container img:hover {
+    opacity: .5;
+}
+
+.result-text {
+    margin-bottom: 50px;
+}
+
+.result-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    justify-items: end;
+}
+
+.hide {
+    display: none;
+}
+
+.flex {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.choice-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: baseline;
+    gap: 30px;
+    padding: 0 5rem;
+
+}
+
+.choice-box p {
+    font-size: 1.5rem;
+}
+
+#you-choice {
+    border-right: 2px solid #fff;
+}
+
+.score-container p {
+    font-size: 1.5rem;
+    line-height: 40px;
+}
+
+.flex {
+    grid-column: 2/3;
+
+}
+
+.play-again {
+    font-size: 1.5rem;
+
+    color: rgb(0, 0, 0);
+    background-color: aliceblue;
+    width: max-content;
+    margin-top: 40px;
+    padding: .5rem;
+    border-radius: 10px;
+    cursor: pointer;
+
+
+
+
+}

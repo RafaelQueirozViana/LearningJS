@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="website-container">
+        <div class="choose-content">
+            <h1>What do you choose?</h1>
+
+            <div class="choice-container">
+                <img onclick="game('rock')" src="./Images/rock.png">
+                <img onclick="game('paper')" src="./Images/paper.png">
+                <img onclick="game('scissors')" src="./Images/scissors.png">
+            </div>
+        </div>
+        <div class="result-content hide">
+            <h1 class="result-text">You win</h1>
+            <div class="result-container">
+                <div class="choice-box" id="you-choice">
+                    <p>you choice</p>
+                    <img id="choice-1" src="./Images/rock.png">
+                    <p class="user-choice">Rock</p>
+
+                </div>
+                <div class="choice-box">
+                    <p>Computer choice</p>
+                    <img id="choice-2" src="./Images/paper.png">
+                    <p class="computer-choice">Scissors</p>
+                </div>
+                <div class="flex">
+                    <p class="play-again" onclick="resetScore()">Reset Score</p>
+                    <p class="play-again" onclick="playAgain()">Play Again</p>
+                </div>
+
+            </div>
+        </div>
+
+
+        <div class="score-container">
+            <p>wins: <br> loses <br> tyes:</p>
+
+        </div>
+
+
+
+    </div>
+    <script src="./script.js"></script>
+</body>
+
+</html>
