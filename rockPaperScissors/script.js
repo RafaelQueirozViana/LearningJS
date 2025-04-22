@@ -9,9 +9,6 @@ let playerScore = JSON.parse(localStorage.getItem('score')) || {
     tyes: 0,
 };
 
-
-
-
 const computerPick = () => {
     const randomNum = Math.floor(Math.random() * 3) + 1;
     switch (randomNum) {
@@ -127,6 +124,7 @@ const showResult = ({ userChoice, compChoice, result }) => {
 
 const scoreFunction = (result) => {
 
+
     switch (result) {
         case 'winner':
             playerScore.wins++;
@@ -139,11 +137,16 @@ const scoreFunction = (result) => {
             playerScore.tyes++;
             break;
     }
+
+
+
     localStorage.setItem('score', JSON.stringify(playerScore));
     scoreText.textContent = `wins: ${playerScore.wins}, loses: ${playerScore.loses}, ties: ${playerScore.tyes}`
 
 
 }
+
+scoreFunction();
 
 const playAgain = () => {
     chooseContainer.classList.remove('hide');
