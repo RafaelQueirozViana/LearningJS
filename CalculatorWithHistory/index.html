@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <title>Document</title>
+
+</head>
+
+<body>
+    <div class="calculator">
+        <div class="top-result">
+            <p>Calculator</p>
+            <p>History</p>
+        </div>
+        <p id="result-text">0</p>
+
+        <div class="keyboard">
+
+
+
+            <div class="numbers">
+                <p class="operator">%</p>
+                <p onclick="calculatorObj.deletar()">DELETE</p>
+                <p class="operator">÷</p>
+                <p class="operator">x</p>
+                <p class="operator">-</p>
+                <p class="operator">+</p>
+                <p onclick="showTotal()">=</p>
+                <p class="key">7</p>
+                <p class="key">8</p>
+                <p class="key">9</p>
+                <p class="key">4</p>
+                <p class="key">5</p>
+                <p class="key">6</p>
+                <p class="key">1</p>
+                <p class="key">2</p>
+                <p class="key">3</p>
+                <p class="key">0</p>
+            </div>
+
+
+
+
+
+        </div>
+    </div>
+    <div id="history-list">
+    </div>
+    <script src="./script.js"></script>
+</body>
+
+</html>
