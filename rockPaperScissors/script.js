@@ -1,169 +1,109 @@
+const a = document.querySelector(".button")
+
+
+class Buttons {
+    constructor({ buttonsClass, classlistName }) {
+        this.buttonClass = buttonsClass;
+        this.classlistName = classlistName;
+    }
+
+    oneClick() {
+        const allButtons = document.querySelectorAll(`.${this.buttonClass}`);
+
+        allButtons.forEach(button => {
+
+            button.addEventListener('click', () => {
+
+                allButtons.forEach(btn => btn.classList.remove(this.classlistName));
+
+                button.classList.toggle(this.classlistName);
+            })
+        })
+
+
+    }
+
+}
+
+const firstButtons = new Buttons({ classlistName: 'active', buttonsClass: 'button-click' });
+firstButtons.oneClick();
+
+const secondButtons = new Buttons({ classlistName: 'active', buttonsClass: 'button-click2' });
+secondButtons.oneClick();
+
+
 const chooseContainer = document.querySelector('.choose-content');
 const resultContainer = document.querySelector('.result-content');
 const scoreText = document.querySelector('.score-container p');
 
-
 let playerScore = JSON.parse(localStorage.getItem('score')) || {
     wins: 0,
     loses: 0,
-    tyes: 0,
+    ties: 0,
+};
+
+const winsAgainst = {
+    rock: 'scissors',
+    paper: 'rock',
+    scissors: 'paper',
 };
 
 const computerPick = () => {
-    const randomNum = Math.floor(Math.random() * 3) + 1;
-    switch (randomNum) {
-        case 1: return 'rock'
-            break;
-        case 2: return 'paper'
-            break;
-
-        case 3: return 'scissors'
-            break;
-
-    }
+    const choices = ['rock', 'paper', 'scissors'];
+    return choices[Math.floor(Math.random() * 3)];
 };
 
 const game = (userChoice) => {
-    console.log('s')
     const computerChoice = computerPick();
+    let result;
 
-
-    if (userChoice == computerChoice) {
-        showResult({
-            userChoice: userChoice,
-            compChoice: computerChoice,
-            result: 'tye',
-        });
+    if (userChoice === computerChoice) {
+        result = 'tie';
+    } else if (winsAgainst[userChoice] === computerChoice) {
+        result = 'winner';
+    } else {
+        result = 'loser';
     }
 
-    else if (userChoice == 'rock') {
-        if (computerChoice == 'scissors') {
-            showResult({
-                userChoice: userChoice,
-                compChoice: computerChoice,
-                result: 'winner'
-            });
-        }
-
-        else if (computerChoice == 'paper') {
-            showResult({
-                userChoice: userChoice,
-                compChoice: computerChoice,
-                result: 'loser'
-            });
-        }
-    }
-
-    else if (userChoice == 'paper') {
-        if (computerChoice == 'rock') {
-            showResult({
-                userChoice: userChoice,
-                compChoice: computerChoice,
-                result: 'winner'
-            });
-        }
-
-        else if (computerChoice == 'scissors') {
-            showResult({
-                userChoice: userChoice,
-                compChoice: computerChoice,
-                result: 'loser'
-            });
-        }
-    }
-
-    else if (userChoice == 'scissors') {
-        if (computerChoice == 'paper') {
-            showResult({
-                userChoice: userChoice,
-                compChoice: computerChoice,
-                result: 'winner'
-            });
-        }
-
-        else if (computerChoice == 'rock') {
-            showResult({
-                userChoice: userChoice,
-                compChoice: computerChoice,
-                result: 'loser'
-            });
-        }
-    }
+    showResult({ userChoice, compChoice: computerChoice, result });
 };
 
 const showResult = ({ userChoice, compChoice, result }) => {
     chooseContainer.classList.add('hide');
     resultContainer.classList.remove('hide');
 
-    //show texts 
+    resultContainer.querySelector('.result-text').textContent = result;
+    resultContainer.querySelector('.user-choice').textContent = userChoice;
+    resultContainer.querySelector('.computer-choice').textContent = compChoice;
+    resultContainer.querySelector('#choice-1').src = `./Images/${userChoice}.png`;
+    resultContainer.querySelector('#choice-2').src = `./Images/${compChoice}.png`;
 
-    const resultText = resultContainer.querySelector('.result-text');
-    console.log(resultText);
-    const userChoiceText = resultContainer.querySelector('.user-choice');
-    const computerChoiceText = resultContainer.querySelector('.computer-choice');
-    resultText.textContent = result;
-    userChoiceText.textContent = userChoice;
-    computerChoiceText.textContent = compChoice;
-
-    //Show hand images
-
-    const handImg1 = resultContainer.querySelector('#choice-1');
-    const handImg2 = resultContainer.querySelector('#choice-2');
-
-    handImg1.src = `./Images/${userChoice}.png`
-    handImg2.src = `./Images/${compChoice}.png`
-
-
-
-    //score function
-
-    scoreFunction(result);
-
-
+    updateScore(result);
 };
 
-const scoreFunction = (result) => {
-
-
-    switch (result) {
-        case 'winner':
-            playerScore.wins++;
-            break;
-        case 'loser':
-            playerScore.loses++;
-            break;
-
-        case 'tye':
-            playerScore.tyes++;
-            break;
-    }
-
-
+const updateScore = (result) => {
+    if (result === 'winner') playerScore.wins++;
+    else if (result === 'loser') playerScore.loses++;
+    else if (result === 'tie') playerScore.ties++;
 
     localStorage.setItem('score', JSON.stringify(playerScore));
-    scoreText.textContent = `wins: ${playerScore.wins}, loses: ${playerScore.loses}, ties: ${playerScore.tyes}`
+    updateScoreText();
+};
 
-
-}
-
-scoreFunction();
+const updateScoreText = () => {
+    scoreText.textContent = `wins: ${playerScore.wins}, loses: ${playerScore.loses}, ties: ${playerScore.ties}`;
+};
 
 const playAgain = () => {
     chooseContainer.classList.remove('hide');
     resultContainer.classList.add('hide');
-}
+};
 
 const resetScore = () => {
-    playerScore.wins = 0;
-    playerScore.loses = 0;
-    playerScore.tyes = 0;
-
+    playerScore = { wins: 0, loses: 0, ties: 0 };
     localStorage.removeItem('score');
-    scoreFunction()
-}
+    updateScoreText();
+};
 
-
-
-
-
-
+// Inicializa placar ao carregar
+updateScoreText();
