@@ -33,20 +33,36 @@ button {
 
 }
 
+#aaaa {
+    margin-bottom: 20px;
+}
+
 button {
     width: 150px;
     cursor: pointer;
 }
 
 #list-container {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
     width: 1000px;
+    height: 500px;
+    overflow-y: auto;
+}
+
+#error-text {
+    font-size: 1.6rem;
+    letter-spacing: 2px;
+    color: red;
 }
 
 .do-container {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    justify-items: center;
     width: 100%;
-    justify-content: space-between;
-    align-items: center;
+
     background-color: #ffffff0b;
     border-radius: 10px;
     padding: 1rem;
