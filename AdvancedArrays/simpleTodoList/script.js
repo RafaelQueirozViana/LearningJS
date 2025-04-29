@@ -32,5 +32,15 @@ showList()
 button.addEventListener('click', addTodo);
 
 
+const array = ['hell33o', 'bye', 'hello', 'before'];
+
+const index = array.findIndex(array => array == 'hello');
+
+const index2 = array.indexOf('hello');
+console.log(index2)
+console.log(index);
+
+
+
 
 

@@ -1,0 +1,42 @@
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 30px;
+    height: 100vh;
+    background-color: rgb(0, 0, 0);
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: #fff;
+
+}
+
+h1 {
+    font-weight: 500;
+}
+
+.buttons-container {
+    display: flex;
+    gap: 30px;
+}
+
+button {
+    height: 50px;
+    width: 200px;
+    cursor: pointer;
+    border: none;
+    background-color: rgb(255, 255, 255);
+    font-size: 1.5rem;
+    color: rgb(0, 0, 0);
+    border-radius: 5px;
+    transition: opacity .3s ease;
+}
+
+button:hover {
+    opacity: .5;
+}
+
+.selected {
+    background-color: rgb(53, 55, 66);
+    color: #fff;
+}

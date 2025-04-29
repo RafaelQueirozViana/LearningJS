@@ -11,9 +11,7 @@ class Buttons {
         const allButtons = document.querySelectorAll(`.${this.buttonClass}`);
 
         allButtons.forEach(button => {
-
             button.addEventListener('click', () => {
-
                 allButtons.forEach(btn => btn.classList.remove(this.classlistName));
 
                 button.classList.toggle(this.classlistName);
