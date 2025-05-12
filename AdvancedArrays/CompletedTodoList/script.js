@@ -23,22 +23,7 @@ const addItem = () => {
 
 };
 
-const deleteTask = (event) => {
-    const buttonParent = event.target.parentElement;
-    const taskName = buttonParent.querySelector('.name').textContent;
-    const dateName = buttonParent.querySelector('.date').textContent;
-    const index = tasksArray.findIndex(current => current.task === taskName && current.date === dateName);
 
-    tasksArray.splice(index, 1);
-    renderArray();
-
-    localStorage.setItem('taskList', JSON.stringify(tasksArray));
-
-    console.log(localStorage.getItem('taskList'))
-
-
-
-};
 
 const renderArray = () => {
     tasksContainer.innerHTML = '';
@@ -47,9 +32,19 @@ const renderArray = () => {
             <div class="do-container">
                <p class="name">${currrentTask.task}</p>
                <p class="date">${currrentTask.date}</p>
-               <button onclick="deleteTask(event)" type="button">Delete</button>
+               <button class="delete-button" type="button">Delete</button>
            </div>`;
     });
+
+
+    document.querySelectorAll('.delete-button').forEach((button, index) => {
+        button.addEventListener('click', () => {
+            tasksArray.splice(index, 1);
+            localStorage.setItem('taskList', JSON.stringify(tasksArray));
+            renderArray()
+        });
+    });
+
 
 };
 
