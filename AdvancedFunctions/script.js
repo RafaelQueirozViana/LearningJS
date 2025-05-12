@@ -15,7 +15,13 @@ display(function () {
 // ------- SetTimeOut -------- //
 
 
-setTimeout(() => {
-    console.log('ds')
-}, 1000);
+// setTimeout(() => {
+//     console.log('ds')
+// }, 1000);
 
+
+// using event
+
+document.body.addEventListener('keydown', (event) => {
+    console.log(event.key);
+});

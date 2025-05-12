@@ -10,7 +10,7 @@ let listArray = JSON.parse(localStorage.getItem('doList')) || [];
 const addTodo = () => {
 
     if (!doInput.value || !dateInput.value) {
-        showError('please, fill in all fields ')
+        showError('please, fill in all fiel ds ')
     }
 
     else {
@@ -22,6 +22,7 @@ const addTodo = () => {
         });
 
         renderList();
+        
     }
 
 
