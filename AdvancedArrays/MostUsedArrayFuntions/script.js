@@ -41,10 +41,17 @@
 
          Real Examples using .map():
 
+         USING MAP TO DOUBLE VALUES:
          const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
          const doubledNumbers = numbers.map(number => number * 2);
-
          console.log(doubledNumbers)
+
+         USING MAP AND FILTER TOGETHER:
+//       const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+//       const finalNumbers = numbers.filter(number => number % 2 === 0).map(number => number * 2);
+//       console.log(finalNumbers)
+
+
 
    The difference between map and filter: Filter is used only for separate values in some array and you can't change the values,
    while the map is used to change the values from array. They both need a return and will create a new array.
@@ -52,9 +59,42 @@
 
 */
 
+//Exercices
 
-const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-const finalNumbers = numbers.filter(number => number % 2 === 0).map(number => number * 2);
-console.log(finalNumbers)
+// const doubleFunction = (array, multiply) => array.map(number => number * multiply);
+// console.log(doubleFunction([1, 2, 3, 4, 5], 4));
 
+// const removeEggs = ({ foods, wantDelete }) => foods.filter(food => food != wantDelete);
+// console.log(removeEggs({ foods: ['wheat', 'rice', 'eggs', 'bean', 'tomato', 'eggs'], wantDelete: 'eggs' }));
+
+const remove2Eggs = (foods, wantDelete) => {
+   let totalEggs = 0;
+
+   const result = foods.filter(food => {
+
+      if (totalEggs < 10) {
+
+         if (food == wantDelete) {
+            totalEggs++
+         }
+
+         return food != wantDelete
+      }
+
+      else {
+         return true
+      }
+
+
+
+
+
+
+
+   });
+
+   return result
+
+};
+console.log(remove2Eggs(['apple', 'egg', 'egg', 'egg'], 'egg'));
 
