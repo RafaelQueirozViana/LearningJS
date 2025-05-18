@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Tarefas com Categorias</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            background-color: #f2f2f2;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        form,
+        select {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        input,
+        button,
+        select {
+            min-height: 50px;
+            font-size: 1em;
+            max-height: 50px;
+        }
+
+        ul {
+            max-width: 700px;
+            margin: auto;
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            background-color: white;
+            border-left: 8px solid #999;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 6px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .Trabalho {
+            border-color: #1e90ff;
+        }
+
+        .Estudo {
+            border-color: #28a745;
+        }
+
+        .Lazer {
+            border-color: #ffc107;
+        }
+
+        .Outros {
+            border-color: #6c757d;
+        }
+
+        .completed {
+            text-decoration: line-through;
+            color: gray;
+        }
+
+        .filtros {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .filtros select {
+            padding: 8px;
+        }
+
+        small {
+            display: block;
+            color: #666;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Gerenciador de Tarefas com Categorias</h1>
+
+    <form id="formTarefa">
+        <input type="text" id="descricao" placeholder="Descrição" required />
+        <input type="date" id="data" required />
+        <select id="categoria">
+            <option value="Trabalho">Trabalho</option>
+            <option value="Estudo">Estudo</option>
+            <option value="Lazer">Lazer</option>
+            <option value="Outros">Outros</option>
+        </select>
+        <button type="submit">Adicionar</button>
+    </form>
+
+    <div class="filtros">
+        <label for="filtroCategoria">Filtrar por categoria:</label>
+        <select id="filtroCategoria">
+            <option value="Todas">Todas</option>
+            <option value="Trabalho">Trabalho</option>
+            <option value="Estudo">Estudo</option>
+            <option value="Lazer">Lazer</option>
+            <option value="Outros">Outros</option>
+        </select>
+    </div>
+
+    <ul id="listaTarefas"></ul>
+
+    <script>
+        const form = document.getElementById("formTarefa");
+        const lista = document.getElementById("listaTarefas");
+        const filtroCategoria = document.getElementById("filtroCategoria");
+
+        let tarefas = JSON.parse(localStorage.getItem("tarefas")) || [];
+
+        form.addEventListener("submit", (e) => {
+            e.preventDefault();
+            const descricao = document.getElementById("descricao").value.trim();
+            const data = document.getElementById("data").value;
+            const categoria = document.getElementById("categoria").value;
+
+            if (!descricao || !data) {
+                alert("Preencha todos os campos!");
+                return;
+            }
+
+            const novaTarefa = {
+                id: Date.now(),
+                descricao,
+                data,
+                categoria,
+                concluida: false
+            };
+
+            tarefas.push(novaTarefa);
+            salvar();
+            renderizar();
+            form.reset();
+        });
+
+        filtroCategoria.addEventListener("change", renderizar);
+
+        function salvar() {
+            localStorage.setItem("tarefas", JSON.stringify(tarefas));
+        }
+
+        function renderizar() {
+            const filtro = filtroCategoria.value;
+            lista.innerHTML = "";
+
+            const tarefasFiltradas = filtro === "Todas"
+                ? tarefas
+                : tarefas.filter(t => t.categoria === filtro);
+
+            tarefasFiltradas.forEach(tarefa => {
+                const li = document.createElement("li");
+                li.classList.add(tarefa.categoria);
+
+                li.innerHTML = `
+          <span class="${tarefa.concluida ? 'completed' : ''}">
+            <strong>${tarefa.descricao}</strong>
+            <small>Vence em: ${new Date(tarefa.data).toLocaleDateString("pt-BR")} | ${tarefa.categoria}</small>
+          </span>
+          <div>
+            <button onclick="alternar(${tarefa.id})">${tarefa.concluida ? '↩️' : '✅'}</button>
+            <button onclick="remover(${tarefa.id})">🗑️</button>
+          </div>
+        `;
+                lista.appendChild(li);
+            });
+        }
+
+        function alternar(id) {
+            tarefas = tarefas.map(t => {
+                if (t.id === id) t.concluida = !t.concluida;
+                return t;
+            });
+            salvar();
+            renderizar();
+        }
+
+        function remover(id) {
+            if (confirm("Deseja remover esta tarefa?")) {
+                tarefas = tarefas.filter(t => t.id !== id);
+                salvar();
+                renderizar();
+            }
+        }
+
+        renderizar(); // Inicial
+    </script>
+
+</body>
+
+</html>
