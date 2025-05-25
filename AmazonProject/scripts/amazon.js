@@ -30,7 +30,7 @@ const loadProducts = () => {
           </div>
 
           <div class="product-quantity-container">
-            <select>
+            <select class="js-quantity-btn">
               <option selected value="1">1</option>
               <option value="2">2</option>
               <option value="3">3</option>
@@ -51,13 +51,37 @@ const loadProducts = () => {
             Added
           </div>
 
-          <button class="add-to-cart-button button-primary">
+          <button class="add-to-cart-button button-primary ">
             Add to Cart
           </button>
         </div>`;
 
     productGrid.innerHTML += html;
   });
+
+  const buttons = document.querySelectorAll('.add-to-cart-button');
+  const selectQuantityBtn = document.querySelectorAll('.js-quantity-btn');
+
+  buttons.forEach((button, id) => {
+    button.addEventListener('click', () => {
+      cart.push({
+        name: products[id].name,
+        price: products[id].priceCents,
+        image: products[id].image,
+        quantity: selectQuantityBtn[id].value,
+
+      });
+      localStorage.setItem('cart', JSON.stringify(cart))
+
+
+
+
+
+
+    });
+  });
+
+
 
 };
 
