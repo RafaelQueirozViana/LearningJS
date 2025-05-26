@@ -2,6 +2,8 @@ const ordersContainer = document.querySelector('.order-summary');
 
 
 const loadCart = () => {
+
+  console.log(cart)
   ordersContainer.innerHTML = ''
   cart.forEach((product) => {
     ordersContainer.innerHTML += `   <div class="cart-item-container">
@@ -72,6 +74,7 @@ const loadCart = () => {
           </div>
         </div>`;
   });
+
 
 
 }
