@@ -4,7 +4,6 @@ const cartText = document.querySelector('.cart-quantity');
 
 const loadProducts = () => {
   showCartQuantity()
-
   productGrid.innerHTML = '';
   products.forEach((product) => {
 
@@ -60,6 +59,8 @@ const loadProducts = () => {
     productGrid.innerHTML += html;
   });
 
+  // Creating the add to cart function function ⬇
+
   const buttons = document.querySelectorAll('.add-to-cart-button');
   const selectQuantityBtn = document.querySelectorAll('.js-quantity-btn');
 
@@ -95,26 +96,11 @@ const loadProducts = () => {
     });
   });
 
-
-
-
-
-
 };
 
 const showCartQuantity = () => {
-  let totalItems = 0;
-  cart.forEach(product => {
-    if (product) {
-      totalItems += product.quantity;
-    };
-  });
-
-  cartText.textContent = totalItems;
-
-
-
-
+  const sumCartProducts = cart.reduce((acumulator, product) => acumulator += product.quantity, 0);
+  cartText.textContent = sumCartProducts;
 }
 
 
