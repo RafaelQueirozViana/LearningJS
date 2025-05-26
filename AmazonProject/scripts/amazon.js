@@ -1,6 +1,6 @@
 
-const productGrid = document.querySelector('.products-grid');
-const cartText = document.querySelector('.cart-quantity');
+const productGrid = document.querySelector('.js-all-products');
+const cartText = document.querySelector('.js-cart-quantity');
 
 const loadProducts = () => {
   showCartQuantity()
@@ -26,7 +26,7 @@ const loadProducts = () => {
           </div>
 
           <div class="product-price">
-            ${(product.priceCents) / 100}
+           $ ${(product.priceCents) / 100}
           </div>
 
           <div class="product-quantity-container">
@@ -51,7 +51,7 @@ const loadProducts = () => {
             Added
           </div>
 
-          <button class="add-to-cart-button button-primary ">
+          <button class="add-to-cart-button button-primary js-add-to-cart">
             Add to Cart
           </button>
         </div>`;
@@ -61,7 +61,7 @@ const loadProducts = () => {
 
   // Creating the add to cart function function ⬇
 
-  const buttons = document.querySelectorAll('.add-to-cart-button');
+  const buttons = document.querySelectorAll('.js-add-to-cart');
   const selectQuantityBtn = document.querySelectorAll('.js-quantity-btn');
 
   buttons.forEach((button, id) => {

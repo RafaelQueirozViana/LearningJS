@@ -17,7 +17,7 @@ const loadCart = () => {
             <div class="cart-item-details">
               <div class="product-name">${product.name} </div>
               <div class="product-price">
-                ${(product.price) / 100 * product.quantity}
+               $ ${(product.price) / 100 * product.quantity}
               </div>
               <div class="product-quantity">
                 <span>
