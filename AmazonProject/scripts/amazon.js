@@ -1,8 +1,6 @@
 
 const productGrid = document.querySelector('.products-grid');
 
-
-
 const loadProducts = () => {
   productGrid.innerHTML = '';
   products.forEach((product) => {
@@ -64,22 +62,35 @@ const loadProducts = () => {
 
   buttons.forEach((button, id) => {
     button.addEventListener('click', () => {
-      cart.push({
-        name: products[id].name,
-        price: products[id].priceCents,
-        image: products[id].image,
-        quantity: selectQuantityBtn[id].value,
 
-      });
+      const currentProduct = products[id];
+      const Selectedquantity = Number(selectQuantityBtn[id].value);
+
+      let matchingItem = cart.find(product => product.id === currentProduct.id);
+
+
+      if (!matchingItem) {
+        cart.push({
+          name: currentProduct.name,
+          price: currentProduct.priceCents,
+          image: currentProduct.image,
+          quantity: Selectedquantity,
+          id: currentProduct.id
+
+        });
+      }
+
+      else {
+        console.log('tem igual')
+        matchingItem.quantity += Selectedquantity
+      }
+
       localStorage.setItem('cart', JSON.stringify(cart))
-
-
-
-
-
 
     });
   });
+
+
 
 
 
