@@ -1,3 +1,5 @@
+import { cart } from '../data/cart.js';
+
 const ordersContainer = document.querySelector('.order-summary');
 
 

@@ -1,6 +1,12 @@
+import { cart } from '../data/cart.js';
 
 const productGrid = document.querySelector('.js-all-products');
 const cartText = document.querySelector('.js-cart-quantity');
+
+const showCartQuantity = () => {
+  const sumCartProducts = cart.reduce((acumulator, product) => acumulator += product.quantity, 0);
+  cartText.textContent = sumCartProducts;
+}
 
 const loadProducts = () => {
   showCartQuantity()
@@ -93,7 +99,7 @@ const loadProducts = () => {
 
       addedCartMessage.style.opacity = 1;
 
-      timeoutId = setTimeout(() => {
+      setTimeout(() => {
         addedCartMessage.style.opacity = 0;
 
       }, 2000)
@@ -108,10 +114,7 @@ const loadProducts = () => {
 
 };
 
-const showCartQuantity = () => {
-  const sumCartProducts = cart.reduce((acumulator, product) => acumulator += product.quantity, 0);
-  cartText.textContent = sumCartProducts;
-}
+
 
 
 
