@@ -30,7 +30,7 @@ const loadProducts = () => {
           </div>
 
           <div class="product-quantity-container">
-            <select class="js-quantity-btn">
+            <select class="js-quantity-selector">
               <option selected value="1">1</option>
               <option value="2">2</option>
               <option value="3">3</option>
@@ -46,7 +46,7 @@ const loadProducts = () => {
 
           <div class="product-spacer"></div>
 
-          <div class="added-to-cart">
+          <div class="added-to-cart js-add-message">
             <img src="images/icons/checkmark.png">
             Added
           </div>
@@ -62,13 +62,14 @@ const loadProducts = () => {
   // Creating the add to cart function function ⬇
 
   const buttons = document.querySelectorAll('.js-add-to-cart');
-  const selectQuantityBtn = document.querySelectorAll('.js-quantity-btn');
+  const selectQuantityBtn = document.querySelectorAll('.js-quantity-selector');
 
-  buttons.forEach((button, id) => {
+  buttons.forEach((button, index) => {
     button.addEventListener('click', () => {
+      const currentProduct = products[index];
+      const Selectedquantity = Number(selectQuantityBtn[index].value);
+      const addedCartMessage = button.parentElement.querySelector('.js-add-message');
 
-      const currentProduct = products[id];
-      const Selectedquantity = Number(selectQuantityBtn[id].value);
 
       let matchingItem = cart.find(product => product.id === currentProduct.id);
 
@@ -87,6 +88,15 @@ const loadProducts = () => {
       }
 
       localStorage.setItem('cart', JSON.stringify(cart));
+
+
+
+      addedCartMessage.style.opacity = 1;
+
+      timeoutId = setTimeout(() => {
+        addedCartMessage.style.opacity = 0;
+
+      }, 2000)
 
 
       showCartQuantity()
