@@ -1,5 +1,6 @@
 import { cart } from '../data/cart.js';
 
+
 const productGrid = document.querySelector('.js-all-products');
 const cartText = document.querySelector('.js-cart-quantity');
 
