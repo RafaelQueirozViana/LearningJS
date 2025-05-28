@@ -1,4 +1,4 @@
-import { cart } from '../data/cart.js'; // Data of all products in Cart  
+import { cart, addToCart } from '../data/cart.js'; // Data of all products in Cart  
 import { products } from '../data/products.js'; // Data of all Products  
 
 
@@ -6,44 +6,11 @@ const productGrid = document.querySelector('.js-all-products');
 const cartText = document.querySelector('.js-cart-quantity');
 
 const showCartQuantity = () => {
-  const sumCartProducts = cart.reduce((acumulator, product) => acumulator += product.quantity, 0);
+  const sumCartProducts = cart.reduce((acumulator, cartItem) => acumulator += cartItem.quantity, 0);
   cartText.textContent = sumCartProducts;
 }
 
-const addToCart = (productIndex) => {
 
-  const currentProduct = products[productIndex];
-  const selectQuantityBtn = document.querySelectorAll('.js-quantity-selector');
-  const Selectedquantity = Number(selectQuantityBtn[productIndex].value);
-  const addedCartMessage = document.querySelectorAll('.js-add-message')[productIndex];
-
-  let matchingItem = cart.find(cartProduct => cartProduct.id === currentProduct.id);
-
-  if (!matchingItem) {
-    cart.push({
-      name: currentProduct.name,
-      price: currentProduct.priceCents,
-      image: currentProduct.image,
-      quantity: Selectedquantity,
-      id: currentProduct.id
-    });
-  }
-
-  else {
-    matchingItem.quantity += Selectedquantity;
-  }
-
-  localStorage.setItem('cart', JSON.stringify(cart));
-
-
-  addedCartMessage.style.opacity = 1;
-
-  setTimeout(() => {
-    addedCartMessage.style.opacity = 0;
-
-  }, 2000)
-
-}
 
 const loadProducts = () => {
   showCartQuantity()
@@ -101,6 +68,8 @@ const loadProducts = () => {
 
     productGrid.innerHTML += html;
   });
+
+  // Creating the EventListener in the all buttons that we are creating
 
   const buttons = document.querySelectorAll('.js-add-to-cart');
 
