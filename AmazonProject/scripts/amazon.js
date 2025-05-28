@@ -1,5 +1,5 @@
-import { cart } from '../data/cart.js';
-import { products } from '../data/products.js';
+import { cart } from '../data/cart.js'; // Data of all products in Cart  
+import { products } from '../data/products.js'; // Data of all Products  
 
 
 const productGrid = document.querySelector('.js-all-products');
@@ -8,6 +8,41 @@ const cartText = document.querySelector('.js-cart-quantity');
 const showCartQuantity = () => {
   const sumCartProducts = cart.reduce((acumulator, product) => acumulator += product.quantity, 0);
   cartText.textContent = sumCartProducts;
+}
+
+const addToCart = (productIndex) => {
+
+  const currentProduct = products[productIndex];
+  const selectQuantityBtn = document.querySelectorAll('.js-quantity-selector');
+  const Selectedquantity = Number(selectQuantityBtn[productIndex].value);
+  const addedCartMessage = document.querySelectorAll('.js-add-message')[productIndex];
+
+  let matchingItem = cart.find(cartProduct => cartProduct.id === currentProduct.id);
+
+  if (!matchingItem) {
+    cart.push({
+      name: currentProduct.name,
+      price: currentProduct.priceCents,
+      image: currentProduct.image,
+      quantity: Selectedquantity,
+      id: currentProduct.id
+    });
+  }
+
+  else {
+    matchingItem.quantity += Selectedquantity;
+  }
+
+  localStorage.setItem('cart', JSON.stringify(cart));
+
+
+  addedCartMessage.style.opacity = 1;
+
+  setTimeout(() => {
+    addedCartMessage.style.opacity = 0;
+
+  }, 2000)
+
 }
 
 const loadProducts = () => {
@@ -67,61 +102,17 @@ const loadProducts = () => {
     productGrid.innerHTML += html;
   });
 
-  // Creating the add to cart function function ⬇
-
   const buttons = document.querySelectorAll('.js-add-to-cart');
-  const selectQuantityBtn = document.querySelectorAll('.js-quantity-selector');
 
   buttons.forEach((button, index) => {
     button.addEventListener('click', () => {
-      const currentProduct = products[index];
-      const Selectedquantity = Number(selectQuantityBtn[index].value);
-      const addedCartMessage = button.parentElement.querySelector('.js-add-message');
-
-
-      let matchingItem = cart.find(product => product.id === currentProduct.id);
-
-      if (!matchingItem) {
-        cart.push({
-          name: currentProduct.name,
-          price: currentProduct.priceCents,
-          image: currentProduct.image,
-          quantity: Selectedquantity,
-          id: currentProduct.id
-        });
-      }
-
-      else {
-        matchingItem.quantity += Selectedquantity;
-      }
-
-      localStorage.setItem('cart', JSON.stringify(cart));
-
-
-
-      addedCartMessage.style.opacity = 1;
-
-      setTimeout(() => {
-        addedCartMessage.style.opacity = 0;
-
-      }, 2000)
-
-
+      addToCart(index)
       showCartQuantity()
-
-
 
     });
   });
 
 };
-
-
-
-
-
-
-
 
 loadProducts()
 
