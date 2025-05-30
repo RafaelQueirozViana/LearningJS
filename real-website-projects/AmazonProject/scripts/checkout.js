@@ -1,9 +1,9 @@
 import { cart } from '../data/cart.js';
 
-const ordersContainer = document.querySelector('.order-summary');
+const ordersContainer = document.querySelector('.js-order-summary');
 
 
-const loadCart = () => {
+const loadProductsInPage = () => {
   ordersContainer.innerHTML = ''
   cart.forEach((product) => {
     ordersContainer.innerHTML += `   <div class="cart-item-container">
