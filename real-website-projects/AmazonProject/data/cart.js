@@ -1,5 +1,6 @@
-export const cart = JSON.parse(localStorage.getItem('cart')) || [];
 import { products } from '../data/products.js';
+export const cart = JSON.parse(localStorage.getItem('cart')) || [];
+
 
 export const addToCart = (productIndex) => {
 
@@ -25,7 +26,6 @@ export const addToCart = (productIndex) => {
     }
 
     localStorage.setItem('cart', JSON.stringify(cart));
-
 
     addedCartMessage.style.opacity = 1;
 
