@@ -1,4 +1,5 @@
 export const cart = JSON.parse(localStorage.getItem('cart')) || [];
+import { products } from '../data/products.js';
 
 export const addToCart = (productIndex) => {
 

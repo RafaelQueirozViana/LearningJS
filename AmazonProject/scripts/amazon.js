@@ -1,5 +1,5 @@
 import { cart, addToCart } from '../data/cart.js'; // Data of all products in Cart  
-import { products } from '../data/products.js'; // Data of all Products  
+import { products } from '../data/products.js'; // Data of all Products in the website
 
 
 const productGrid = document.querySelector('.js-all-products');
@@ -9,8 +9,6 @@ const showCartQuantity = () => {
   const sumCartProducts = cart.reduce((acumulator, cartItem) => acumulator += cartItem.quantity, 0);
   cartText.textContent = sumCartProducts;
 }
-
-
 
 const loadProducts = () => {
   showCartQuantity()
