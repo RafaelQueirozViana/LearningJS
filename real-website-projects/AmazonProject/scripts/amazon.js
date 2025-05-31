@@ -5,26 +5,17 @@ import { products } from '../data/products.js'; // Data of all Products in the w
 const productGrid = document.querySelector('.js-all-products');
 const cartText = document.querySelector('.js-cart-quantity');
 
+const showCartQuantity = () => {
+  const sumCartProducts = cart.reduce((acumulator, cartItem) => acumulator += cartItem.quantity, 0);
+  cartText.textContent = sumCartProducts;
+}
 
+const loadProducts = () => {
+  showCartQuantity()
+  productGrid.innerHTML = '';
+  products.forEach((product) => {
 
-class LoadProductsInPage {
-  constructor({ container, htmlCode }) {
-    this.container = container;
-    this.htmlCode = htmlCode;
-
-  };
-
-  showCartQuantity = () => {
-    const sumCartProducts = cart.reduce((acumulator, cartItem) => acumulator += cartItem.quantity, 0);
-    cartText.textContent = sumCartProducts;
-  }
-
-  displayInHtml = () => {
-    this.showCartQuantity();
-    this.container.innerHTML = '';
-    products.forEach((product) => {
-
-      const html = ` <div class="product-container">
+    const html = ` <div class="product-container">
           <div class="product-image-container">
             <img class="product-image"
               src="${product.image}">
@@ -73,35 +64,21 @@ class LoadProductsInPage {
           </button>
         </div>`;
 
-      productGrid.innerHTML += html;
+    productGrid.innerHTML += html;
+  });
+
+  // Creating the EventListener in the all buttons that we are creating
+
+  const buttons = document.querySelectorAll('.js-add-to-cart');
+  buttons.forEach((button, index) => {
+    button.addEventListener('click', () => {
+      addToCart(index)
+      showCartQuantity()
+
     });
-
-    // Creating the EventListener in the all buttons that we are creating
-
-
-
-    const buttons = document.querySelectorAll('.js-add-to-cart');
-
-    buttons.forEach((button, index) => {
-      button.addEventListener('click', () => {
-        addToCart(index)
-        this.showCartQuantity();
-
-
-      });
-    });
-
-  };
-
+  });
 
 };
 
-
-
-const amazonProducts = new LoadProductsInPage({
-  container: productGrid,
-});
-
-
-amazonProducts.displayInHtml()
+loadProducts()
 

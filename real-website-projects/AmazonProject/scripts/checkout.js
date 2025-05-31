@@ -3,7 +3,7 @@ import { cart } from '../data/cart.js';
 const ordersContainer = document.querySelector('.js-order-summary');
 
 
-const loadProductsInPage = () => {
+const loadCart = () => {
   ordersContainer.innerHTML = ''
   cart.forEach((product) => {
     ordersContainer.innerHTML += `   <div class="cart-item-container">
