@@ -70,10 +70,20 @@ const loadProducts = () => {
   // Creating the EventListener in the all buttons that we are creating
 
   const buttons = document.querySelectorAll('.js-add-to-cart');
+
   buttons.forEach((button, index) => {
+    const addedCartMessage = document.querySelectorAll('.js-add-message')[index];
+
     button.addEventListener('click', () => {
       addToCart(index)
       showCartQuantity()
+
+      addedCartMessage.style.opacity = 1;
+
+      setTimeout(() => {
+        addedCartMessage.style.opacity = 0;
+
+      }, 2000)
 
     });
   });
