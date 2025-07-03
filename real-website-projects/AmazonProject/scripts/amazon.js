@@ -1,8 +1,18 @@
 import { products } from '../data/products.js';
-import { cart } from '../data/cart.js';
+import { cart, addToCart } from '../data/cart.js';
 
 const productGrid = document.querySelector('.js-all-products');
+const cartNumberText = document.querySelector('.js-cart-quantity');
 
+const updateCartText = () => {
+  cartNumberText.textContent = cart.length;
+};
+
+const addedCartAnim = (position) => {
+  const addedMessage = document.querySelectorAll('.added-to-cart')[position];
+
+  addedMessage.classList.add('show');
+};
 
 const loadProducts = () => {
   productGrid.innerHTML = '';
@@ -60,24 +70,18 @@ const loadProducts = () => {
     productGrid.innerHTML += html;
   });
 
-
   //creating  addToCart function Event Listener to these products
 
-  const addButtons = document.querySelectorAll('.js-add-to-cart');
+  const addCartButtons = document.querySelectorAll('.js-add-to-cart');
 
-  addButtons.forEach((button, position) => {
+  addCartButtons.forEach((button, position) => {
     button.addEventListener('click', () => {
-      console.log('click')
-      cart.push(products[position]);
-      console.log(cart)
+      addToCart(position)
+      updateCartText();
+      addedCartAnim(position);
+
     });
   });
-
-
-
-
-
-
 
 
 
@@ -87,6 +91,7 @@ const loadProducts = () => {
 
 
 loadProducts();
+updateCartText();
 
 
 
