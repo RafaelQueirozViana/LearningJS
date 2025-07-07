@@ -4,7 +4,7 @@ import { formatCurrency } from '../scripts/utils/money.js';
 
 const gridContainer = document.querySelector('.js-order-summary');
 
-const loadProducts = () => {
+const loadProducts = () => { // loading products of the cart array
   gridContainer.innerHTML = '';
 
   cart.forEach(cartProduct => {
@@ -20,7 +20,7 @@ const loadProducts = () => {
 
             <div class="cart-item-details">
               <div class="product-name">
-                Black and Gray Athletic Cotton Socks - 6 Pairs
+                ${productProperties.name}
               </div>
               <div class="product-price">
                 ${formatCurrency(productProperties.priceCents)}

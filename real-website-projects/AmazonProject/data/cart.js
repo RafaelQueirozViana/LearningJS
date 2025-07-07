@@ -6,12 +6,16 @@ console.log(cart)
 export const addToCart = (productId) => {
     const existingProduct = cart.find(product => product.id === productId);
 
+    // it was used for verify if the cart has the same product as you want to add to cart
+
 
     if (!existingProduct) {
         cart.push({
             id: productId,
             quantity: 1,
         });
+
+        // i just utilized only id and quantity attributes, because from the id i can search the all others attributes
 
     }
 
