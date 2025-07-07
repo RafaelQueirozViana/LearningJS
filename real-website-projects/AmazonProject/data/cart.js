@@ -2,17 +2,13 @@ import { products } from '../data/products.js';
 export const cart = JSON.parse(localStorage.getItem('cart')) || [];
 
 
-export const addToCart = (productIndex) => {
-    const currentProduct = products[productIndex];
-    const ProductId = currentProduct.id;
+export const addToCart = (productId, container) => {
+    const existingProduct = products.find(product => product.id === productId);
 
-    const quantitySelector = document.querySelectorAll('.js-quantity-selector')[productIndex];
+    const quantitySelector = container.querySelectorAll('.js-quantity-selector');
     const quantity = Number(quantitySelector.value);
 
-
-    const productAlreadyInCart = cart.find(product => product.id === ProductId);
-
-    if (!productAlreadyInCart) {
+    if (!existingProduct) {
         cart.push({
             id: currentProduct.id,
             name: currentProduct.name,
@@ -24,10 +20,8 @@ export const addToCart = (productIndex) => {
     }
 
     else {
-        productAlreadyInCart.quantity += quantity;
+        existingProduct.quantity += quantity;
     }
-
-    console.log(cart);
 
     localStorage.setItem('cart', JSON.stringify(cart));
 
@@ -38,10 +32,11 @@ export const addToCart = (productIndex) => {
 };
 
 export const removeFromCart = (productIndex) => {
+    console.log('startou')
     cart.splice(productIndex, 1);
-    console.log(cart);
-}
 
+    console.log(cart)
+}
 
 
 

@@ -62,7 +62,7 @@ const loadProducts = () => {
             Added
           </div>
 
-          <button class="add-to-cart-button button-primary js-add-to-cart">
+          <button class="add-to-cart-button button-primary js-add-to-cart" data-productId="${product.id}">
             Add to Cart
           </button>
         </div>`;
@@ -74,9 +74,10 @@ const loadProducts = () => {
 
   const addCartButtons = document.querySelectorAll('.js-add-to-cart');
 
-  addCartButtons.forEach((button, position) => {
+  addCartButtons.forEach((button) => {
     button.addEventListener('click', () => {
-      addToCart(position)
+      const productId = button.dataset.productId;
+      addToCart(productId, button.parentElement);
       updateCartText();
       addedCartAnim(position);
 
