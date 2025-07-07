@@ -1,12 +1,13 @@
 import { products } from '../data/products.js';
 export const cart = JSON.parse(localStorage.getItem('cart')) || [];
 
+console.log(cart)
 
 export const addToCart = (productId) => {
     const existingProduct = cart.find(product => product.id === productId);
 
 
-    if (existingProduct) {
+    if (!existingProduct) {
         cart.push({
             id: productId,
             quantity: 1,
@@ -15,7 +16,7 @@ export const addToCart = (productId) => {
     }
 
     else {
-        existingProduct.quantity += quantity;
+        existingProduct.quantity += 1;
     }
 
     localStorage.setItem('cart', JSON.stringify(cart));
@@ -32,7 +33,6 @@ export const removeFromCart = (productIndex) => {
 
     console.log(cart)
 }
-
 
 
 
