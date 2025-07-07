@@ -1,12 +1,10 @@
 import { products } from '../data/products.js';
-import { cart, addToCart } from '../data/cart.js';
+import { cart, addToCart, updateCartQuantity } from '../data/cart.js';
 
 const productGrid = document.querySelector('.js-all-products');
 const cartNumberText = document.querySelector('.js-cart-quantity');
 
-const updateCartText = () => {
-  cartNumberText.textContent = cart.length;
-};
+
 
 const addedCartAnim = (position) => {
   const addedMessage = document.querySelectorAll('.added-to-cart')[position];
@@ -73,7 +71,7 @@ const loadProducts = () => {
 };
 
 loadProducts();
-updateCartText();
+updateCartQuantity()
 
 
 const addCartButtons = document.querySelectorAll('.js-add-to-cart');
@@ -83,7 +81,7 @@ addCartButtons.forEach((button) => {
 
     const productId = button.dataset.productId;
     addToCart(productId);
-    updateCartText();
+    updateCartQuantity()
     addedCartAnim(position);
 
   });

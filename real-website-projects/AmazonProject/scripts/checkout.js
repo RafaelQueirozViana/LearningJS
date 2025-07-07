@@ -1,4 +1,4 @@
-import { cart, removeFromCart } from '../data/cart.js';
+import { cart, removeFromCart, updateCartQuantity } from '../data/cart.js';
 import { products } from '../data/products.js';
 import { formatCurrency } from '../scripts/utils/money.js';
 
@@ -82,6 +82,7 @@ const loadProducts = () => { // loading products of the cart array
 };
 
 loadProducts();
+updateCartQuantity()
 
 const deleteButtons = document.querySelectorAll('.js-delete-button');
 
@@ -91,11 +92,8 @@ deleteButtons.forEach(button => {
     const productContainer = document.querySelector(`.js-cart-item-id-${productId}`);
     productContainer.remove();
 
-    console.log(productContainer);
-
-
-
     removeFromCart(productId);
+    updateCartQuantity()
 
 
 

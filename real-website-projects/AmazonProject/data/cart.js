@@ -12,9 +12,7 @@ export const addToCart = (productId) => {
         cart.push({
             id: productId,
             quantity: 1,
-        });
-
-        // i just utilized only id and quantity attributes, because from the id i can search the all others attributes
+        });  // i just utilized only id and quantity attributes, because from the id i can search the all others attributes
 
     }
 
@@ -36,6 +34,10 @@ export const removeFromCart = (productId) => {
 
     localStorage.setItem('cart', JSON.stringify(cart));
 }
+
+export const updateCartQuantity = () => {
+    document.querySelector(`.js-cart-quantity`).textContent = cart.length;
+};
 
 
 
