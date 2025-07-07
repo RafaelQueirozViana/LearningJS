@@ -36,8 +36,11 @@ export const removeFromCart = (productId) => {
 }
 
 export const updateCartQuantity = () => {
-    document.querySelector(`.js-cart-quantity`).textContent = cart.length;
+    const totalItems = cart.reduce((acumulator, currentProduct) => acumulator + currentProduct.quantity, 0);
+    console.log(totalItems)
+    document.querySelector(`.js-cart-quantity`).textContent = totalItems;
 };
+
 
 
 
