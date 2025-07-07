@@ -62,7 +62,7 @@ const loadProducts = () => {
             Added
           </div>
 
-          <button class="add-to-cart-button button-primary js-add-to-cart" data-productId="${product.id}">
+          <button data-product-id="${product.id}" class="add-to-cart-button button-primary js-add-to-cart" >
             Add to Cart
           </button>
         </div>`;
@@ -70,29 +70,37 @@ const loadProducts = () => {
     productGrid.innerHTML += html;
   });
 
+
+
+
   //creating  addToCart function Event Listener to these products
 
-  const addCartButtons = document.querySelectorAll('.js-add-to-cart');
-
-  addCartButtons.forEach((button) => {
-    button.addEventListener('click', () => {
-      const productId = button.dataset.productId;
-      addToCart(productId, button.parentElement);
-      updateCartText();
-      addedCartAnim(position);
-
-    });
-  });
 
 
 
 };
 
-
-
-
 loadProducts();
 updateCartText();
+
+
+const addCartButtons = document.querySelectorAll('.js-add-to-cart');
+
+addCartButtons.forEach((button) => {
+  button.addEventListener('click', () => {
+
+    const productId = button.dataset.productId;
+    addToCart(productId);
+    updateCartText();
+    addedCartAnim(position);
+
+  });
+});
+
+
+
+
+
 
 
 

@@ -2,19 +2,14 @@ import { products } from '../data/products.js';
 export const cart = JSON.parse(localStorage.getItem('cart')) || [];
 
 
-export const addToCart = (productId, container) => {
-    const existingProduct = products.find(product => product.id === productId);
+export const addToCart = (productId) => {
+    const existingProduct = cart.find(product => product.id === productId);
 
-    const quantitySelector = container.querySelectorAll('.js-quantity-selector');
-    const quantity = Number(quantitySelector.value);
 
-    if (!existingProduct) {
+    if (existingProduct) {
         cart.push({
-            id: currentProduct.id,
-            name: currentProduct.name,
-            image: currentProduct.image,
-            priceCents: currentProduct.priceCents,
-            quantity: quantity,
+            id: productId,
+            quantity: 1,
         });
 
     }
