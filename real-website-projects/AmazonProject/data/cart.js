@@ -1,13 +1,12 @@
 import { products } from '../data/products.js';
-export const cart = JSON.parse(localStorage.getItem('cart')) || [];
+export let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
-console.log(cart)
+console.log(cart);
 
 export const addToCart = (productId) => {
     const existingProduct = cart.find(product => product.id === productId);
 
     // it was used for verify if the cart has the same product as you want to add to cart
-
 
     if (!existingProduct) {
         cart.push({
@@ -31,12 +30,14 @@ export const addToCart = (productId) => {
 
 };
 
-export const removeFromCart = (productIndex) => {
-    console.log('startou')
-    cart.splice(productIndex, 1);
+export const removeFromCart = (productId) => {
+    const newCart = cart.filter(product => product.id !== productId);
+    cart = newCart;
 
-    console.log(cart)
+    localStorage.setItem('cart', JSON.stringify(cart));
 }
+
+
 
 
 

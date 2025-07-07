@@ -70,14 +70,6 @@ const loadProducts = () => {
     productGrid.innerHTML += html;
   });
 
-
-
-
-  //creating  addToCart function Event Listener to these products
-
-
-
-
 };
 
 loadProducts();

@@ -1,4 +1,4 @@
-import { cart } from '../data/cart.js';
+import { cart, removeFromCart } from '../data/cart.js';
 import { products } from '../data/products.js';
 import { formatCurrency } from '../scripts/utils/money.js';
 
@@ -32,7 +32,7 @@ const loadProducts = () => { // loading products of the cart array
                 <span class="update-quantity-link link-primary">
                   Update
                 </span>
-                <span class="delete-quantity-link link-primary">
+                <span class="delete-quantity-link link-primary js-delete-button" data-product-id="${cartProduct.id}">
                   Delete
                 </span>
               </div>
@@ -79,7 +79,18 @@ const loadProducts = () => { // loading products of the cart array
           </div>
         </div>`
   });
-}
+};
 
+loadProducts();
 
-loadProducts()
+const deleteButtons = document.querySelectorAll('.js-delete-button');
+
+deleteButtons.forEach(button => {
+  button.addEventListener('click', () => {
+    const productId = button.dataset.productId;
+    removeFromCart(productId);
+
+    
+
+  });
+});
