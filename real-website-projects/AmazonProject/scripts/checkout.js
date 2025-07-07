@@ -8,9 +8,9 @@ const loadProducts = () => { // loading products of the cart array
   gridContainer.innerHTML = '';
 
   cart.forEach(cartProduct => {
-    const productProperties = products.find(product => product.id === cartProduct.id); // finding the all properties of the cart product using the ID in the products array
+    const productProperties = products.find(product => product.id === cartProduct.id); // finding the all properties of the current cart product using the ID in the products array
     gridContainer.innerHTML += `
-           <div class="cart-item-container">
+           <div class="cart-item-container js-cart-item-id-${cartProduct.id}">
           <div class="delivery-date">
             Delivery date: Tuesday, June 21
           </div>
@@ -88,9 +88,18 @@ const deleteButtons = document.querySelectorAll('.js-delete-button');
 deleteButtons.forEach(button => {
   button.addEventListener('click', () => {
     const productId = button.dataset.productId;
+    const productContainer = document.querySelector(`.js-cart-item-id-${productId}`);
+    productContainer.remove();
+
+    console.log(productContainer);
+
+
+
     removeFromCart(productId);
 
-    
+
+
+
 
   });
 });
