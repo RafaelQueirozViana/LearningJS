@@ -120,6 +120,8 @@ updateButtons.forEach(button => {
     button.classList.add('hidden');
     quantityBox.classList.remove('hidden');
 
+    // This function allows the user change the quantity of the product in the cart. It will hidden the button when click and will show the quantity box
+
   });
 });
 
