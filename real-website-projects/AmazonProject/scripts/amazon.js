@@ -1,13 +1,13 @@
 import { products } from '../data/products.js';
-import { cart, addToCart, updateCartQuantity } from '../data/cart.js';
+import { cart, addToCart, showCartQuantityText } from '../data/cart.js';
 
 const productGrid = document.querySelector('.js-all-products');
 const cartNumberText = document.querySelector('.js-cart-quantity');
 
 
 
-const addedCartAnim = (position) => {
-  const addedMessage = document.querySelectorAll('.added-to-cart')[position];
+const addedCartAnim = (productContainer) => {
+  const addedMessage = productContainer.querySelector('.added-to-cart');
 
   addedMessage.classList.add('show');
 };
@@ -71,7 +71,7 @@ const loadProducts = () => {
 };
 
 loadProducts();
-updateCartQuantity()
+showCartQuantityText()
 
 
 const addCartButtons = document.querySelectorAll('.js-add-to-cart');
@@ -80,9 +80,10 @@ addCartButtons.forEach((button) => {
   button.addEventListener('click', () => {
 
     const productId = button.dataset.productId;
-    addToCart(productId);
-    updateCartQuantity()
-    addedCartAnim(position);
+    const productContainer = button.parentElement;
+    addToCart(productId, productContainer);
+    showCartQuantityText()
+    addedCartAnim(productContainer);
 
   });
 });

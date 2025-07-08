@@ -1,4 +1,4 @@
-import { cart, removeFromCart, updateCartQuantity } from '../data/cart.js';
+import { cart, removeFromCart, showCartQuantityText, updateCartQuantity } from '../data/cart.js';
 import { products } from '../data/products.js';
 import { formatCurrency } from '../scripts/utils/money.js';
 
@@ -23,14 +23,19 @@ const loadProducts = () => { // loading products of the cart array
                 ${productProperties.name}
               </div>
               <div class="product-price">
-                ${formatCurrency(productProperties.priceCents)}
+                ${formatCurrency(productProperties.priceCents) * cartProduct.quantity}
               </div>
               <div class="product-quantity">
                 <span>
                   Quantity: <span class="quantity-label">${cartProduct.quantity}</span>
                 </span>
-                <span class="update-quantity-link link-primary">
-                  Update
+                  <span class="update-container">
+                  <span class="update-quantity-link link-primary js-update-button" data-product-id="${cartProduct.id}"> Update</span>
+                  <div class="update-box hidden">
+                    <input type="number">
+                    <span class="link-primary js-save-button" data-product-id="${cartProduct.id}">Save</span>
+                  </div>
+
                 </span>
                 <span class="delete-quantity-link link-primary js-delete-button" data-product-id="${cartProduct.id}">
                   Delete
@@ -82,7 +87,7 @@ const loadProducts = () => { // loading products of the cart array
 };
 
 loadProducts();
-updateCartQuantity()
+showCartQuantityText()
 
 const deleteButtons = document.querySelectorAll('.js-delete-button');
 
@@ -93,7 +98,7 @@ deleteButtons.forEach(button => {
     productContainer.remove();
 
     removeFromCart(productId);
-    updateCartQuantity()
+    showCartQuantityText()
 
 
 
@@ -101,3 +106,58 @@ deleteButtons.forEach(button => {
 
   });
 });
+
+const updateButtons = document.querySelectorAll('.js-update-button');
+
+updateButtons.forEach(button => {
+  button.addEventListener('click', () => {
+    const productId = button.dataset.productId;
+    const productContainer = document.querySelector(`.js-cart-item-id-${productId}`);
+    const quantityBox = productContainer.querySelector('.update-box');
+
+    button.classList.add('hidden');
+    quantityBox.classList.remove('hidden');
+
+  });
+});
+
+
+const saveButtons = document.querySelectorAll('.js-save-button');
+
+saveButtons.forEach(button => {
+  button.addEventListener('click', () => {
+    const productId = button.dataset.productId;
+    const productContainer = document.querySelector(`.js-cart-item-id-${productId}`);
+    const quantityBox = productContainer.querySelector('.update-box');
+    const updateButton = productContainer.querySelector('.js-update-button');
+    const inputValue = Number(quantityBox.querySelector('input').value);
+    const quantityText = productContainer.querySelector('.quantity-label');
+
+
+    if (inputValue > 0 && inputValue <= 1000) {
+      quantityBox.classList.add('hidden');
+      updateButton.classList.remove('hidden');
+      updateCartQuantity(productId, inputValue);
+      quantityText.textContent = inputValue;
+
+    }
+
+    else if (inputValue < 0) {
+      productContainer.remove();
+      removeFromCart(productId);
+    }
+
+    else {
+      console.log('inside a value between 0 and 1000');
+    }
+
+
+    showCartQuantityText()
+
+
+
+
+  });
+});
+
+
