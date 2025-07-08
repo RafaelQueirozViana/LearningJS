@@ -100,6 +100,8 @@ deleteButtons.forEach(button => {
     removeFromCart(productId);
     showCartQuantityText()
 
+    //this function will delete the product when the user clicks in the delete button
+
 
 
 
