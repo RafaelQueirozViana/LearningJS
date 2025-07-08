@@ -158,6 +158,7 @@ saveButtons.forEach(button => {
 
     showCartQuantityText()
 
+    //this function is the next part of the previous function. when click in save it will call the updateCartQuantity() in the cart.js. 
 
 
 
