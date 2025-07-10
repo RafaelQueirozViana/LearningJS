@@ -89,11 +89,11 @@ const loadProducts = () => { // loading products of the cart array
 loadProducts();
 showCartQuantityText()
 
-const deleteButtons = document.querySelectorAll('.js-delete-button');
+const deleteButtons = document.querySelectorAll('.js-delete-button'); // method that add event listener to the delete button
 
 deleteButtons.forEach(button => {
   button.addEventListener('click', () => {
-    const productId = button.dataset.productId;
+    const productId = button.dataset.productId; // getting the product id for find the corresponding product of the html
     const productContainer = document.querySelector(`.js-cart-item-id-${productId}`);
     productContainer.remove();
 
