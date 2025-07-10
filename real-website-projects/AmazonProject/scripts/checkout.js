@@ -125,6 +125,10 @@ updateButtons.forEach(button => {
   });
 });
 
+const today = dayjs();
+const deliveryDate = today.add(7, 'days');
+console.log(today);
+console.log(deliveryDate);
 
 const saveButtons = document.querySelectorAll('.js-save-button');
 
