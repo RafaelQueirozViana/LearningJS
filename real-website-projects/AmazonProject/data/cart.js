@@ -3,7 +3,9 @@ export let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
 console.log(cart);
 
-export const addToCart = (productId, container) => {
+// there is all cart methods. It doesn't include html changes
+
+export const addToCart = (productId, container) => { // Method for add a product to the cart
     const existingProduct = cart.find(product => product.id === productId);
 
     const quantitySelector = container.querySelector('.js-quantity-selector');
@@ -32,19 +34,19 @@ export const addToCart = (productId, container) => {
 
 };
 
-export const removeFromCart = (productId) => {
+export const removeFromCart = (productId) => { // method to remove a product of the cart
     const newCart = cart.filter(product => product.id !== productId);
     cart = newCart;
 
     localStorage.setItem('cart', JSON.stringify(cart));
 }
 
-export const showCartQuantityText = () => {
+export const showCartQuantityText = () => { // this method shows the quantity of product has in the cart
     const totalItems = cart.reduce((acumulator, currentProduct) => acumulator + currentProduct.quantity, 0);
     document.querySelector(`.js-cart-quantity`).textContent = totalItems;
 };
 
-export const updateCartQuantity = (productId, actuallyQuantity) => {
+export const updateCartQuantity = (productId, actuallyQuantity) => { // method for change the selected quantity of the product
     const changedProduct = cart.find(product => product.id === productId);
     changedProduct.quantity = actuallyQuantity;
     localStorage.setItem('cart', JSON.stringify(cart));
