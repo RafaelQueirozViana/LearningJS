@@ -76,7 +76,7 @@ showCartQuantityText()
 
 const addCartButtons = document.querySelectorAll('.js-add-to-cart');
 
-addCartButtons.forEach((button) => {
+addCartButtons.forEach((button) => { // this is add to cart buttons, it will call the addToCart method when receive click
   button.addEventListener('click', () => {
 
     const productId = button.dataset.productId;
