@@ -127,8 +127,9 @@ updateButtons.forEach(button => {
 
 const today = dayjs();
 const deliveryDate = today.add(7, 'days');
-console.log(today);
-console.log(deliveryDate);
+const formatedText = deliveryDate.format('dddd, MMMM D');
+console.log(formatedText);
+
 
 const saveButtons = document.querySelectorAll('.js-save-button');
 
