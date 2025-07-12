@@ -1,7 +1,8 @@
 import { cart, removeFromCart, showCartQuantityText, updateCartQuantity } from '../data/cart.js';
+
 import { products } from '../data/products.js';
+import { deliveryOptions } from '../data/delivery.js';
 import { formatCurrency } from '../scripts/utils/money.js';
-import dayjs from 'https://unpkg.com/supersimpledev@8.5.0/dayjs/esm/index.js'; // external library (in external libraries we doesn't use {}, because the sintax has difference)
 
 const gridContainer = document.querySelector('.js-order-summary');
 
@@ -126,10 +127,13 @@ updateButtons.forEach(button => {
   });
 });
 
-const today = dayjs();
-const deliveryDate = today.add(7, 'days');
-const formatedText = deliveryDate.format('dddd,de MMMM D');
-console.log(formatedText);
+// const today = dayjs();
+// const deliveryDate = today.add(7, 'days');
+// const formatedText = deliveryDate.format('dddd,MMMM D');
+// console.log(formatedText);
+
+console.log(deliveryOptions);
+
 
 
 const saveButtons = document.querySelectorAll('.js-save-button');
