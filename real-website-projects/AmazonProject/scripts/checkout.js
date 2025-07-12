@@ -50,7 +50,7 @@ const loadProducts = () => { // loading products of the cart array
                 Choose a delivery option:
               </div>
               <div class="delivery-option">
-                <input type="radio" checked class="delivery-option-input" name="delivery-option-1">
+                <input type="radio" checked class="delivery-option-input" name="delivery-option-${cartProduct.id}">
                 <div>
                   <div class="delivery-option-date">
                     Tuesday, June 21
@@ -87,6 +87,7 @@ const loadProducts = () => { // loading products of the cart array
         </div>`
   });
 };
+
 
 loadProducts();
 showCartQuantityText()
@@ -132,7 +133,7 @@ updateButtons.forEach(button => {
 // const formatedText = deliveryDate.format('dddd,MMMM D');
 // console.log(formatedText);
 
-console.log(deliveryOptions);
+
 
 
 

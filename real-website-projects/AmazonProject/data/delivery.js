@@ -1,24 +1,25 @@
-import dayjs from 'https://unpkg.com/supersimpledev@8.5.0/dayjs/esm/index.js';
 
 
 export const deliveryOptions = [
     {
         id: '1',
-        deliveryTime: dayjs().add(7, 'days').format('dddd,MMMM D'),
+        deliveryTime: 7,
         priceCents: 0,
     },
 
     {
-        id: '3',
-        deliveryTime: dayjs().add(4, 'days').format('dddd,MMMM D'),
+        id: '2',
+        deliveryTime: 3,
         priceCents: 499,
     },
 
     {
-        id: '1',
-        deliveryTime: dayjs().add(3, 'days').format('dddd,MMMM D'),
+        id: '3',
+        deliveryTime: 1,
         priceCents: 999,
     }
 
-]
+];
+
+// dayjs().add(1, 'days').format('dddd,MMMM D')
 
