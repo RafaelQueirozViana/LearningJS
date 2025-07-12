@@ -60,13 +60,14 @@ const loadProducts = () => { // loading products of the cart array
   });
 };
 
-const generateDeliveryHtml = (productId) => {
+const generateDeliveryHtml = (productId) => { // method created for generate the shipping data through the delivery options array
   let html = '';
 
   deliveryOptions.forEach(deliveryOption => {
-    const today = dayjs()
+    const today = dayjs() // gets today date using an external library
     const estimatedShipping = today.add(deliveryOption.deliveryTime, 'days').format('dddd, MMMM D');
     const priceString = deliveryOption.priceCents == 0 ? 'FREE' : `$${formatCurrency(deliveryOption.priceCents)} -`;
+    // used to set the string text as 'FREE' if the Shipping price is 0
 
 
     html += `
@@ -86,6 +87,12 @@ const generateDeliveryHtml = (productId) => {
 
   return html;
 };
+
+const setOrderSummary = ({ totalItems, ShippingPrice, totalWithoutTax, totalWithTax }) => {
+  console.log(name);
+}
+
+setOrderSummary({ totalItem: '' })
 
 
 loadProducts();
