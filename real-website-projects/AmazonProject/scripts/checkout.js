@@ -10,12 +10,19 @@ const gridContainer = document.querySelector('.js-order-summary');
 const loadProducts = () => { // loading products of the cart array
   gridContainer.innerHTML = '';
 
+
+
   cart.forEach(cartProduct => {
     const productProperties = products.find(product => product.id === cartProduct.id); // finding the all properties of the current cart product using the ID in the products array
+
+    const today = dayjs();
+    const findDeliveryOptionById = deliveryOptions.find(option => option.id == cartProduct.deliveryOptionId);
+    const estimatedShipping = today.add(findDeliveryOptionById.deliveryTime, 'days').format('dddd, MMMM D');
+
     gridContainer.innerHTML += `
            <div class="cart-item-container js-cart-item-id-${cartProduct.id}">
           <div class="delivery-date">
-            Delivery date: Tuesday, June 21
+            Delivery date: ${estimatedShipping}
           </div>
 
           <div class="cart-item-details-grid">

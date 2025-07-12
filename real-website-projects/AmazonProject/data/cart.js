@@ -18,7 +18,7 @@ export const addToCart = (productId, container) => { // Method for add a product
         cart.push({
             id: productId, // i just utilized only id and quantity attributes, because from the id i can search the all others attributes
             quantity: quantityValue,
-            deliveryOptionId: '2'
+            deliveryOptionId: '1'
         });
 
     }
