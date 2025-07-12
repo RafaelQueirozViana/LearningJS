@@ -1,8 +1,8 @@
 import { cart, removeFromCart, showCartQuantityText, updateCartQuantity } from '../data/cart.js';
 
 import { products } from '../data/products.js';
-import { deliveryOptions } from '../data/delivery.js';
 import { formatCurrency } from '../scripts/utils/money.js';
+import { deliveryOptions } from '../data/delivery.js';
 import dayjs from 'https://unpkg.com/supersimpledev@8.5.0/dayjs/esm/index.js';
 
 const gridContainer = document.querySelector('.js-order-summary');
@@ -50,8 +50,10 @@ const loadProducts = () => { // loading products of the cart array
               <div class="delivery-options-title">
                 Choose a delivery option:
               </div>
+
+              ${generateDeliveryHtml(cartProduct.id, cartProduct.deliveryOptionId)}
            
-              ${generateDeliveryHtml(cartProduct.id)}
+           
             
           
             </div>
@@ -60,40 +62,36 @@ const loadProducts = () => { // loading products of the cart array
   });
 };
 
-const generateDeliveryHtml = (productId) => { // method created for generate the shipping data through the delivery options array
+const generateDeliveryHtml = (productId, productDeliveryOption) => {
+  console.log(productDeliveryOption)
   let html = '';
 
   deliveryOptions.forEach(deliveryOption => {
-    const today = dayjs() // gets today date using an external library
+    const today = dayjs();
     const estimatedShipping = today.add(deliveryOption.deliveryTime, 'days').format('dddd, MMMM D');
-    const priceString = deliveryOption.priceCents == 0 ? 'FREE' : `$${formatCurrency(deliveryOption.priceCents)} -`;
-    // used to set the string text as 'FREE' if the Shipping price is 0
+    const priceString = deliveryOption.priceCents == 0 ? 'FREE' : `${formatCurrency(deliveryOption.priceCents)} -`;
+    const isChecked = productDeliveryOption == deliveryOption.id ? 'checked' : '';
 
 
     html += `
   <div class="delivery-option">
-    <input type="radio" class="delivery-option-input" name="delivery-option-${productId}">
+    <input type="radio" ${isChecked} class="delivery-option-input" name="delivery-option-${productId}">
     <div>
       <div class="delivery-option-date">
-      ${estimatedShipping}
-     
+      ${estimatedShipping} 
       </div>
       <div class="delivery-option-price">
-        ${priceString} Shipping
+      ${priceString} Shipping
       </div>
     </div>
   </div>`
   });
 
-  return html;
-};
 
-const setOrderSummary = ({ totalItems, ShippingPrice, totalWithoutTax, totalWithTax }) => {
-  console.log(name);
+
+
+  return html
 }
-
-setOrderSummary({ totalItem: '' })
-
 
 loadProducts();
 showCartQuantityText()
@@ -133,14 +131,6 @@ updateButtons.forEach(button => {
 
   });
 });
-
-// const today = dayjs();
-// const deliveryDate = today.add(7, 'days');
-// const formatedText = deliveryDate.format('dddd,MMMM D');
-// console.log(formatedText);
-
-
-
 
 
 const saveButtons = document.querySelectorAll('.js-save-button');
@@ -182,4 +172,13 @@ saveButtons.forEach(button => {
   });
 });
 
+
+const deliveryOptionButtons = document.querySelectorAll('.delivery-option');
+
+deliveryOptionButtons.forEach(optionButton => {
+  optionButton.addEventListener('change', () => {
+    const productId = '32'
+    const correspondingProduct = products.find(currentProduct => currentProduct.id === productId)
+  });
+});
 

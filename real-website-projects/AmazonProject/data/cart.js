@@ -16,10 +16,10 @@ export const addToCart = (productId, container) => { // Method for add a product
 
     if (!existingProduct) {
         cart.push({
-            id: productId,
+            id: productId, // i just utilized only id and quantity attributes, because from the id i can search the all others attributes
             quantity: quantityValue,
-            deliveryOptionId: '1'
-        });  // i just utilized only id and quantity attributes, because from the id i can search the all others attributes
+            deliveryOptionId: '2'
+        });
 
     }
 
