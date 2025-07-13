@@ -5,6 +5,10 @@ console.log(cart);
 
 // there is all cart methods. It doesn't include html changes
 
+const saveToStorage = () => {
+    localStorage.setItem('cart', JSON.stringify(cart));
+}
+
 export const addToCart = (productId, container) => { // Method for add a product to the cart
     const existingProduct = cart.find(product => product.id === productId);
 
@@ -27,7 +31,7 @@ export const addToCart = (productId, container) => { // Method for add a product
         existingProduct.quantity += quantityValue;
     }
 
-    localStorage.setItem('cart', JSON.stringify(cart));
+    saveToStorage()
 
 
 
@@ -39,7 +43,7 @@ export const removeFromCart = (productId) => { // method to remove a product of 
     const newCart = cart.filter(product => product.id !== productId);
     cart = newCart;
 
-    localStorage.setItem('cart', JSON.stringify(cart));
+    saveToStorage()
 }
 
 export const showCartQuantityText = () => { // this method shows the quantity of product has in the cart
@@ -50,9 +54,18 @@ export const showCartQuantityText = () => { // this method shows the quantity of
 export const updateCartQuantity = (productId, actuallyQuantity) => { // method for change the selected quantity of the product
     const changedProduct = cart.find(product => product.id === productId);
     changedProduct.quantity = actuallyQuantity;
-    localStorage.setItem('cart', JSON.stringify(cart));
+    saveToStorage()
 };
 
+
+export const changeDeliveryOption = (productId, newDeliveryId) => {
+    const cartProduct = cart.find(cartItem => cartItem.id === productId);
+    cartProduct.deliveryOptionId = newDeliveryId;
+    console.log(cartProduct)
+
+    saveToStorage();
+
+};
 
 
 
@@ -93,7 +106,7 @@ export const updateCartQuantity = (productId, actuallyQuantity) => { // method f
 //         matchingItem.quantity += Selectedquantity;
 //     }
 
-//     localStorage.setItem('cart', JSON.stringify(cart));
+//        saveToStorage()
 
 
 

@@ -1,4 +1,4 @@
-import { cart, removeFromCart, showCartQuantityText, updateCartQuantity } from '../data/cart.js';
+import { cart, removeFromCart, showCartQuantityText, updateCartQuantity, changeDeliveryOption } from '../data/cart.js';
 
 import { products } from '../data/products.js';
 import { formatCurrency } from '../scripts/utils/money.js';
@@ -82,7 +82,7 @@ const generateDeliveryHtml = (productId, productDeliveryOption) => {
 
     html += `
   <div class="delivery-option">
-    <input type="radio" ${isChecked} class="delivery-option-input" name="delivery-option-${productId}">
+    <input type="radio" ${isChecked} class="delivery-option-input" name="delivery-option-${productId}" data-product-id="${productId}"">
     <div>
       <div class="delivery-option-date">
       ${estimatedShipping} 
@@ -180,12 +180,16 @@ saveButtons.forEach(button => {
 });
 
 
-const deliveryOptionButtons = document.querySelectorAll('.delivery-option');
+const deliveryOptionButtons = document.querySelectorAll('.delivery-option-input');
 
 deliveryOptionButtons.forEach(optionButton => {
   optionButton.addEventListener('change', () => {
-    const productId = '32'
-    const correspondingProduct = products.find(currentProduct => currentProduct.id === productId)
+    const productId = optionButton.dataset.productId;
+
+    changeDeliveryOption(productId, '2');
+
+
+
   });
 });
 
