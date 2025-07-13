@@ -82,7 +82,7 @@ const generateDeliveryHtml = (productId, productDeliveryOption) => {
 
     html += `
   <div class="delivery-option">
-    <input type="radio" ${isChecked} class="delivery-option-input" name="delivery-option-${productId}" data-product-id="${productId}"">
+    <input type="radio" ${isChecked} class="delivery-option-input" name="delivery-option-${productId}" data-product-id="${productId}" data-shipping-id="${deliveryOption.id}">
     <div>
       <div class="delivery-option-date">
       ${estimatedShipping} 
@@ -185,8 +185,8 @@ const deliveryOptionButtons = document.querySelectorAll('.delivery-option-input'
 deliveryOptionButtons.forEach(optionButton => {
   optionButton.addEventListener('change', () => {
     const productId = optionButton.dataset.productId;
-
-    changeDeliveryOption(productId, '2');
+    const shippingId = optionButton.dataset.shippingId;
+    changeDeliveryOption(productId, shippingId);
 
 
 

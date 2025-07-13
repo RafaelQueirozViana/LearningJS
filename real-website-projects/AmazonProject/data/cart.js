@@ -42,7 +42,6 @@ export const addToCart = (productId, container) => { // Method for add a product
 export const removeFromCart = (productId) => { // method to remove a product of the cart
     const newCart = cart.filter(product => product.id !== productId);
     cart = newCart;
-
     saveToStorage()
 }
 
