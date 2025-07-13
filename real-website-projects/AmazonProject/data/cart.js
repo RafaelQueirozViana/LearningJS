@@ -47,7 +47,10 @@ export const removeFromCart = (productId) => { // method to remove a product of 
 
 export const showCartQuantityText = () => { // this method shows the quantity of product has in the cart
     const totalItems = cart.reduce((acumulator, currentProduct) => acumulator + currentProduct.quantity, 0);
-    document.querySelector(`.js-cart-quantity`).textContent = totalItems;
+    const cartQuantity = document.querySelectorAll(`.js-cart-quantity`);
+    cartQuantity.forEach(quantityText => {
+        quantityText.textContent = totalItems;
+    })
 };
 
 export const updateCartQuantity = (productId, actuallyQuantity) => { // method for change the selected quantity of the product

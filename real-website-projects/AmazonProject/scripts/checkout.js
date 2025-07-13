@@ -7,7 +7,7 @@ import { deliveryOptions, calculateDeliveryTime } from '../data/delivery.js';
 
 const gridContainer = document.querySelector('.js-order-summary');
 
-const loadProducts = () => { // loading products of the cart array
+const renderOrderSummary = () => { // loading all the initial html with all of event listeners based on data 
   gridContainer.innerHTML = '';
 
   const generateDeliveryHtml = (productId, productDeliveryOption) => {
@@ -100,7 +100,7 @@ const loadProducts = () => { // loading products of the cart array
 
       removeFromCart(productId);
       showCartQuantityText()
-      loadProducts()
+      renderOrderSummary()
 
 
       //this function will delete the product when the user clicks in the delete button
@@ -158,7 +158,7 @@ const loadProducts = () => { // loading products of the cart array
         console.log('inside a value between 0 and 1000');
       }
 
-      loadProducts();
+      renderOrderSummary();
       showCartQuantityText()
 
       //this function is the next part of the previous function. when click in save it will call the updateCartQuantity() in the cart.js. 
@@ -173,15 +173,33 @@ const loadProducts = () => { // loading products of the cart array
       const { productId, shippingId } = optionButton.dataset
 
       changeDeliveryOption(productId, shippingId);
-      loadProducts()
+      renderOrderSummary()
 
 
 
     });
   });
 
+  //Payment summary  box
+
+  let totalItemsPrice = 0;
+
+
+  cart.forEach(cartProduct => {
+    const allProperties = products.find(product => product.id === cartProduct.id);
+    totalItemsPrice += allProperties.priceCents * cartProduct.quantity;
+  });
+
+
+  document.querySelector('.payment-summary-money').textContent = formatCurrency(totalItemsPrice);
+
+
+
+
 }
 
 
-loadProducts();
+
+
+renderOrderSummary();
 showCartQuantityText()
