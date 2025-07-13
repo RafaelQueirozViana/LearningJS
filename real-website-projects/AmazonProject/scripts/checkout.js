@@ -1,9 +1,9 @@
 import { cart, removeFromCart, showCartQuantityText, updateCartQuantity, changeDeliveryOption } from '../data/cart.js';
+import dayjs from 'https://unpkg.com/supersimpledev@8.5.0/dayjs/esm/index.js';
 
 import { products } from '../data/products.js';
 import { formatCurrency } from '../scripts/utils/money.js';
-import { deliveryOptions } from '../data/delivery.js';
-import dayjs from 'https://unpkg.com/supersimpledev@8.5.0/dayjs/esm/index.js';
+import { deliveryOptions, calculateDeliveryTime } from '../data/delivery.js';
 
 const gridContainer = document.querySelector('.js-order-summary');
 
@@ -15,9 +15,8 @@ const loadProducts = () => { // loading products of the cart array
   cart.forEach(cartProduct => {
     const productProperties = products.find(product => product.id === cartProduct.id); // finding the all properties of the current cart product using the ID in the products array
 
-    const today = dayjs();
-    const findDeliveryOptionById = deliveryOptions.find(option => option.id == cartProduct.deliveryOptionId);
-    const estimatedShipping = today.add(findDeliveryOptionById.deliveryTime, 'days').format('dddd, MMMM D');
+    const deliveryTimeOfProduct = deliveryOptions.find(option => option.id == cartProduct.deliveryOptionId); // returns the delivery time of the product
+    const estimatedShipping = calculateDeliveryTime(deliveryTimeOfProduct.deliveryTime);
 
     gridContainer.innerHTML += `
            <div class="cart-item-container js-cart-item-id-${cartProduct.id}">
@@ -75,7 +74,7 @@ const generateDeliveryHtml = (productId, productDeliveryOption) => {
 
   deliveryOptions.forEach(deliveryOption => {
     const today = dayjs();
-    const estimatedShipping = today.add(deliveryOption.deliveryTime, 'days').format('dddd, MMMM D');
+    const estimatedShipping = calculateDeliveryTime(deliveryOption.deliveryTime);
     const priceString = deliveryOption.priceCents == 0 ? 'FREE' : `${formatCurrency(deliveryOption.priceCents)} -`;
     const isChecked = productDeliveryOption == deliveryOption.id ? 'checked' : '';
 
@@ -187,6 +186,7 @@ deliveryOptionButtons.forEach(optionButton => {
     const productId = optionButton.dataset.productId;
     const shippingId = optionButton.dataset.shippingId;
     changeDeliveryOption(productId, shippingId);
+
 
 
 
