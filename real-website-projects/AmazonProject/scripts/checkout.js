@@ -181,14 +181,27 @@ const renderOrderSummary = () => { // loading all the initial html with all of e
   });
 
   //Payment summary  box
+  const taxPercentage = 0.1;
 
-  let totalItemsPrice = 0;
+  const paymentSummary = {
+    totalItemsPrice: 0,
+    totalShipping: 0,
+    totalBeforeTax: 0,
+    totalTax: 0,
+    orderTotal: 0,
+  }
 
 
   cart.forEach(cartProduct => {
     const allProperties = products.find(product => product.id === cartProduct.id);
-    totalItemsPrice += allProperties.priceCents * cartProduct.quantity;
+    const deliveryProperties = deliveryOptions.find(option => option.id === cartProduct.deliveryOptionId);
+    paymentSummary.totalItemsPrice += allProperties.priceCents * cartProduct.quantity;
+    paymentSummary.totalShipping += deliveryProperties.priceCents;
+
   });
+
+  paymentSummary.totalBeforeTax = totalItemsPrice + totalShipping;
+
 
 
   document.querySelector('.payment-summary-money').textContent = formatCurrency(totalItemsPrice);
