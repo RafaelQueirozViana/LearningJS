@@ -191,20 +191,33 @@ const renderOrderSummary = () => { // loading all the initial html with all of e
     orderTotal: 0,
   }
 
+  const calculateCartTotals = () => {
+    cart.forEach(cartProduct => {
+      const allProperties = products.find(product => product.id === cartProduct.id);
+      const deliveryProperties = deliveryOptions.find(option => option.id === cartProduct.deliveryOptionId);
+      paymentSummary.totalItemsPrice += allProperties.priceCents * cartProduct.quantity;
+      paymentSummary.totalShipping += deliveryProperties.priceCents;
 
-  cart.forEach(cartProduct => {
-    const allProperties = products.find(product => product.id === cartProduct.id);
-    const deliveryProperties = deliveryOptions.find(option => option.id === cartProduct.deliveryOptionId);
-    paymentSummary.totalItemsPrice += allProperties.priceCents * cartProduct.quantity;
-    paymentSummary.totalShipping += deliveryProperties.priceCents;
+    });
+    paymentSummary.totalBeforeTax = paymentSummary.totalItemsPrice + paymentSummary.totalShipping;
+    paymentSummary.totalTax = paymentSummary.totalBeforeTax * taxPercentage;
+    paymentSummary.orderTotal = paymentSummary.totalBeforeTax + paymentSummary.totalTax;
 
-  });
-
-  paymentSummary.totalBeforeTax = totalItemsPrice + totalShipping;
+  }
 
 
 
-  document.querySelector('.payment-summary-money').textContent = formatCurrency(totalItemsPrice);
+  calculateCartTotals();
+
+  console.log(paymentSummary.orderTotal)
+
+
+  document.querySelector('.js-total-items').textContent = formatCurrency(paymentSummary.totalItemsPrice);
+  document.querySelector('.js-total-shipping').textContent = formatCurrency(paymentSummary.totalShipping);
+  document.querySelector('.js-before-tax').textContent = formatCurrency(paymentSummary.totalBeforeTax);
+  document.querySelector('.js-tax').textContent = formatCurrency(paymentSummary.totalTax);
+  document.querySelector('.js-order-total').textContent = formatCurrency(paymentSummary.orderTotal);
+
 
 
 
