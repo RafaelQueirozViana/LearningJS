@@ -1,6 +1,7 @@
 import dayjs from 'https://unpkg.com/supersimpledev@8.5.0/dayjs/esm/index.js';
 
 
+
 export const deliveryOptions = [
     {
         id: '1',
@@ -21,6 +22,11 @@ export const deliveryOptions = [
     }
 
 ];
+
+export const getDelivery = (deliveryId) => {
+    return deliveryOptions.find(delivery => delivery.id === deliveryId);
+};
+
 
 export const calculateDeliveryTime = (deliveryTime) => {
     const today = dayjs();

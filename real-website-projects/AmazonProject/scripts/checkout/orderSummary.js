@@ -1,7 +1,7 @@
 import { cart, removeFromCart, showCartQuantityText, updateCartQuantity, changeDeliveryOption } from '../../data/cart.js';
 import dayjs from 'https://unpkg.com/supersimpledev@8.5.0/dayjs/esm/index.js';
 
-import { products } from '../../data/products.js';
+import { products, getProduct } from '../../data/products.js';
 import { formatCurrency } from '../utils/money.js';
 import { deliveryOptions, calculateDeliveryTime } from '../../data/delivery.js';
 
@@ -39,9 +39,9 @@ export const renderOrderSummary = () => { // loading all the initial html with a
     }
 
     cart.forEach(cartProduct => {
-        const productProperties = products.find(product => product.id === cartProduct.id); // finding the all properties of the current cart product using the ID in the products array
+        const productProperties = getProduct(cartProduct.id) // finding the all properties of the current cart product using the ID in the products array
 
-        const deliveryTimeOfProduct = deliveryOptions.find(option => option.id == cartProduct.deliveryOptionId); // returns the delivery time of the product
+        const deliveryType = deliveryOptions.find(option => option.id == cartProduct.deliveryOptionId); // returns the delivery time of the product
         const estimatedShipping = calculateDeliveryTime(deliveryTimeOfProduct.deliveryTime);
 
         gridContainer.innerHTML += `
