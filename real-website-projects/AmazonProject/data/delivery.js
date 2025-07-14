@@ -28,7 +28,7 @@ export const getDelivery = (deliveryId) => {
 };
 
 
-export const calculateDeliveryTime = (deliveryTime) => {
+export const getEstimatedDeliveryDate = (deliveryTime) => {
     const today = dayjs();
     return today.add(deliveryTime, 'days').format('dddd, MMMM D');
 }

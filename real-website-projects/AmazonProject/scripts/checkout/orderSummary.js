@@ -3,7 +3,7 @@ import dayjs from 'https://unpkg.com/supersimpledev@8.5.0/dayjs/esm/index.js';
 
 import { products, getProduct } from '../../data/products.js';
 import { formatCurrency } from '../utils/money.js';
-import { deliveryOptions, calculateDeliveryTime } from '../../data/delivery.js';
+import { deliveryOptions, getDelivery, getEstimatedDeliveryDate } from '../../data/delivery.js';
 
 const gridContainer = document.querySelector('.js-order-summary');
 
@@ -16,8 +16,7 @@ export const renderOrderSummary = () => { // loading all the initial html with a
         let html = '';
 
         deliveryOptions.forEach(deliveryOption => {
-            const today = dayjs();
-            const estimatedShipping = calculateDeliveryTime(deliveryOption.deliveryTime);
+            const estimatedShipping = getEstimatedDeliveryDate(deliveryOption.deliveryTime);
             const priceString = deliveryOption.priceCents == 0 ? 'FREE' : `${formatCurrency(deliveryOption.priceCents)} -`;
             const isChecked = productDeliveryOption == deliveryOption.id ? 'checked' : '';
 
@@ -41,8 +40,8 @@ export const renderOrderSummary = () => { // loading all the initial html with a
     cart.forEach(cartProduct => {
         const productProperties = getProduct(cartProduct.id) // finding the all properties of the current cart product using the ID in the products array
 
-        const deliveryType = deliveryOptions.find(option => option.id == cartProduct.deliveryOptionId); // returns the delivery time of the product
-        const estimatedShipping = calculateDeliveryTime(deliveryTimeOfProduct.deliveryTime);
+        const deliveryDetails = getDelivery(cartProduct.deliveryOptionId); // returns the delivery time of the product
+        const estimatedShipping = getEstimatedDeliveryDate(deliveryDetails.deliveryTime);
 
         gridContainer.innerHTML += `
            <div class="cart-item-container js-cart-item-id-${cartProduct.id}">
@@ -194,8 +193,8 @@ export const renderOrderSummary = () => { // loading all the initial html with a
 
     const calculateCartTotals = () => {
         cart.forEach(cartProduct => {
-            const allProperties = products.find(product => product.id === cartProduct.id);
-            const deliveryProperties = deliveryOptions.find(option => option.id === cartProduct.deliveryOptionId);
+            const allProperties = getProduct(cartProduct.id)
+            const deliveryProperties = getDelivery(cartProduct.deliveryOptionId);
             paymentSummary.totalItemsPrice += allProperties.priceCents * cartProduct.quantity;
             paymentSummary.totalShipping += deliveryProperties.priceCents;
 
