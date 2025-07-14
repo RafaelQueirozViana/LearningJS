@@ -4,6 +4,7 @@ import dayjs from 'https://unpkg.com/supersimpledev@8.5.0/dayjs/esm/index.js';
 import { products, getProduct } from '../../data/products.js';
 import { formatCurrency } from '../utils/money.js';
 import { deliveryOptions, getDelivery, getEstimatedDeliveryDate } from '../../data/delivery.js';
+import { renderPaymentSummary } from './paymentSummary.js';
 
 const gridContainer = document.querySelector('.js-order-summary');
 
@@ -105,10 +106,6 @@ export const renderOrderSummary = () => { // loading all the initial html with a
 
             //this function will delete the product when the user clicks in the delete button
 
-
-
-
-
         });
     });
 
@@ -180,41 +177,10 @@ export const renderOrderSummary = () => { // loading all the initial html with a
         });
     });
 
+
+    renderPaymentSummary();
     //Payment summary  box
-    const taxPercentage = 0.1;
 
-    const paymentSummary = {
-        totalItemsPrice: 0,
-        totalShipping: 0,
-        totalBeforeTax: 0,
-        totalTax: 0,
-        orderTotal: 0,
-    }
-
-    const calculateCartTotals = () => {
-        cart.forEach(cartProduct => {
-            const allProperties = getProduct(cartProduct.id)
-            const deliveryProperties = getDelivery(cartProduct.deliveryOptionId);
-            paymentSummary.totalItemsPrice += allProperties.priceCents * cartProduct.quantity;
-            paymentSummary.totalShipping += deliveryProperties.priceCents;
-
-        });
-        paymentSummary.totalBeforeTax = paymentSummary.totalItemsPrice + paymentSummary.totalShipping;
-        paymentSummary.totalTax = paymentSummary.totalBeforeTax * taxPercentage;
-        paymentSummary.orderTotal = paymentSummary.totalBeforeTax + paymentSummary.totalTax;
-
-    }
-
-    calculateCartTotals();
-
-    console.log(paymentSummary.orderTotal)
-
-
-    document.querySelector('.js-total-items').textContent = formatCurrency(paymentSummary.totalItemsPrice);
-    document.querySelector('.js-total-shipping').textContent = formatCurrency(paymentSummary.totalShipping);
-    document.querySelector('.js-before-tax').textContent = formatCurrency(paymentSummary.totalBeforeTax);
-    document.querySelector('.js-tax').textContent = formatCurrency(paymentSummary.totalTax);
-    document.querySelector('.js-order-total').textContent = formatCurrency(paymentSummary.orderTotal);
 
 
 
