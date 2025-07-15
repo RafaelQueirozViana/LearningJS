@@ -1,8 +1,6 @@
 import { products } from '../data/products.js';
 export let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
-console.log(cart);
-
 // there is all cart methods. It doesn't include html changes
 
 const saveToStorage = () => {
@@ -63,7 +61,6 @@ export const updateCartQuantity = (productId, actuallyQuantity) => { // method f
 export const changeDeliveryOption = (productId, newDeliveryId) => {
     const cartProduct = cart.find(cartItem => cartItem.id === productId);
     cartProduct.deliveryOptionId = newDeliveryId;
-    console.log(cartProduct)
 
     saveToStorage();
 
