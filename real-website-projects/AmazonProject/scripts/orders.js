@@ -1,5 +1,6 @@
 import { orderHistory } from '../data/ordersHistory.js';
 import { formatCurrency } from './utils/money.js';
+import { getProduct } from '../data/products.js';
 
 const container = document.querySelector('.orders-grid');
 
@@ -9,20 +10,24 @@ console.log(orderHistory)
 
 orderHistory.forEach(order => {
     let productHtml = '';
+
     order.purchasedProducts.forEach(product => {
-        productHtml += `   <div class="product-image-container">
-            <img src="images/products/athletic-cotton-socks-6-pairs.jpg">
+        const productDetails = getProduct(product.id);
+
+        productHtml += `<div class="order-details-grid">
+          <div class="product-image-container">
+            <img src="${productDetails.image}">
           </div>
 
           <div class="product-details">
             <div class="product-name">
-              Black and Gray Athletic Cotton Socks - 6 Pairs
+              ${productDetails.name}
             </div>
             <div class="product-delivery-date">
-              Arriving on: August 15
+              Arriving on: June 17
             </div>
             <div class="product-quantity">
-              Quantity: 1
+              Quantity: ${product.quantity}
             </div>
             <button class="buy-again-button button-primary">
               <img class="buy-again-icon" src="images/icons/buy-again.png">
@@ -36,18 +41,37 @@ orderHistory.forEach(order => {
                 Track package
               </button>
             </a>
-          </div>`;
+          </div>
+        </div>`;
     });
 
     totalHtml += `
-         <div class="order-details-grid">  
+         <div class="order-container">  
+          <div class="order-header">
+          <div class="order-header-left-section">
+            <div class="order-date">
+              <div class="order-header-label">Order Placed:</div>
+              <div>August 12</div>
+            </div>
+            <div class="order-total">
+              <div class="order-header-label">Total:</div>
+              <div>$${formatCurrency(order.totalPriceCents)}</div>
+            </div>
+          </div>
+
+          <div class="order-header-right-section">
+            <div class="order-header-label">Order ID:</div>
+            <div>${order.orderId}</div>
+          </div>
+        </div>
          ${productHtml}
           </div>`
 
 });
 
 
+container.innerHTML = totalHtml;
 
-console.log(totalHtml)
 
-container.innerHTML = totalHtml
+
+
