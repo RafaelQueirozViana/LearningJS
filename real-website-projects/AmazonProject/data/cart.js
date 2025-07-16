@@ -94,6 +94,10 @@ export const calculateCartTotals = () => {
 
 }
 
+export const resetCart = () => {
+    const resetedCart = []
+    localStorage.setItem('cart', JSON.stringify(resetedCart));
+};
 
 
 

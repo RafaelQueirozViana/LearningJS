@@ -6,6 +6,11 @@ export const addToHistory = ({ orderPlaced, totalPriceCents, productsArray }) =>
         orderPlaced: orderPlaced,
         totalPriceCents: totalPriceCents,
         orderId: generateRandomId,
-        products: [],
+        products: productsArray,
     });
+
+
+
+    localStorage.setItem('orderHistory', JSON.stringify(orderHistory));
+
 };

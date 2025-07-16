@@ -27,11 +27,17 @@ export const getDelivery = (deliveryId) => {
     return deliveryOptions.find(delivery => delivery.id === deliveryId);
 };
 
-
 export const getEstimatedDeliveryDate = (deliveryTime) => {
     const today = dayjs();
     return today.add(deliveryTime, 'days').format('dddd, MMMM D');
 }
+
+export const getTodayDate = () => {
+    const today = dayjs()
+    return today.format('MMMM D');
+};
+
+
 
 // dayjs().add(1, 'days').format('dddd,MMMM D')
 
