@@ -7,7 +7,7 @@ export const addToHistory = ({ orderPlaced, totalPriceCents, productsArray }) =>
         orderPlaced: orderPlaced,
         totalPriceCents: totalPriceCents,
         orderId: generateRandomId,
-        products: productsArray,
+        purchasedProducts: productsArray,
     });
 
 
