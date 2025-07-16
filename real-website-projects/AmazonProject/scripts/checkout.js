@@ -9,11 +9,12 @@ renderOrderSummary();
 
 const purchaseButton = document.querySelector('.js-pucharse-button');
 
-const totalPrice = calculateCartTotals().orderTotal;
 
 
 
 purchaseButton.addEventListener('click', () => {
+    const totalPrice = calculateCartTotals().orderTotal;
+
     addToHistory({ orderPlaced: getTodayDate(), totalPriceCents: totalPrice, productsArray: cart });
     resetCart();
 });

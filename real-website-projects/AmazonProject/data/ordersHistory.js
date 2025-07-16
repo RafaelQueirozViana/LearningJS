@@ -1,3 +1,4 @@
+
 export const orderHistory = JSON.parse(localStorage.getItem('orderHistory')) || [];
 
 export const addToHistory = ({ orderPlaced, totalPriceCents, productsArray }) => {
@@ -14,3 +15,4 @@ export const addToHistory = ({ orderPlaced, totalPriceCents, productsArray }) =>
     localStorage.setItem('orderHistory', JSON.stringify(orderHistory));
 
 };
+
