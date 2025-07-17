@@ -10,26 +10,22 @@ const saveToStorage = () => {
     localStorage.setItem('cart', JSON.stringify(cart));
 }
 
-export const addToCart = (productId, container) => { // Method for add a product to the cart
+export const addToCart = (productId, desiredQuantity) => { // Method for add a product to the cart
     const existingProduct = cart.find(product => product.id === productId);
-
-    const quantitySelector = container.querySelector('.js-quantity-selector');
-    const quantityValue = Number(quantitySelector.value);
-
 
     // it was used for verify if the cart has the same product as you want to add to cart
 
     if (!existingProduct) {
         cart.push({
             id: productId, // i just utilized only id and quantity attributes, because from the id i can search the all others attributes
-            quantity: quantityValue,
+            quantity: desiredQuantity,
             deliveryOptionId: '1'
         });
 
     }
 
     else {
-        existingProduct.quantity += quantityValue;
+        existingProduct.quantity += desiredQuantity;
     }
 
     saveToStorage()

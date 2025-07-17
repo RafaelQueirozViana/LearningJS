@@ -81,7 +81,12 @@ addCartButtons.forEach((button) => { // this is add to cart buttons, it will cal
 
     const productId = button.dataset.productId;
     const productContainer = button.parentElement;
-    addToCart(productId, productContainer);
+
+    const quantitySelector = productContainer.querySelector('.js-quantity-selector');
+    const quantityValue = Number(quantitySelector.value);
+
+
+    addToCart(productId, quantityValue);
     showCartQuantityText()
     addedCartAnim(productContainer);
 
