@@ -1,18 +1,16 @@
 import { products, getProduct } from '../data/products.js';
 import { getDelivery } from '../data/delivery.js';
 
-const cart = {
+export const cart = {
     cartItems: JSON.parse(localStorage.getItem('cart-oop')) || [],
 
     saveToStorage() {
-        localStorage.setItem('cart-oop', JSON.stringify(cart));
+        localStorage.setItem('cart-oop', JSON.stringify(this.cartItems));
     },
 
-    addToCart(productId, container) { // Method for add a product to the cart
+    addToCart(productId, quantityValue) { // Method for add a product to the cart
         const existingProduct = this.cartItems.find(product => product.id === productId);
 
-        const quantitySelector = container.querySelector('.js-quantity-selector');
-        const quantityValue = Number(quantitySelector.value);
 
 
         // it was used for verify if the cart has the same product as you want to add to cart
@@ -92,14 +90,13 @@ const cart = {
         const resetedCart = []
         localStorage.setItem('cart-oop', JSON.stringify(resetedCart));
     },
-
-
-
-
 };
 
 
+cart.addToCart('e43638ce-6aa0-4b85-b27f-e1d07eb678c6', '2');
 
+
+console.log(cart)
 // there is all cart methods. It doesn't include html changes
 
 

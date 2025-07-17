@@ -3,6 +3,7 @@ import { renderOrderSummary } from './checkout/orderSummary.js';
 import { cart, calculateCartTotals, resetCart } from '../data/cart.js';
 import { addToHistory } from '../data/ordersHistory.js';
 import { getTodayDate } from '../data/delivery.js';
+import '../data/cart-oop.js';
 
 
 renderOrderSummary();
