@@ -9,5 +9,14 @@ class User {
     #password;
 }
 
+// Other thing is:  we also can transform methods as private.
+// Ex:
+
+class User {
+    #validUser() {
+
+    } // private method
+}
+
 
 
