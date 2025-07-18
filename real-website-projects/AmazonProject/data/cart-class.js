@@ -3,18 +3,20 @@ import { getDelivery } from '../data/delivery.js';
 
 
 class Cart {
+    #localStorageKey;
 
     constructor(localStorageKey) {
-        this.localStorageKey = localStorageKey;
-        this.cartItems = JSON.parse(localStorage.getItem(this.localStorageKey)) || [];
+        this.#localStorageKey = localStorageKey;
+        this.cartItems = JSON.parse(localStorage.getItem(this.#localStorageKey)) || [];
 
     };
 
     saveToStorage() {
-        localStorage.setItem(this.localStorageKey, JSON.stringify(this.cartItems));
+        localStorage.setItem(this.#localStorageKey, JSON.stringify(this.cartItems));
     };
 
     addToCart(productId, quantityValue) { // Method for add a product to the cart
+        console.log(quantityValue)
         const existingProduct = this.cartItems.find(product => product.id === productId);
 
         // it was used for verify if the cart has the same product as you want to add to cart
@@ -92,7 +94,7 @@ class Cart {
 
     resetCart() {
         const resetedCart = []
-        localStorage.setItem(this.localStorageKey, JSON.stringify(resetedCart));
+        localStorage.setItem(this.#localStorageKey, JSON.stringify(resetedCart));
     };
 }
 
@@ -109,6 +111,7 @@ console.log(cart);
 console.log('business cart')
 
 console.log(businessCart);
+
 
 
 // there is all cart methods. It doesn't include html changes
