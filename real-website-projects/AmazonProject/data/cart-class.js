@@ -11,7 +11,7 @@ class Cart {
 
     };
 
-    saveToStorage() {
+    #saveToStorage() {
         localStorage.setItem(this.#localStorageKey, JSON.stringify(this.cartItems));
     };
 
@@ -34,14 +34,14 @@ class Cart {
             existingProduct.quantity += quantityValue;
         }
 
-        this.saveToStorage();
+        this.#saveToStorage();
 
     };
 
     removeFromCart(productId) { // method to remove a product of the cart
         const newCart = this.cartItems.filter(product => product.id !== productId);
         this.cartItems = newCart;
-        this.saveToStorage()
+        this.#saveToStorage()
     };
 
     showCartQuantityText() { // this method shows the quantity of product has in the cart
@@ -55,14 +55,14 @@ class Cart {
     updateCartQuantity(productId, actuallyQuantity) { // method for change the selected quantity of the product
         const changedProduct = this.cartItems.find(product => product.id === productId);
         changedProduct.quantity = actuallyQuantity;
-        this.saveToStorage()
+        this.#saveToStorage()
     };
 
     changeDeliveryOption(productId, newDeliveryId) {
         const cartProduct = this.cartItems.find(cartItem => cartItem.id === productId);
         cartProduct.deliveryOptionId = newDeliveryId;
 
-        this.saveToStorage();
+        this.#saveToStorage();
 
     };
 
@@ -111,7 +111,6 @@ console.log(cart);
 console.log('business cart')
 
 console.log(businessCart);
-
 
 
 // there is all cart methods. It doesn't include html changes
