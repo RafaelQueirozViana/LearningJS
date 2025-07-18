@@ -3,8 +3,12 @@ import { getDelivery } from '../data/delivery.js';
 
 
 class Cart {
-    localStorageKey = undefined;
-    cartItems = JSON.parse(localStorage.getItem(this.localStorageKey)) || [];
+
+    constructor(localStorageKey) {
+        this.localStorageKey = localStorageKey;
+        this.cartItems = JSON.parse(localStorage.getItem(this.localStorageKey)) || [];
+
+    };
 
     saveToStorage() {
         localStorage.setItem(this.localStorageKey, JSON.stringify(this.cartItems));
@@ -94,11 +98,8 @@ class Cart {
 
 
 
-const cart = new Cart();
-const businessCart = new Cart();
-
-cart.localStorageKey = 'cart-oop'
-businessCart.localStorageKey = 'cart-business';
+const cart = new Cart('cart-oop');
+const businessCart = new Cart('cart-business');
 
 
 
@@ -109,7 +110,6 @@ console.log('business cart')
 
 console.log(businessCart);
 
-console.log(localStorage)
 
 // there is all cart methods. It doesn't include html changes
 
