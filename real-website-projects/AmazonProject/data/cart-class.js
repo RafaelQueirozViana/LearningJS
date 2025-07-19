@@ -4,6 +4,7 @@ import { getDelivery } from '../data/delivery.js';
 
 class Cart {
     #localStorageKey;
+    cartItems;
 
     constructor(localStorageKey) {
         this.#localStorageKey = localStorageKey;
@@ -102,7 +103,6 @@ class Cart {
 
 const cart = new Cart('cart-oop');
 const businessCart = new Cart('cart-business');
-
 
 
 console.log('normal cart')
