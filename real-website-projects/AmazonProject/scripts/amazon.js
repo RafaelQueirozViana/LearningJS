@@ -27,15 +27,15 @@ const loadProducts = () => {
           </div>
 
           <div class="product-rating-container">
-            <img class="${product.image}"
-              src="images/ratings/rating-${product.rating.stars * 10}.png">
+            <img class="product-rating-stars"
+              src=${product.getStarsImage()}>
             <div class="product-rating-count link-primary">
               ${product.rating.count}
             </div>
           </div>
 
           <div class="product-price">
-           $ ${(product.priceCents / 100).toFixed(2)}
+           ${product.getProductPrice()}
           </div>
 
           <div class="product-quantity-container">
