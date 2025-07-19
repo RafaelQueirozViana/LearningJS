@@ -1,0 +1,27 @@
+Encapsulation is just the process of group related functions and variables together;
+
+for example
+
+instead of use separated systems like this:
+
+const baseSalary = 30000;
+const overtime = 10;
+const rate = 20;
+
+const calculateSalary = () => {
+    return baseSalary * overtime / rate;
+} 
+
+in oop you should use and manipulate objects;
+
+const employee = {
+    baseSalary: 30000,
+    overtime: 10,
+    rate: 20,
+
+    getWage() {
+    baseSalary * overtime / rate
+    } 
+}
+
+const salary = employee.getWage();
