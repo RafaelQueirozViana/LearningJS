@@ -18,5 +18,7 @@ class User {
     } // private method
 }
 
+this method only can be used or specifyed in the class that it is inside. If you try to acess the private method or
+property you will receive an error
 
 
