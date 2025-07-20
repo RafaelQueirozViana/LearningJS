@@ -2,7 +2,7 @@
 
 // For example
 
-function CreateCircle(radius) {
+function Circle(radius) {
     this.radius = radius;
     this.message = function () {
         console.log('hello');
@@ -10,6 +10,6 @@ function CreateCircle(radius) {
 
 };
 
-const circle = new CreateCircle();
+const circle = new Circle(2);
 
 console.log(circle);
