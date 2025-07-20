@@ -10,6 +10,9 @@ function Circle(radius) {
 
 };
 
+console.log(this)
+
+
 const circle = new Circle(2);
 
 console.log(circle);
