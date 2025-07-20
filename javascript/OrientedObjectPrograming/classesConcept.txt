@@ -1,2 +1,13 @@
 classes in javascript are used as a function of the object oriented programming. Therefore it is
 used to do the code more cleaner
+
+classes structure:
+
+class NameOfClass {
+    #password;
+    name;
+    constructor(name, wantedpassword) {
+        this.name = name;
+        this.password = wantedpassword;
+    };
+};
