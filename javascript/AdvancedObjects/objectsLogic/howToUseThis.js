@@ -10,7 +10,7 @@
 // | Situação                      | O que `this` representa                                              |
 // | ----------------------------- | -------------------------------------------------------------------- |
 // | **Em um método de objeto**    | O próprio **objeto**                                                 |
-// | **Em uma função comum**       | No modo _strict_, é `undefined`; fora dele, é o `window` (ou global) |
+// | **Em uma função comum**       |  `window` (ou global) |
 // | **Em uma arrow function**     | **Herda** o `this` do **escopo onde foi criada**                     |
 // | **Em classes (usando `new`)** | A **instância da classe**                                            |
 // | **Em eventos DOM**            | O **elemento HTML** que disparou o evento                            |
