@@ -34,3 +34,6 @@ animalsArray.forEach(animal => {
 // This is called Polymorphism.
 
 // An technic that you are using a method without knowing the class
+
+// It's an alternative of use if or case. intead of this, you don't really need to verify 
+// what class that you are working, you just can use a method inside in the both classes 
