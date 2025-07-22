@@ -52,23 +52,35 @@ const loadProducts = () => {
               <option value="10">10</option>
             </select>
           </div>
+          ${product.extraInfoHtml()}
 
           <div class="product-spacer"></div>
 
-          <div class="added-to-cart js-add-message">
-            <img src="images/icons/checkmark.png">
-            Added
-          </div>
 
-          <button data-product-id="${product.id}" class="add-to-cart-button button-primary js-add-to-cart" >
-            Add to Cart
-          </button>
-        </div>`;
+
+
+
+
+          
+
+      <div class="added-to-cart js-add-message">
+        <img src="images/icons/checkmark.png">
+          Added
+      </div>
+
+      <button data-product-id="${product.id}" class="add-to-cart-button button-primary js-add-to-cart" >
+        Add to Cart
+      </button>
+    </div > `;
 
     productGrid.innerHTML += html;
   });
 
 };
+
+
+
+
 
 loadProducts();
 showCartQuantityText()
@@ -92,7 +104,6 @@ addCartButtons.forEach((button) => { // this is add to cart buttons, it will cal
 
   });
 });
-
 
 
 
