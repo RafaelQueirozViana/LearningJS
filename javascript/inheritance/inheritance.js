@@ -15,6 +15,7 @@ class Product {
 
 class Clothing extends Product {
     constructor(productDetails) { // here we should spend the required value of the main class, in this case the ProductDetails
+        super(productDetails);
         this.size = productDetails.size;
     }
 };
