@@ -28,11 +28,11 @@ class Product {
 class Clothing extends Product {
   constructor(productDetails) {
     super(productDetails);
-    this.size = productDetails.sizeChartLink;
+    this.sizeImg = productDetails.sizeChartLink;
   };
 
   extraInfoHtml = () => {
-    return '<a href="#" target="_blank">Size chart</a>'
+    return `<a href="${this.sizeImg}" target="_blank">Size chart</a>`;
   }
 };
 
