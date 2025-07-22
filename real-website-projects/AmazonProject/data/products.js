@@ -711,9 +711,6 @@ export const products = [
 console.log(products)
 
 
-
-
-
 export const getProduct = (productId) => {
   return products.find(currentProduct => currentProduct.id === productId);
 };

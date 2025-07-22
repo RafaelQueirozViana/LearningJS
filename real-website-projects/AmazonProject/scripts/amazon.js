@@ -56,13 +56,6 @@ const loadProducts = () => {
 
           <div class="product-spacer"></div>
 
-
-
-
-
-
-          
-
       <div class="added-to-cart js-add-message">
         <img src="images/icons/checkmark.png">
           Added
