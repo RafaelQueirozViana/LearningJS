@@ -21,6 +21,14 @@ class Product {
 
 };
 
+class Clothing extends Product {
+  
+}
+
+const tshirt = new Clothing();
+
+console.log(tshirt)
+
 
 export const products = [
   {
