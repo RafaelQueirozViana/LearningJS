@@ -4,23 +4,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles/shared/general.css">
+    <link rel="stylesheet" href="./styles/pages/home.css">
     <title>Landing Page with advanced animations</title>
 </head>
 
 <body>
 
     <header>
-        <h1>New Store</h1>
-        <nav>
-            <ul>
-                <li></li>
-                <li></li>
-                <li></li>
-            </ul>
-        </nav>
+        <div class="header-container responsive-spacing">
+            <h1 class="text-logo">New Store</h1>
+            <nav>
+                <ul>
+                    <li>Home</li>
+                    <li>Products</li>
+                    <li>Contact</li>
+                </ul>
+            </nav>
+        </div>
+
     </header>
 
-    <section class="section">
+    <section class="section responsive-spacing" id="home-section">
         <div class="circles-container">
             <div class="circle"></div>
             <div class="circle"></div>
@@ -29,16 +34,17 @@
 
         <div class="product-container">
             <div class="product-item active">
-                <div class="product-image">
+                <div class="product-img">
                     <img src="https://i.ibb.co/4wDx4nh2/air-pods.png" alt="Imagem headphone Apple">
 
                 </div>
                 <div class="text-box">
-                    <p>som Premium</p>
-                    <p>air pords max</p>
-                    <p>Experimente o som em sua forma mais pura. Cancelamento de ruído adaptativo, qualidade de áudio
+                    <p class="product-advantage">som Premium</p>
+                    <p class="product-name">air pords max</p>
+                    <p class="description">Experimente o som em sua forma mais pura. Cancelamento de ruído adaptativo,
+                        qualidade de áudio
                         excepcional e design ergonômico para o máximo conforto. Sua música nunca soou tão bem.</p>
-                    <button class="button" type="button">saiba mais</button>
+                    <button class="blue-btn" type="button">saiba mais</button>
                 </div>
 
 
@@ -47,7 +53,7 @@
             </div>
 
             <div class="product-item">
-                <div class="product-image">
+                <div class="product-img">
                     <img src="https://i.ibb.co/B2mcZpLr/apple-watch.png" alt="Imagem Apple Watch">
 
                 </div>
@@ -64,8 +70,8 @@
 
             </div>
 
-            <div class="product-item active">
-                <div class="product-image">
+            <div class="product-item">
+                <div class="product-img">
                     <img src="https://i.ibb.co/s9kshhJy/vision-pro.png" alt="Imagem vision pro Apple">
 
                 </div>
