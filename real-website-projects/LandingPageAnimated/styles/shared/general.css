@@ -14,7 +14,9 @@ body {
 li,
 a,
 p {
-    font-size: 18px;
+    font-size: 20px;
+    color: #fff;
+
 }
 
 button {

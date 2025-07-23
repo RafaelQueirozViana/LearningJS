@@ -5,6 +5,8 @@ header {
     top: 0;
     width: 100%;
     height: 80px;
+    z-index: 11111;
+
 }
 
 body {
@@ -28,14 +30,34 @@ header .header-container {
 
 header nav ul {
     display: flex;
-    gap: 20px;
+    gap: 30px;
     align-items: center;
 }
 
 header nav ul li {
     cursor: pointer;
     color: #fff;
+    position: relative;
 }
+
+header nav ul li::after {
+    content: '';
+    background-color: cyan;
+    width: 0;
+    height: 3px;
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    border-radius: 20px;
+    transition: width .4s ease;
+
+}
+
+header nav ul li:hover:after {
+    width: 100%;
+}
+
+
 
 .responsive-spacing {
     max-width: 1600px;
@@ -45,8 +67,9 @@ header nav ul li {
 
 #home-section {
     display: grid;
-    grid-template-rows: 80px 1fr 80px;
+    grid-template-rows: 80px 1fr max-content;
     height: 100vh;
+    position: relative;
 
 }
 
@@ -55,7 +78,39 @@ header nav ul li {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    position: relative;
+    width: 80%;
+    align-self: center;
+    justify-self: center;
+    height: 100%;
 
+}
+
+.product-container::before {
+    content: '';
+    position: absolute;
+    background: radial-gradient(circle, rgba(0, 247, 255, 0.2) 0%, rgba(15, 15, 30, 0) 70%);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 500px;
+    height: 500px;
+    filter: blur(50px);
+    z-index: 1;
+    animation: pulse 4s alternate infinite;
+}
+
+@keyframes pulse {
+    0% {
+        opacity: 0.5;
+        transform: translate(-50%, -50%) scale(0.8);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1.5);
+
+    }
 }
 
 .product-container .product-item {
@@ -64,26 +119,42 @@ header nav ul li {
     gap: 30px;
     opacity: 0;
     display: none;
+    z-index: 11111;
+
 }
 
-.product-item .text-box {
-    max-width: 600px;
+
+
+
+
+.product-img {
+    width: 45%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 2;
 }
 
 .product-img img {
+    max-width: 100%;
+    max-height: 100%;
     filter: drop-shadow(0 0 30px rgba(0, 247, 255, 0.3));
 }
 
-.active {
+.product-item.active {
     display: flex !important;
     opacity: 1 !important;
 }
 
-.text-box {
+.product-item .text-box {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 10px;
     color: #fff;
+    max-width: 700px;
+
 }
 
 .text-box .product-advantage {
@@ -94,12 +165,83 @@ header nav ul li {
 
 .text-box .product-name {
     font-size: 4.5rem;
-    font-weight: 600;
+    font-weight: 700;
     color: #fff;
     text-transform: capitalize;
+    font-family: "Orbitron", sans-serif;
+
 }
 
-.description {
+.text-box .description {
     color: #ffffff95;
     letter-spacing: .7px;
+    line-height: 28px;
+
+}
+
+.text-box .blue-btn {
+    margin-top: 20px;
+}
+
+.arrows-container {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.arrows-container .arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #313144;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    border: 1px solid rgba(47, 155, 222, 0.3);
+    transition: background-color .3s ease, border-color .3s ease;
+}
+
+.arrows-container .arrow:hover {
+    background-color: rgba(0, 255, 255, 0.246);
+    border-color: cyan;
+}
+
+.items-indicator {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    padding-bottom: 40px;
+}
+
+.items-indicator .current-item {
+    font-size: 3rem;
+    font-family: "Orbitron", sans-serif;
+    font-weight: 700;
+    color: #ffffff7c;
+
+}
+
+.dots-container {
+    display: flex;
+    gap: 8px;
+    min-width: 130px;
+
+}
+
+.dots-container .dot {
+    width: 100%;
+    background-color: rgb(56, 61, 62);
+    height: 3px;
+    border-radius: 20px;
+}
+
+.dot.active {
+    background-color: cyan;
 }
