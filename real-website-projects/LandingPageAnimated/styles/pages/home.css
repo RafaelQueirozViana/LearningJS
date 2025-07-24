@@ -208,6 +208,7 @@ header nav ul li:hover:after {
     height: 50px;
     border: 1px solid rgba(47, 155, 222, 0.3);
     transition: background-color .3s ease, border-color .3s ease;
+    cursor: pointer;
 }
 
 .arrows-container .arrow:hover {
@@ -215,7 +216,7 @@ header nav ul li:hover:after {
     border-color: cyan;
 }
 
-.items-indicator {
+.products-indicator {
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -225,7 +226,7 @@ header nav ul li:hover:after {
     padding-bottom: 40px;
 }
 
-.items-indicator .current-item {
+.products-indicator .current-item {
     font-size: 3rem;
     font-family: "Orbitron", sans-serif;
     font-weight: 700;
@@ -233,20 +234,20 @@ header nav ul li:hover:after {
 
 }
 
-.dots-container {
+.products-indicator .dots-container {
     display: flex;
     gap: 8px;
     min-width: 130px;
 
 }
 
-.dots-container .dot {
+.products-indicator .dots-container .dot {
     width: 100%;
     background-color: rgb(56, 61, 62);
     height: 3px;
     border-radius: 20px;
 }
 
-.dot.active {
+.products-indicator .dot.active {
     background-color: cyan;
 }

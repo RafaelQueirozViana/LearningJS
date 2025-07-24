@@ -1,17 +1,22 @@
 export class Carousel {
-    constructor({ container, itemHtmlClass }) {
-        this.carouselContainer = document.querySelector(container);
+
+    constructor({ container, itemHtmlClass, indicatorContainer }) {
         this.currentItem = 0;
+
+        this.carouselContainer = document.querySelector(container);
         this.carouselItems = this.carouselContainer.querySelectorAll(itemHtmlClass); // it's a node array
         this.itemsLength = this.carouselItems.length - 1;
+
+
+        this.indicatorContainer = document.querySelector(indicatorContainer);
+        this.indicatorsGroup = this.indicatorContainer.querySelectorAll('.dot');
+        this.textIndicator = this.indicatorContainer.querySelector('.current-item');
     };
 
-
-    update(direction) {
+    #updateItem(direction) {
         this.#removeWithAnim(this.carouselItems[this.currentItem]);
 
         setTimeout(() => {
-            this.carouselItems.forEach(item => item.classList.remove('active'));
             this.currentItem += direction;
             if (this.currentItem > this.itemsLength) {
                 this.currentItem = 0;
@@ -22,6 +27,10 @@ export class Carousel {
             }
 
             this.#showWithAnim(this.carouselItems[this.currentItem]);
+
+            this.updateIndicators();
+
+
         }, 300);
 
 
@@ -36,8 +45,6 @@ export class Carousel {
         }, 100);
     }
 
-
-
     #removeWithAnim(itemDefined) {
         itemDefined.classList.remove('active');
         setTimeout(() => {
@@ -50,7 +57,7 @@ export class Carousel {
         setInterval(() => {
             this.#removeWithAnim(this.carouselItems[this.currentItem]);
             this.currentItem++;
-            this.update(1)
+            this.#updateItem(1)
         }, 4000);
     };
 
@@ -60,16 +67,30 @@ export class Carousel {
         this.nextButton = this.buttonsContainer.querySelector('.next');
 
         this.prevButton.addEventListener('click', () => {
-            this.update(1);
+            this.#updateItem(-1);
+
         });
 
         this.nextButton.addEventListener('click', () => {
-            this.update(1);
+
+            this.#updateItem(1);
         });
-
-
-
     };
+
+    updateIndicators(indicatorContainer) {
+        if (this.currentItem < 10) {
+            this.textIndicator.textContent = `0${this.currentItem + 1}`;
+
+        }
+
+        else {
+            this.textIndicator.textContent = this.currentItem + 1
+        };
+
+        
+
+    }
+
 
 
 };
