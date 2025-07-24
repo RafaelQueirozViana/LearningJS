@@ -196,6 +196,7 @@ header nav ul li:hover:after {
     width: 100%;
     display: flex;
     justify-content: space-between;
+    z-index: 222222;
 }
 
 .arrows-container .arrow {

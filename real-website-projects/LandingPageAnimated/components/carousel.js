@@ -87,7 +87,9 @@ export class Carousel {
             this.textIndicator.textContent = this.currentItem + 1
         };
 
-        
+        this.indicatorsGroup.forEach(btn => btn.classList.remove('active'));
+
+        this.indicatorsGroup[this.currentItem].classList.add('active');
 
     }
 
