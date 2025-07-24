@@ -1,7 +1,9 @@
 export class Carousel {
-    constructor({ itemHtmlClass }) {
+
+    constructor({ container, itemHtmlClass }) {
+        this.carouselContainer = document.querySelector(container);
         this.currentItem = 0;
-        this.carouselItems = document.querySelectorAll(itemHtmlClass); // it's a node array
+        this.carouselItems = this.carouselContainer.querySelectorAll(itemHtmlClass); // it's a node array
         this.itemsLength = this.carouselItems.length - 1;
     };
 
@@ -24,6 +26,32 @@ export class Carousel {
 
 
     };
+
+
+    autoSlide() {
+        setInterval(() => {
+            this.currentItem++;
+            this.update(1)
+        }, 4000);
+    };
+
+    createSlideButtons({ btnContainerClass }) {
+        this.buttonsContainer = this.carouselContainer.querySelector(btnContainerClass) || this.carouselContainer.parentElement.querySelector(btnContainerClass);
+        this.prevButton = this.buttonsContainer.querySelector('.prev');
+        this.nextButton = this.buttonsContainer.querySelector('.next');
+
+        this.prevButton.addEventListener('click', () => {
+            this.update(-1)
+        });
+
+        this.nextButton.addEventListener('click', () => {
+            this.update(1);
+        });
+
+
+
+    };
+
 
 };
 

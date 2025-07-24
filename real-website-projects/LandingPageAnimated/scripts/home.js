@@ -1,4 +1,5 @@
 import { Carousel } from '../components/carousel.js';
 
-const productsCarousel = new Carousel({ itemHtmlClass: '.product-item' });
-productsCarousel.update(2);
+const productsCarousel = new Carousel({ container: '.product-container', itemHtmlClass: '.product-item' });
+productsCarousel.autoSlide();
+productsCarousel.createSlideButtons({ btnContainerClass: '.arrows-container' });
