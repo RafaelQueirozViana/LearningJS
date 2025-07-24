@@ -55,10 +55,8 @@ export class Carousel {
 
     autoSlide() {
         setInterval(() => {
-            this.#removeWithAnim(this.carouselItems[this.currentItem]);
-            this.currentItem++;
             this.#updateItem(1)
-        }, 4000);
+        }, 2000);
     };
 
     createSlideButtons({ btnContainerClass }) {

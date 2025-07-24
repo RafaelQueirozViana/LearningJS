@@ -8,3 +8,5 @@ const productsCarousel = new Carousel({
 productsCarousel.createSlideButtons({
     btnContainerClass: '.arrows-container'
 });
+
+productsCarousel.autoSlide(); 
