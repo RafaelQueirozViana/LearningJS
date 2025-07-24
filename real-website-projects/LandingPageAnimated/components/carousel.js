@@ -1,5 +1,4 @@
 export class Carousel {
-
     constructor({ container, itemHtmlClass }) {
         this.carouselContainer = document.querySelector(container);
         this.currentItem = 0;
@@ -9,10 +8,9 @@ export class Carousel {
 
 
     update(direction) {
-        this.removeWithAnim(this.carouselItems[this.currentItem]);
+        this.#removeWithAnim(this.carouselItems[this.currentItem]);
 
         setTimeout(() => {
-
             this.carouselItems.forEach(item => item.classList.remove('active'));
             this.currentItem += direction;
             if (this.currentItem > this.itemsLength) {
@@ -22,14 +20,15 @@ export class Carousel {
             else if (this.currentItem < 0) {
                 this.currentItem = this.itemsLength;
             }
-            this.showWithAnim(this.carouselItems[this.currentItem]);
+
+            this.#showWithAnim(this.carouselItems[this.currentItem]);
         }, 300);
 
 
 
     };
 
-    showWithAnim(itemDefined) {
+    #showWithAnim(itemDefined) {
         itemDefined.classList.remove('hidden');
         setTimeout(() => {
             itemDefined.classList.add('active');
@@ -39,7 +38,7 @@ export class Carousel {
 
 
 
-    removeWithAnim(itemDefined) {
+    #removeWithAnim(itemDefined) {
         itemDefined.classList.remove('active');
         setTimeout(() => {
             itemDefined.classList.add('hidden');
@@ -49,7 +48,7 @@ export class Carousel {
 
     autoSlide() {
         setInterval(() => {
-            this.removeWithAnim(this.carouselItems[this.currentItem]);
+            this.#removeWithAnim(this.carouselItems[this.currentItem]);
             this.currentItem++;
             this.update(1)
         }, 4000);
