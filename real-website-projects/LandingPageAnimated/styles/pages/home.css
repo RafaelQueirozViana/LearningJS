@@ -79,10 +79,11 @@ header nav ul li:hover:after {
     align-items: center;
     justify-content: center;
     position: relative;
-    width: 80%;
+    width: 100%;
     align-self: center;
     justify-self: center;
     height: 100%;
+    overflow: hidden;
 
 }
 
@@ -118,8 +119,15 @@ header nav ul li:hover:after {
     align-items: center;
     gap: 30px;
     opacity: 0;
-    display: none;
     z-index: 11111;
+    transform: translateX(60%);
+    transition: transform .3s ease, opacity .3s ease;
+}
+
+.product-item.active {
+    transform: translateX(0);
+
+
 
 }
 
@@ -143,10 +151,7 @@ header nav ul li:hover:after {
     filter: drop-shadow(0 0 30px rgba(0, 247, 255, 0.3));
 }
 
-.product-item.active {
-    display: flex !important;
-    opacity: 1 !important;
-}
+
 
 .product-item .text-box {
     display: flex;

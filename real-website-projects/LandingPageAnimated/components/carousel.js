@@ -9,27 +9,47 @@ export class Carousel {
 
 
     update(direction) {
-        this.carouselItems.forEach(item => item.classList.remove('active'));
-        this.currentItem += direction;
-        if (this.currentItem > this.itemsLength) {
-            this.currentItem = 0;
-        }
+        this.removeWithAnim(this.carouselItems[this.currentItem]);
 
-        else if (this.currentItem < 0) {
-            this.currentItem = this.itemsLength;
-        }
+        setTimeout(() => {
 
-        this.carouselItems[this.currentItem].classList.add('active');
+            this.carouselItems.forEach(item => item.classList.remove('active'));
+            this.currentItem += direction;
+            if (this.currentItem > this.itemsLength) {
+                this.currentItem = 0;
+            }
 
-
+            else if (this.currentItem < 0) {
+                this.currentItem = this.itemsLength;
+            }
+            this.showWithAnim(this.carouselItems[this.currentItem]);
+        }, 300);
 
 
 
     };
 
+    showWithAnim(itemDefined) {
+        itemDefined.classList.remove('hidden');
+        setTimeout(() => {
+            itemDefined.classList.add('active');
+
+        }, 100);
+    }
+
+
+
+    removeWithAnim(itemDefined) {
+        itemDefined.classList.remove('active');
+        setTimeout(() => {
+            itemDefined.classList.add('hidden');
+        }, 300);
+
+    }
 
     autoSlide() {
         setInterval(() => {
+            this.removeWithAnim(this.carouselItems[this.currentItem]);
             this.currentItem++;
             this.update(1)
         }, 4000);
@@ -41,7 +61,7 @@ export class Carousel {
         this.nextButton = this.buttonsContainer.querySelector('.next');
 
         this.prevButton.addEventListener('click', () => {
-            this.update(-1)
+            this.update(1);
         });
 
         this.nextButton.addEventListener('click', () => {

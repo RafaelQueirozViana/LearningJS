@@ -34,3 +34,11 @@ button {
     font-weight: 540;
     width: max-content;
 }
+
+.hidden {
+    display: none !important;
+}
+
+.active {
+    opacity: 1 !important;
+}
