@@ -1,1 +1,0 @@
-import { Car } from './data/car.js';
