@@ -1,0 +1,13 @@
+.cars-container {
+    
+}
+
+.car-img {
+    width: 50%;
+    height: 80%;
+}
+
+.car-img img {
+    width: 50%;
+    height: 100%;
+}

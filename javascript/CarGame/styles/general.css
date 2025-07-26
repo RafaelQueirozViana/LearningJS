@@ -19,24 +19,6 @@ h1 {
     font-weight: 500;
 }
 
-.car-status {
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
-    margin: 50px 0;
-}
-
-.car-status p {
-    font-size: 1.2rem;
-}
-
-
-.buttons-container {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-}
-
 button {
     background-color: rgb(28, 28, 29);
     border: none;
