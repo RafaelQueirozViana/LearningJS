@@ -75,7 +75,7 @@ export class Carousel {
         });
     };
 
-    updateIndicators(indicatorContainer) {
+    updateIndicators() {
         if (this.currentItem < 10) {
             this.textIndicator.textContent = `0${this.currentItem + 1}`;
 

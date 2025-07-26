@@ -1,4 +1,4 @@
-// Inheritance in javascript is a feature to create a subclasse of some class
+// Inheritance in javascript means a "herança". it's a feature to create a subclasse of some class
 
 // It's useful to make things like create a variation of determinated item like a product
 
