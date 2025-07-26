@@ -99,15 +99,4 @@ addCartButtons.forEach((button) => { // this is add to cart buttons, it will cal
 });
 
 
-const object3 = {
-  method: () => {
-
-
-    console.log(this);
-  }
-}
-
-object3.method();
-
-
 
