@@ -1,0 +1,33 @@
+export class Car {
+    constructor({ model, id, maxSpeed }) {
+        this.model = model;
+        this.currentSpeed = 0;
+        this.maxSpeed = maxSpeed;
+        this.doorStatus = 'closed';
+    };
+
+
+
+};
+
+export const availableCars = [{
+    model: 'Celta',
+    id: '2039367',
+    maxSpeed: 100,
+},
+{
+    model: 'hb20',
+    id: '1038465',
+    maxSpeed: 200,
+},
+{
+    model: 'onix',
+    id: '1029374',
+    maxSpeed: 250,
+},
+{
+    model: 'Uno',
+    id: '1359633',
+    maxSpeed: 80,
+},
+];
