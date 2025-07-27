@@ -20,7 +20,15 @@ export class Car {
         }
     };
 
-    
+    decrease(velocity) {
+        if ((this.currentSpeed - velocity) > 0) {
+            console.log('decreased');
+        }
+
+        else {
+
+        }
+    };
 
 
 

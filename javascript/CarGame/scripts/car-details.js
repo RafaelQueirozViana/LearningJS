@@ -38,6 +38,8 @@ class Controller {
         clearInterval(this.currentInterval);
         this.currentInterval = undefined;
     }
+
+    
 }
 
 const ctrl = new Controller();
@@ -52,6 +54,16 @@ if (choisedCarId) {
             ctrl.stopInscreaseSpeed();
         });
     });
+
+    decreaseSpeedBtn.addEventListener('mousedown', () => {
+        ctrl.decreaseSpeedBtn();
+
+        document.addEventListener('mouseup', () => {
+            ctrl.stopInscreaseSpeed();
+        });
+    });
+
+
 
 
 
