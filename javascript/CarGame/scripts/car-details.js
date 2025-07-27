@@ -29,8 +29,8 @@ class Controller {
 
     startIncreasingSpeed() {
         this.currentInterval = setInterval(() => {
-            console.log(1)
-            // this.currentCar.increaseSpeed(5);
+            this.updateHtmlStatus();
+            this.currentCar.increaseSpeed(5);
         }, 200)
     }
 
@@ -47,14 +47,13 @@ if (choisedCarId) {
 
     increaseSpeedBtn.addEventListener('mousedown', () => {
         ctrl.startIncreasingSpeed();
+
+        document.addEventListener('mouseup', () => {
+            ctrl.stopInscreaseSpeed();
+        });
     });
 
 
-    increaseSpeedBtn.addEventListener('mouseup', () => {
-        ctrl.stopInscreaseSpeed();
-
-
-    });
 
 
 

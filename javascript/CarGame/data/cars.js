@@ -1,7 +1,7 @@
 export class Car {
     constructor({ model, id, maxSpeed }) {
         this.model = model;
-        this.currentSpeed = 196;
+        this.currentSpeed = 0;
         this.maxSpeed = maxSpeed;
         this.doorStatus = 'closed';
     };
@@ -19,6 +19,8 @@ export class Car {
             console.log("you reached the limit of speed")
         }
     };
+
+    
 
 
 
