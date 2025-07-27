@@ -9,31 +9,53 @@ const decreaseSpeedBtn = document.querySelector('.decrease-speed');
 const closeDoorBtn = document.querySelector('.close-door');
 
 
-const updateHtmlStatus = (car) => {
-    statusContainer.innerHTML = `
+class Controller {
+    constructor() {
+        this.carDetails = availableCars.find(car => car.id === choisedCarId);
+        this.currentCar = new Car({ model: this.carDetails.model, id: this.carDetails.id, maxSpeed: this.carDetails.maxSpeed });
+        this.currentInterval;
+    }
+
+    updateHtmlStatus() {
+        statusContainer.innerHTML = `
      <h1>About your car</h1>
-        <p>Model: ${car.model}</p>
-        <p>Current Velocity: ${car.currentSpeed} km/h</p>
-        <p>Max speed: ${car.maxSpeed} km/h</p>
-        <p>Door status: ${car.doorStatus}</p>`;
+        <p>Model: ${this.currentCar.model}</p>
+        <p>Current Velocity: ${this.currentCar.currentSpeed} km/h</p>
+        <p>Max speed: ${this.currentCar.maxSpeed} km/h</p>
+        <p>Door status: ${this.currentCar.doorStatus}</p>`;
 
 
-};
+    };
+
+    startIncreasingSpeed() {
+        this.currentInterval = setInterval(() => {
+            console.log(1)
+            // this.currentCar.increaseSpeed(5);
+        }, 200)
+    }
+
+    stopInscreaseSpeed() {
+        clearInterval(this.currentInterval);
+        this.currentInterval = undefined;
+    }
+}
+
+const ctrl = new Controller();
 
 if (choisedCarId) {
-    const carDetails = availableCars.find(car => car.id === choisedCarId);
-    const currentCar = new Car({ model: carDetails.model, id: carDetails.id, maxSpeed: carDetails.maxSpeed });
+    ctrl.updateHtmlStatus();
 
-    updateHtmlStatus(currentCar);
+    increaseSpeedBtn.addEventListener('mousedown', () => {
+        ctrl.startIncreasingSpeed();
+    });
+
 
     increaseSpeedBtn.addEventListener('mouseup', () => {
-        setInterval(() => {
+        ctrl.stopInscreaseSpeed();
 
-        },1000);
 
-        updateHtmlStatus(currentCar);
-        currentCar.increaseSpeed(5);
     });
+
 
 
 
