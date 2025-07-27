@@ -1,9 +1,23 @@
 export class Car {
     constructor({ model, id, maxSpeed }) {
         this.model = model;
-        this.currentSpeed = 0;
+        this.currentSpeed = 196;
         this.maxSpeed = maxSpeed;
         this.doorStatus = 'closed';
+    };
+
+    increaseSpeed(velocity) {
+        if (this.currentSpeed <= this.maxSpeed - velocity) {
+            this.currentSpeed += velocity;
+        }
+        else if (this.currentSpeed < this.maxSpeed) {
+            this.currentSpeed += 1;
+
+        }
+
+        else {
+            console.log("you reached the limit of speed")
+        }
     };
 
 

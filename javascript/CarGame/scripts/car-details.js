@@ -4,6 +4,11 @@ const statusContainer = document.querySelector('.car-status');
 
 const choisedCarId = localStorage.getItem('choisedCarId');
 
+const increaseSpeedBtn = document.querySelector('.inscrease-speed');
+const decreaseSpeedBtn = document.querySelector('.decrease-speed');
+const closeDoorBtn = document.querySelector('.close-door');
+
+
 const updateHtmlStatus = (car) => {
     statusContainer.innerHTML = `
      <h1>About your car</h1>
@@ -21,8 +26,17 @@ if (choisedCarId) {
 
     updateHtmlStatus(currentCar);
 
+    increaseSpeedBtn.addEventListener('mouseup', () => {
+        setInterval(() => {
+
+        },1000);
+
+        updateHtmlStatus(currentCar);
+        currentCar.increaseSpeed(5);
+    });
 
 
-}
+
+};
 
 
