@@ -709,7 +709,6 @@ class Clothing extends Product {
 
 
 
-console.log(products)
 
 
 export const getProduct = (productId) => {
