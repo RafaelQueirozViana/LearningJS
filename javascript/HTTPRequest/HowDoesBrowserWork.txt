@@ -1,7 +1,7 @@
     The browsers works in the following way:
 
     The browser just makes a request from the backend using the URL
-    After that, it will wait to the response, and when receive the response,
+    After that, it will return another response, and when receive the response,
     will verify the type of the response.
 
    After it'll just display ;

@@ -8,7 +8,7 @@ xhr.send(); // here you will send the request to the backend
 
 // Remember: When is happening a request, it can take time to send the request and receive the response from the backend
 
-// Below is a code that add an eventListener load, that will be activate when de request gets the response from the backend
+// Below is a code that add an eventListener load, that will be activate when the request gets the response from the backend
 xhr.addEventListener('load', () => {
     message = xhr.response;
     console.log(message)
