@@ -1,17 +1,16 @@
-import { products } from '../data/products.js';
+import { products, loadProducts } from '../data/products.js';
 import { cart, addToCart, showCartQuantityText } from '../data/cart.js';
 
-const productGrid = document.querySelector('.js-all-products');
-const cartNumberText = document.querySelector('.js-cart-quantity');
+const loadProductsGrid = () => {
 
+  const productGrid = document.querySelector('.js-all-products');
+  const cartNumberText = document.querySelector('.js-cart-quantity');
 
+  const addedCartAnim = (productContainer) => {
+    const addedMessage = productContainer.querySelector('.added-to-cart');
+    addedMessage.classList.add('show');
+  };
 
-const addedCartAnim = (productContainer) => {
-  const addedMessage = productContainer.querySelector('.added-to-cart');
-  addedMessage.classList.add('show');
-};
-
-const loadProducts = () => {
   productGrid.innerHTML = '';
   products.forEach(product => {
 
@@ -87,11 +86,13 @@ const loadProducts = () => {
     });
   });
 
+  showCartQuantityText()
+
 
 };
 
-loadProducts();
-showCartQuantityText()
+loadProducts(loadProductsGrid);
+
 
 
 
