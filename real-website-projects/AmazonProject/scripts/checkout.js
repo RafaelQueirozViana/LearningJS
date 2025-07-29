@@ -8,10 +8,8 @@ import '../data/cart-class.js';
 
 renderOrderSummary();
 
+
 const purchaseButton = document.querySelector('.js-pucharse-button');
-
-
-
 
 purchaseButton.addEventListener('click', () => {
     const totalPrice = calculateCartTotals().orderTotal;

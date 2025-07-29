@@ -6,23 +6,24 @@ import { formatCurrency } from '../utils/money.js';
 import { deliveryOptions, getDelivery, getEstimatedDeliveryDate } from '../../data/delivery.js';
 import { renderPaymentSummary } from './paymentSummary.js';
 
-const gridContainer = document.querySelector('.js-order-summary');
 
 
 export const renderOrderSummary = () => { // loading all the initial html with all of event listeners based on data 
-    gridContainer.innerHTML = '';
+  const gridContainer = document.querySelector('.js-order-summary');
 
-    const generateDeliveryHtml = (productId, productDeliveryOption) => {
+  gridContainer.innerHTML = '';
 
-        let html = '';
+  const generateDeliveryHtml = (productId, productDeliveryOption) => {
 
-        deliveryOptions.forEach(deliveryOption => {
-            const estimatedShipping = getEstimatedDeliveryDate(deliveryOption.deliveryTime);
-            const priceString = deliveryOption.priceCents == 0 ? 'FREE' : `${formatCurrency(deliveryOption.priceCents)} -`;
-            const isChecked = productDeliveryOption == deliveryOption.id ? 'checked' : '';
+    let html = '';
+
+    deliveryOptions.forEach(deliveryOption => {
+      const estimatedShipping = getEstimatedDeliveryDate(deliveryOption.deliveryTime);
+      const priceString = deliveryOption.priceCents == 0 ? 'FREE' : `${formatCurrency(deliveryOption.priceCents)} -`;
+      const isChecked = productDeliveryOption == deliveryOption.id ? 'checked' : '';
 
 
-            html += `
+      html += `
   <div class="delivery-option">
     <input type="radio" ${isChecked} class="delivery-option-input" name="delivery-option-${productId}" data-product-id="${productId}" data-shipping-id="${deliveryOption.id}">
     <div>
@@ -34,17 +35,17 @@ export const renderOrderSummary = () => { // loading all the initial html with a
       </div>
     </div>
   </div>`
-        });
-        return html
-    }
+    });
+    return html
+  }
 
-    cart.forEach(cartProduct => {
-        const productProperties = getProduct(cartProduct.id) // finding the all properties of the current cart product using the ID in the products array
+  cart.forEach(cartProduct => {
+    const productProperties = getProduct(cartProduct.id) // finding the all properties of the current cart product using the ID in the products array
 
-        const deliveryDetails = getDelivery(cartProduct.deliveryOptionId); // returns the delivery time of the product
-        const estimatedShipping = getEstimatedDeliveryDate(deliveryDetails.deliveryTime);
+    const deliveryDetails = getDelivery(cartProduct.deliveryOptionId); // returns the delivery time of the product
+    const estimatedShipping = getEstimatedDeliveryDate(deliveryDetails.deliveryTime);
 
-        gridContainer.innerHTML += `
+    gridContainer.innerHTML += `
            <div class="cart-item-container js-cart-item-id-${cartProduct.id}">
           <div class="delivery-date">
             Delivery date: ${estimatedShipping}
@@ -91,95 +92,97 @@ export const renderOrderSummary = () => { // loading all the initial html with a
             </div>
           </div>
         </div>`
+  });
+
+
+  document.querySelectorAll('.js-delete-button').forEach(button => {
+    button.addEventListener('click', () => {
+      const productId = button.dataset.productId; // getting the product id for find the corresponding product of the html
+      const productContainer = document.querySelector(`.js-cart-item-id-${productId}`);
+
+      removeFromCart(productId);
+      showCartQuantityText()
+      renderOrderSummary()
+
+
+      //this function will delete the product when the user clicks in the delete button
+
     });
+  });
 
 
-    document.querySelectorAll('.js-delete-button').forEach(button => {
-        button.addEventListener('click', () => {
-            const productId = button.dataset.productId; // getting the product id for find the corresponding product of the html
-            const productContainer = document.querySelector(`.js-cart-item-id-${productId}`);
+  document.querySelectorAll('.js-update-button').forEach(button => {
+    button.addEventListener('click', () => {
+      const productId = button.dataset.productId;
+      const productContainer = document.querySelector(`.js-cart-item-id-${productId}`);
+      const quantityBox = productContainer.querySelector('.update-box');
 
-            removeFromCart(productId);
-            showCartQuantityText()
-            renderOrderSummary()
+      button.classList.add('hidden');
+      quantityBox.classList.remove('hidden');
 
 
-            //this function will delete the product when the user clicks in the delete button
+      // This function allows the user change the quantity of the product in the cart. It will hidden the button when click and will show the quantity box
 
-        });
     });
+  });
 
 
-    document.querySelectorAll('.js-update-button').forEach(button => {
-        button.addEventListener('click', () => {
-            const productId = button.dataset.productId;
-            const productContainer = document.querySelector(`.js-cart-item-id-${productId}`);
-            const quantityBox = productContainer.querySelector('.update-box');
+  document.querySelectorAll('.js-save-button').forEach(button => {
+    button.addEventListener('click', () => {
+      const productId = button.dataset.productId;
+      const productContainer = document.querySelector(`.js-cart-item-id-${productId}`);
+      const quantityBox = productContainer.querySelector('.update-box');
+      const updateButton = productContainer.querySelector('.js-update-button');
+      const inputValue = Number(quantityBox.querySelector('input').value);
+      const quantityText = productContainer.querySelector('.quantity-label');
 
-            button.classList.add('hidden');
-            quantityBox.classList.remove('hidden');
+
+      if (inputValue > 0 && inputValue <= 1000) {
+        quantityBox.classList.add('hidden');
+        updateButton.classList.remove('hidden');
+        updateCartQuantity(productId, inputValue);
+        quantityText.textContent = inputValue;
 
 
-            // This function allows the user change the quantity of the product in the cart. It will hidden the button when click and will show the quantity box
+      }
 
-        });
+      else if (inputValue <= 0) {
+
+        removeFromCart(productId);
+
+      }
+
+      else {
+        console.log('inside a value between 0 and 1000');
+      }
+
+      renderOrderSummary();
+      showCartQuantityText()
+
+      //this function is the next part of the previous function. when click in save it will call the updateCartQuantity() in the cart.js. 
+
+
+
     });
+  });
 
+  document.querySelectorAll('.delivery-option-input').forEach(optionButton => {
+    optionButton.addEventListener('change', () => {
+      const { productId, shippingId } = optionButton.dataset
 
-    document.querySelectorAll('.js-save-button').forEach(button => {
-        button.addEventListener('click', () => {
-            const productId = button.dataset.productId;
-            const productContainer = document.querySelector(`.js-cart-item-id-${productId}`);
-            const quantityBox = productContainer.querySelector('.update-box');
-            const updateButton = productContainer.querySelector('.js-update-button');
-            const inputValue = Number(quantityBox.querySelector('input').value);
-            const quantityText = productContainer.querySelector('.quantity-label');
-
-
-            if (inputValue > 0 && inputValue <= 1000) {
-                quantityBox.classList.add('hidden');
-                updateButton.classList.remove('hidden');
-                updateCartQuantity(productId, inputValue);
-                quantityText.textContent = inputValue;
-
-
-            }
-
-            else if (inputValue <= 0) {
-
-                removeFromCart(productId);
-
-            }
-
-            else {
-                console.log('inside a value between 0 and 1000');
-            }
-
-            renderOrderSummary();
-            showCartQuantityText()
-
-            //this function is the next part of the previous function. when click in save it will call the updateCartQuantity() in the cart.js. 
+      changeDeliveryOption(productId, shippingId);
+      renderOrderSummary()
 
 
 
-        });
     });
-
-    document.querySelectorAll('.delivery-option-input').forEach(optionButton => {
-        optionButton.addEventListener('change', () => {
-            const { productId, shippingId } = optionButton.dataset
-
-            changeDeliveryOption(productId, shippingId);
-            renderOrderSummary()
+  });
 
 
+  renderPaymentSummary();
+  showCartQuantityText()
 
-        });
-    });
-
-
-    renderPaymentSummary();
-    //Payment summary  box
+  //Payment summary  box
 
 
 
@@ -188,8 +191,3 @@ export const renderOrderSummary = () => { // loading all the initial html with a
 
 }
 
-
-
-
-renderOrderSummary();
-showCartQuantityText()

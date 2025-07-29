@@ -8,7 +8,6 @@ const cartNumberText = document.querySelector('.js-cart-quantity');
 
 const addedCartAnim = (productContainer) => {
   const addedMessage = productContainer.querySelector('.added-to-cart');
-
   addedMessage.classList.add('show');
 };
 
@@ -69,34 +68,32 @@ const loadProducts = () => {
     productGrid.innerHTML += html;
   });
 
+  const addCartButtons = document.querySelectorAll('.js-add-to-cart');
+
+  addCartButtons.forEach((button) => { // this is add to cart buttons, it will call the addToCart method when receive click
+    button.addEventListener('click', () => {
+
+      const productId = button.dataset.productId;
+      const productContainer = button.parentElement;
+
+      const quantitySelector = productContainer.querySelector('.js-quantity-selector');
+      const quantityValue = Number(quantitySelector.value);
+
+
+      addToCart(productId, quantityValue);
+      showCartQuantityText()
+      addedCartAnim(productContainer);
+
+    });
+  });
+
+
 };
-
-
-
-
 
 loadProducts();
 showCartQuantityText()
 
 
-const addCartButtons = document.querySelectorAll('.js-add-to-cart');
-
-addCartButtons.forEach((button) => { // this is add to cart buttons, it will call the addToCart method when receive click
-  button.addEventListener('click', () => {
-
-    const productId = button.dataset.productId;
-    const productContainer = button.parentElement;
-
-    const quantitySelector = productContainer.querySelector('.js-quantity-selector');
-    const quantityValue = Number(quantitySelector.value);
-
-
-    addToCart(productId, quantityValue);
-    showCartQuantityText()
-    addedCartAnim(productContainer);
-
-  });
-});
 
 
 
