@@ -63,14 +63,6 @@ export function loadProducts(fun) {
 };
 
 
-
-
-
-
-
-
-
-
 export const getProduct = (productId) => {
   return products.find(currentProduct => currentProduct.id === productId);
 };

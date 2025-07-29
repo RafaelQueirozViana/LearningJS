@@ -100,23 +100,9 @@ class Cart {
 }
 
 
-
-
-
-
-
-
-
 const cart = new Cart('cart-oop');
 const businessCart = new Cart('cart-business');
 
-
-console.log('normal cart')
-console.log(cart);
-
-console.log('business cart')
-
-console.log(businessCart);
 
 
 // there is all cart methods. It doesn't include html changes
