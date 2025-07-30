@@ -6,6 +6,7 @@ import { formatCurrency } from '../utils/money.js';
 import { deliveryOptions, getDelivery, getEstimatedDeliveryDate } from '../../data/delivery.js';
 import { renderPaymentSummary } from './paymentSummary.js';
 
+
 export const renderOrderSummary = () => { // loading all the initial html with all of event listeners based on data 
   const gridContainer = document.querySelector('.js-order-summary');
 
