@@ -1,16 +1,27 @@
 
 
-const loginUser = (email, age, callback) => {
+const loginUser = (email, age, sucessMessage, errorMessage) => {
     setTimeout(() => {
+        let error = true;
         console.log('user sended to the database');
-        callback('user sended');
+
+        if (error) {
+            return errorMessage(email);
+        };
+
+        sucessMessage(email);
+
 
     }, 1500);
 
 
 };
 
-const user = loginUser('eu@gmail.com', 12, (message) => {
-    console.log(message);
+const sucessMessage = (email) => {
+    console.log(`the user ${email}, was logged sucessful!`);
+}
+const errorMessage = (email) => {
+    console.log(`the user ${email}, was failed on login`);
+}
 
-});
+loginUser('eu@gmail.com', 12, sucessMessage, errorMessage);
