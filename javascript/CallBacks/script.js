@@ -1,14 +1,16 @@
 
 
-const loginUser = ({ email, age }) => {
+const loginUser = (email, age, callback) => {
     setTimeout(() => {
-        console.log('user sended to the database')
-    }, 1500);
+        console.log('user sended to the database');
+        callback('user sended');
 
-    return { email };
+    }, 1500);
 
 
 };
 
-const user = loginUser('eu@gmail.com', 12);
-console.log(user);
+const user = loginUser('eu@gmail.com', 12, (message) => {
+    console.log(message);
+
+});
