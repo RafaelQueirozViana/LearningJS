@@ -31,6 +31,12 @@ const getVideos = (email, fun) => {
     }, 1000);
 };
 
+const getVideoDetails = (email, fun) => {
+    setTimeout(() => {
+        fun('file mp4'); // Simula o retorno de vídeos após 1s
+    }, 1000);
+};
+
 // ------ Início da lógica de execução (como se fosse a Home page ou página principal) ------
 
 // Chama a função loginUser passando dados fictícios e os callbacks de sucesso e erro
@@ -41,6 +47,12 @@ loginUser({
         // Se o login for bem-sucedido, busca os vídeos relacionados ao email do usuário
         getVideos(user.email, (videos) => {
             console.log(videos); // Exibe os vídeos recebidos
+
+            getVideoDetails(user.email, (detail) => {
+                console.log(detail);
+            });
+
+
         });
     },
     onError: showError // Callback de erro definido anteriormente
