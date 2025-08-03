@@ -1,41 +1,44 @@
-// O que é async/await?
-// async/await é uma forma mais moderna, limpa e legível de lidar com Promises.
-// Com async/await, seu código assíncrono se parece mais com código síncrono, o que facilita a leitura e manutenção.
+// -------------------------------------
+// Introdução a async/await
+// -------------------------------------
 
-// A palavra-chave 'async' transforma uma função normal em uma função que retorna uma Promise.
-// A palavra-chave 'await' só pode ser usada dentro de funções async e pausa a execução até a Promise ser resolvida.
-
-// Exemplo simples:
+// Uma função async sempre retorna uma Promise automaticamente.
+// Aqui é um exemplo simples que retorna uma string.
+// Pode ser usada com .then() como uma Promise normal.
 
 async function exemploSimples() {
     return "Este é o resultado!";
 }
 
-// Como lidar com o resultado dessa função?
-exemploSimples().then((res) => console.log("Resultado:", res));
+exemploSimples().then((res) => console.log("Resultado:", res)); // Resultado: Este é o resultado!
 
-
-// Usando await para esperar o resultado de uma Promise
+// -------------------------------------
+// Função utilitária para aguardar X ms
+// -------------------------------------
 
 function esperar(ms) {
     return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
+// Exemplo básico de uso do await com uma função que pausa por 2 segundos.
 async function executar() {
     console.log("Esperando 2 segundos...");
-    await esperar(2000); // Espera 2 segundos
+    await esperar(2000); // Pausa a execução aqui
     console.log("2 segundos se passaram!");
 }
 
 executar();
 
-
-// Exemplo com operação assíncrona (simulando API)
+// -------------------------------------
+// Simulando uma chamada de API assíncrona
+// -------------------------------------
 
 function buscarDados() {
     return new Promise((resolve, reject) => {
         setTimeout(() => {
             const sucesso = true;
+
+            // Muda para false se quiser simular erro
             if (sucesso) {
                 resolve({ nome: "João", idade: 25 });
             } else {
@@ -45,6 +48,7 @@ function buscarDados() {
     });
 }
 
+// Lidando com erro e sucesso usando try/catch dentro da função async
 async function mostrarDados() {
     try {
         const dados = await buscarDados();
@@ -56,8 +60,9 @@ async function mostrarDados() {
 
 mostrarDados();
 
-
-// Exemplo com múltiplas chamadas assíncronas em sequência
+// -------------------------------------
+// Várias chamadas async em sequência (encadeadas)
+// -------------------------------------
 
 function etapa1() {
     return new Promise((resolve) =>
@@ -77,12 +82,13 @@ function etapa3(anterior) {
     );
 }
 
+// Executa etapas de forma sequencial, passando o resultado de uma para a próxima
 async function executarEtapas() {
     try {
         const e1 = await etapa1();
         const e2 = await etapa2(e1);
         const e3 = await etapa3(e2);
-        console.log("Resultado final:", e3);
+        console.log("Resultado final:", e3); // Loga a cadeia completa
     } catch (erro) {
         console.error("Erro em alguma etapa:", erro);
     }
@@ -90,17 +96,20 @@ async function executarEtapas() {
 
 executarEtapas();
 
-
-// Dica: você também pode usar Promise.all com async/await
-// Para executar várias promessas ao mesmo tempo
+// -------------------------------------
+// Executando promessas em paralelo com Promise.all
+// -------------------------------------
 
 async function paralelo() {
+    // Três tarefas que rodam ao mesmo tempo
     const promessa1 = esperar(1000).then(() => "Tarefa 1");
     const promessa2 = esperar(1500).then(() => "Tarefa 2");
     const promessa3 = esperar(500).then(() => "Tarefa 3");
 
+    // Aguarda todas ao mesmo tempo (não sequencial)
     const resultados = await Promise.all([promessa1, promessa2, promessa3]);
-    console.log("Todas as tarefas concluídas:", resultados);
+
+    console.log("Todas as tarefas concluídas:", resultados); // Loga array com os três resultados
 }
 
 paralelo();
