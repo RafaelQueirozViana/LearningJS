@@ -16,7 +16,7 @@ const loginUser2 = ({ email, age, onSucces, onError }) => {
 
 
 const loginUser = (name, email) => {
-  return new Promise((resolve, reject) => {
+  return new Promise((resolve, reject) => { // returning promisse
     const xhr = new XMLHttpRequest();
     xhr.open('GET', 'https://supersimplebackend.dev/products')
     xhr.send();
@@ -43,3 +43,5 @@ const loginUser = (name, email) => {
 loginUser()
   .then((message) => console.log(message))
   .catch((message) => console.log(message));
+
+//calling the promisse
