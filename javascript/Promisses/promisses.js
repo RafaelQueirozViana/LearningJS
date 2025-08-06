@@ -22,26 +22,41 @@ const loginUser = (name, email) => {
     xhr.send();
 
     xhr.addEventListener('load', () => {
-      let data = 0;
-
+      let data = xhr.response;
 
       if (!data) {
         reject('error ocurred');
       }
 
-      resolve(data);
+      resolve({ name, email });
+      console.log('created user')
 
     });
-
-
-
 
 
   });
 };
 
-loginUser()
-  .then((message) => console.log(message))
+const getUserVideos = (user) => {
+  return new Promise((resolve, reject) => {
+
+    setTimeout(() => {
+      console.log(`finded first video for the email: ${user.email}`);
+      resolve(['video1', 'video2', 'video3', 'video4']);
+    }, 1500);
+
+  });
+
+};
+
+const getFirstVideo = (videos) => {
+  return videos[0];
+};
+
+
+loginUser('joão', 'joão@gmail.com')
+  .then((user) => getUserVideos(user))
+  .then((videos) => console.log(getFirstVideo(videos)))
   .catch((message) => console.log(message));
 
 //calling the promisse
