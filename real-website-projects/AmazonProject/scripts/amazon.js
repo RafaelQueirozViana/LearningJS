@@ -91,7 +91,6 @@ const loadProductsGrid = () => {
 
 };
 
-loadProducts(loadProductsGrid);
 
 loadProducts().then(loadProductsGrid);
 

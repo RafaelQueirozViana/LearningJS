@@ -1,20 +1,22 @@
 import { orderHistory } from '../data/ordersHistory.js';
 import { formatCurrency } from './utils/money.js';
-import { getProduct } from '../data/products.js';
+import { loadProducts, getProduct } from '../data/products.js';
 
-const container = document.querySelector('.orders-grid');
+const loadOrdersGrid = () => {
 
-let totalHtml = '';
+  const container = document.querySelector('.orders-grid');
 
-console.log(orderHistory)
+  let totalHtml = '';
 
-orderHistory.forEach(order => {
+  console.log(orderHistory)
+
+  orderHistory.forEach(order => {
     let productHtml = '';
 
     order.purchasedProducts.forEach(product => {
-        const productDetails = getProduct(product.id);
+      const productDetails = getProduct(product.id);
 
-        productHtml += `<div class="order-details-grid">
+      productHtml += `<div class="order-details-grid">
           <div class="product-image-container">
             <img src="${productDetails.image}">
           </div>
@@ -67,11 +69,17 @@ orderHistory.forEach(order => {
          ${productHtml}
           </div>`
 
-});
+  });
 
 
-container.innerHTML = totalHtml;
+  container.innerHTML = totalHtml;
 
 
+
+
+
+};
+
+loadProducts().then(loadOrdersGrid);
 
 
