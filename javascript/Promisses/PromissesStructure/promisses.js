@@ -44,7 +44,6 @@ const getUserVideos = (user) => {
       console.log(`finded first video for the email: ${user.email}`);
       resolve(['video1', 'video2', 'video3', 'video4']);
     }, 1500);
-
   });
 
 };

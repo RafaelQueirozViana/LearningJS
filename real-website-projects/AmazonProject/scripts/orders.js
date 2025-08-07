@@ -80,6 +80,16 @@ const loadOrdersGrid = () => {
 
 };
 
+const loadCart = () => {
+
+}
+
 loadProducts().then(loadOrdersGrid);
 
+
+loadProducts(() => {
+  loadCart(() => {
+    loadOrdersGrid() 
+  });
+});
 
