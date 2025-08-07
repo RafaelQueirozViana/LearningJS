@@ -38,53 +38,55 @@ class Clothing extends Product {
   }
 };
 
-
-// export const loadProducts = (fun) => {
-//   const xhr = new XMLHttpRequest();
-
-//   xhr.addEventListener('load', () => {
-//     const response = xhr.response;
-//     products = JSON.parse(response).map(productDetails => {
-//       if (productDetails.type === "clothing") {
-//         return new Clothing(productDetails);
-//       }
-
-//       else {
-//         return new Product(productDetails);
-
-//       };
-//     });
-//     fun();
-//   });
-
-
-//   xhr.open('GET', 'https://supersimplebackend.dev/products');
-//   xhr.send();
-// };
-
 export const loadProducts = () => {
-  return new Promise((resolve, reject) => {
-    const xhr = new XMLHttpRequest();
+  return new Promise((resolve) => {
 
-    xhr.addEventListener('load', () => {
-      products = JSON.parse(xhr.response).map(details => {
-        if (details.type == 'clothing') {
-          return new Clothing(details)
-        }
-        else {
-          return new Product(details);
-        };
+    fetch('https://supersimplebackend.dev/products').then((response) => {
+      return response.json();
+    })
+      .then((productsArray) => {
+        products = productsArray.map(productDetails => {
+          if (productDetails.type == 'clothing') {
+            return new Clothing(productDetails);
+          }
+
+          else {
+            return new Product(productDetails);
+          }
+        });
+        resolve();
+
       });
-
-      resolve();
-
-    });
+  });
 
 
-    xhr.open('GET', 'https://supersimplebackend.dev/products');
-    xhr.send();
-  })
+
 }
+
+
+// export const loadProducts = () => {
+//   return new Promise((resolve, reject) => {
+//     const xhr = new XMLHttpRequest();
+
+//     xhr.addEventListener('load', () => {
+//       products = JSON.parse(xhr.response).map(details => {
+//         if (details.type == 'clothing') {
+//           return new Clothing(details)
+//         }
+//         else {
+//           return new Product(details);
+//         };
+//       });
+
+//       resolve();
+
+//     });
+
+
+//     xhr.open('GET', 'https://supersimplebackend.dev/products');
+//     xhr.send();
+//   })
+// }
 
 
 
