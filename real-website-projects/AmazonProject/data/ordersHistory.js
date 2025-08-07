@@ -10,8 +10,6 @@ export const addToHistory = ({ orderPlaced, totalPriceCents, productsArray }) =>
         purchasedProducts: productsArray,
     });
 
-
-
     localStorage.setItem('orderHistory', JSON.stringify(orderHistory));
 
 };

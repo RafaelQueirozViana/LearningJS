@@ -1,7 +1,8 @@
 import { getProduct } from '../../data/products.js';
-import { cart, calculateCartTotals } from '../../data/cart.js';
-import { getDelivery } from '../../data/delivery.js';
+import { cart, calculateCartTotals, resetCart } from '../../data/cart.js';
+import { getDelivery, getTodayDate } from '../../data/delivery.js';
 import { formatCurrency } from '../utils/money.js';
+import { addToHistory } from '../../data/ordersHistory.js';
 
 export const renderPaymentSummary = () => {
     calculateCartTotals();
@@ -16,6 +17,7 @@ export const renderPaymentSummary = () => {
 
     purchaseButton.addEventListener('click', () => {
         const totalPrice = calculateCartTotals().orderTotal;
+        console.log(totalPrice);
 
         addToHistory({ orderPlaced: getTodayDate(), totalPriceCents: totalPrice, productsArray: cart });
         resetCart();

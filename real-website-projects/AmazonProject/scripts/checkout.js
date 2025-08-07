@@ -5,6 +5,7 @@ import { cart, calculateCartTotals, resetCart } from '../data/cart.js';
 import { addToHistory } from '../data/ordersHistory.js';
 import { getTodayDate } from '../data/delivery.js';
 
-loadProducts(renderOrderSummary);
+
+loadProducts().then(renderOrderSummary)
 
 
