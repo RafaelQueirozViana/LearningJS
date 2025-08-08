@@ -95,6 +95,11 @@ export const resetCart = () => {
     localStorage.setItem('cart', JSON.stringify(resetedCart));
 };
 
+export const loadCart = () => {
+    const promisse = fetch('https://supersimplebackend.dev/cart').then((response) => response.text()).then((data) => console.log(data));
+    return promisse;
+}
+
 
 
 
