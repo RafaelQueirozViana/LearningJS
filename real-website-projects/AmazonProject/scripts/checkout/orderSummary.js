@@ -1,4 +1,4 @@
-import { cart, removeFromCart, showCartQuantityText, updateCartQuantity, changeDeliveryOption } from '../../data/cart.js';
+import { amazonCart } from '../../data/cart.js';
 import dayjs from 'https://unpkg.com/supersimpledev@8.5.0/dayjs/esm/index.js';
 
 import { products, getProduct } from '../../data/products.js';
@@ -38,7 +38,7 @@ export const renderOrderSummary = () => { // loading all the initial html with a
     return html
   }
 
-  cart.forEach(cartProduct => {
+  amazonCart.cartItems.forEach(cartProduct => {
     const productProperties = getProduct(cartProduct.id) // finding the all properties of the current cart product using the ID in the products array
 
     const deliveryDetails = getDelivery(cartProduct.deliveryOptionId); // returns the delivery time of the product
@@ -99,8 +99,8 @@ export const renderOrderSummary = () => { // loading all the initial html with a
       const productId = button.dataset.productId; // getting the product id for find the corresponding product of the html
       const productContainer = document.querySelector(`.js-cart-item-id-${productId}`);
 
-      removeFromCart(productId);
-      showCartQuantityText()
+      amazonCart.removeFromCart(productId);
+      amazonCart.showCartQuantityText()
       renderOrderSummary()
 
 
@@ -139,7 +139,7 @@ export const renderOrderSummary = () => { // loading all the initial html with a
       if (inputValue > 0 && inputValue <= 1000) {
         quantityBox.classList.add('hidden');
         updateButton.classList.remove('hidden');
-        updateCartQuantity(productId, inputValue);
+        amazonCart.updateCartQuantity(productId, inputValue);
         quantityText.textContent = inputValue;
 
 
@@ -147,7 +147,7 @@ export const renderOrderSummary = () => { // loading all the initial html with a
 
       else if (inputValue <= 0) {
 
-        removeFromCart(productId);
+        amazonCart.removeFromCart(productId);
 
       }
 
@@ -156,7 +156,7 @@ export const renderOrderSummary = () => { // loading all the initial html with a
       }
 
       renderOrderSummary();
-      showCartQuantityText()
+      amazonCart.showCartQuantityText()
 
       //this function is the next part of the previous function. when click in save it will call the updateCartQuantity() in the cart.js. 
 
@@ -169,7 +169,7 @@ export const renderOrderSummary = () => { // loading all the initial html with a
     optionButton.addEventListener('change', () => {
       const { productId, shippingId } = optionButton.dataset
 
-      changeDeliveryOption(productId, shippingId);
+      amazonCart.changeDeliveryOption(productId, shippingId);
       renderOrderSummary()
 
 
@@ -179,7 +179,7 @@ export const renderOrderSummary = () => { // loading all the initial html with a
 
 
   renderPaymentSummary();
-  showCartQuantityText()
+  amazonCart.showCartQuantityText()
 
   //Payment summary  box
 

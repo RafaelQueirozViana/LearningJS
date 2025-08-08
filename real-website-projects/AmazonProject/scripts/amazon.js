@@ -1,5 +1,5 @@
 import { products, loadProducts } from '../data/products.js';
-import { cart, addToCart, showCartQuantityText } from '../data/cart.js';
+import { amazonCart } from '../data/cart.js';
 
 const loadProductsGrid = () => {
 
@@ -79,14 +79,14 @@ const loadProductsGrid = () => {
       const quantityValue = Number(quantitySelector.value);
 
 
-      addToCart(productId, quantityValue);
-      showCartQuantityText()
+      amazonCart.addToCart(productId, quantityValue);
+      amazonCart.showCartQuantityText()
       addedCartAnim(productContainer);
 
     });
   });
 
-  showCartQuantityText()
+  amazonCart.showCartQuantityText()
 
 
 };
