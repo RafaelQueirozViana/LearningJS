@@ -1,5 +1,3 @@
-
-
 const logUser = () => {
     return new Promise((resolve) => {
         setTimeout(() => {
@@ -12,7 +10,9 @@ const logUser = () => {
 
 const getUserVideos = (user) => {
     return new Promise((resolve, reject) => {
+        console.log('getted the user videos')
         resolve(`All videos of the user ${user}: video1, video2, video3}`);
+
     });
 };
 
@@ -28,7 +28,15 @@ async function main() {
 
     const userVideos = await getUserVideos(userId);
 
-    const getUserProducts = await fetch('')
+    const httpRequest = await fetch('https://supersimplebackend.dev/products');
+
+    const userProducts = await httpRequest.json();
+
+
+    console.log(userProducts);
+
 
 
 }
+
+main()
