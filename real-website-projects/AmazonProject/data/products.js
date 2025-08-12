@@ -56,29 +56,7 @@ export const loadProducts = () => {
 }
 
 
-// export const loadProducts = () => {
-//   return new Promise((resolve, reject) => {
-//     const xhr = new XMLHttpRequest();
 
-//     xhr.addEventListener('load', () => {
-//       products = JSON.parse(xhr.response).map(details => {
-//         if (details.type == 'clothing') {
-//           return new Clothing(details)
-//         }
-//         else {
-//           return new Product(details);
-//         };
-//       });
-
-//       resolve();
-
-//     });
-
-
-//     xhr.open('GET', 'https://supersimplebackend.dev/products');
-//     xhr.send();
-//   })
-// }
 
 
 
