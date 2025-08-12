@@ -1,6 +1,4 @@
 
-
-
 const loginUser = (name, email) => {
   return new Promise((resolve, reject) => { // returning promisse
     const xhr = new XMLHttpRequest();
@@ -33,6 +31,7 @@ const getUserVideos = (user) => {
   });
 
 };
+
 
 const getFirstVideo = (videos) => {
   return videos[0];

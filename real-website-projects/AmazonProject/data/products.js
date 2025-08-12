@@ -52,8 +52,6 @@ export const loadProducts = () => {
 
   });
 
-
-
   return promisse;
 }
 

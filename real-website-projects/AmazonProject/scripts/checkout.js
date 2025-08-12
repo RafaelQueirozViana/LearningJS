@@ -6,6 +6,9 @@ import { addToHistory } from '../data/ordersHistory.js';
 import { getTodayDate } from '../data/delivery.js';
 
 
+
+
+
 Promise.all([
     loadProducts(),
     amazonCart.loadCart()
