@@ -102,6 +102,8 @@ async function loadAmazonPage() {
 loadAmazonPage()
 
 
+
+
 // loadProducts().then(loadProductsGrid);
 
 

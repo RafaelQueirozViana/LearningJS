@@ -6,6 +6,8 @@
 // Aqui é um exemplo simples que retorna uma string.
 // Pode ser usada com .then() como uma Promise normal.
 
+
+
 function waitTime() {
     return new Promise((resolve) => {
         setTimeout(() => {
