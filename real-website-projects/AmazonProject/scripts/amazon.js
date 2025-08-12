@@ -1,9 +1,7 @@
 import { products, loadProducts } from '../data/products.js';
 import { amazonCart } from '../data/cart.js';
 
-async function loadAmazonPage() {
-  await loadProducts
-}
+
 
 const loadProductsGrid = () => {
   const productGrid = document.querySelector('.js-all-products');
@@ -95,10 +93,16 @@ const loadProductsGrid = () => {
 };
 
 
+async function loadAmazonPage() {
+  await loadProducts();
+  loadProductsGrid()
+}
 
 
+loadAmazonPage()
 
-loadProducts().then(loadProductsGrid);
+
+// loadProducts().then(loadProductsGrid);
 
 
 
