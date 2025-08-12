@@ -92,8 +92,10 @@ const loadProductsGrid = () => {
 
 
 async function loadAmazonPage() {
-  await loadProducts();
-  loadProductsGrid()
+  const products = await loadProducts();
+
+  loadProductsGrid();
+
 }
 
 

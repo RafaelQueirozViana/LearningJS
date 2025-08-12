@@ -20,9 +20,6 @@ waitTime.then((message) => console.log(message));
 
 
 
-
-
-
 async function exemploSimples() {
     return "Este é o resultado!";
 }

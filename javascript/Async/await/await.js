@@ -10,26 +10,26 @@
 function buscarDados() {
   return new Promise((resolve) => {
     setTimeout(() => {
-      resolve("📦 Dados recebidos!");
+      resolve(" Dados recebidos!");
     }, 2000); // simula um delay de 2 segundos
   });
 }
 
 // Exemplo sem usar await (usando .then)
 function exemploComThen() {
-  console.log("🔹 Iniciando requisição com .then...");
+  console.log(" Iniciando requisição com .then...");
   buscarDados().then((resposta) => {
-    console.log("✅ Resposta recebida:", resposta);
+    console.log(" Resposta recebida:", resposta);
   });
-  console.log("🔸 Código continua executando...");
+  console.log(" Código continua executando...");
 }
 
 // Exemplo usando async/await
 async function exemploComAwait() {
-  console.log("🔹 Iniciando requisição com await...");
+  console.log("Iniciando requisição com await...");
   const resposta = await buscarDados();
-  console.log("✅ Resposta recebida:", resposta);
-  console.log("🔸 Código continua após await.");
+  console.log(" Resposta recebida:", resposta);
+  console.log(" Código continua após await.");
 }
 
 // Executando os exemplos

@@ -91,21 +91,16 @@ class Cart {
         localStorage.setItem('cart', JSON.stringify(resetedCart));
     };
 
-    loadCart() {
-        const promisse = fetch('https://supersimplebackend.dev/cart').then((response) => response.text()).then((data) => console.log(data));
-        return promisse;
+    async loadCart() {
+        const httpRequest = await fetch('https://supersimplebackend.dev/cart');
+        const cartProducts = await httpRequest.text();
+
+        return cartProducts;
     }
 
 }
 
 export const amazonCart = new Cart();
-
-
-
-
-
-
-
 
 
 
