@@ -6,6 +6,10 @@ import { addToHistory } from '../data/ordersHistory.js';
 import { getTodayDate } from '../data/delivery.js';
 
 
+async function loadPage() {
+    await loadProducts();
+
+};
 
 
 
