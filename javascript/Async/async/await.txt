@@ -1,0 +1,8 @@
+async e await não são usados para alterar a forma de declaração de uma promisse,
+são apenas usados para mudar a forma como consumimos a promisse, usando o await em vez
+de usar o .then()
+
+o async sempre deverá ser declarado para "desbloquear" o await, o que fará a função retornar uma 
+promisse automaticamente, porém na maioria dos casos o async é mais usado para desbloquear o await.
+
+sempres
