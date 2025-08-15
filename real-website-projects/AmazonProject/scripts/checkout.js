@@ -5,10 +5,18 @@ import { amazonCart } from '../data/cart.js';
 
 
 async function loadCheckoutPage() {
-    await loadProducts();
-    const cartProducts = await amazonCart.loadCart();
+    try {
+        await loadProducts();
+        renderOrderSummary();
+        
 
-    renderOrderSummary();
+    }
+
+    catch (error) {
+        console.log(`your code has the error: ${error}`);
+    }
+
+
 
 }
 

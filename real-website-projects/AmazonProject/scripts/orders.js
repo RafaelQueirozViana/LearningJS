@@ -5,11 +5,9 @@ import { loadProducts, getProduct } from '../data/products.js';
 const loadOrdersGrid = () => {
 
   const container = document.querySelector('.orders-grid');
-
-  let totalHtml = '';
-
   console.log(orderHistory)
 
+  let totalHtml = '';
   orderHistory.forEach(order => {
     let productHtml = '';
 
@@ -80,16 +78,12 @@ const loadOrdersGrid = () => {
 
 };
 
-const loadCart = () => {
-
+async function loadOrdersPage() {
+  await loadProducts();
+  loadOrdersGrid()
 }
 
-loadProducts().then(loadOrdersGrid);
+loadOrdersPage()
 
 
-loadProducts(() => {
-  loadCart(() => {
-    loadOrdersGrid() 
-  });
-});
 

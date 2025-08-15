@@ -2,7 +2,7 @@ import { getProduct } from '../../data/products.js';
 import { amazonCart } from '../../data/cart.js';
 import { getDelivery, getTodayDate } from '../../data/delivery.js';
 import { formatCurrency } from '../utils/money.js';
-import { addToHistory } from '../../data/ordersHistory.js';
+import { addToHistory, orderHistory } from '../../data/ordersHistory.js';
 
 export const renderPaymentSummary = () => {
     amazonCart.calculateCartTotals();
@@ -16,11 +16,11 @@ export const renderPaymentSummary = () => {
     const purchaseButton = document.querySelector('.js-pucharse-button');
 
     purchaseButton.addEventListener('click', () => {
-        const totalPrice = amazonCart.calculateCartTotals().orderTotal;
-        console.log(totalPrice);
-
-        addToHistory({ orderPlaced: getTodayDate(), totalPriceCents: totalPrice, productsArray: cart });
-        amazonCart.resetCart();
+        console.log('ss')
+        // const totalPrice = amazonCart.calculateCartTotals().orderTotal;
+        // addToHistory({ orderPlaced: getTodayDate(), totalPriceCents: totalPrice, productsArray: amazonCart.cartItems });
+        // console.log(orderHistory)
+        // amazonCart.resetCart();
     });
 
 

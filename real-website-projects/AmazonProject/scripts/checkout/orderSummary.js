@@ -170,7 +170,7 @@ export const renderOrderSummary = () => { // loading all the initial html with a
       const { productId, shippingId } = optionButton.dataset
 
       amazonCart.changeDeliveryOption(productId, shippingId);
-      renderOrderSummary()
+      return renderOrderSummary()
 
 
 
