@@ -2,7 +2,6 @@ import { getProduct } from '../../data/products.js';
 import { amazonCart } from '../../data/cart.js';
 import { getDelivery, getTodayDate } from '../../data/delivery.js';
 import { formatCurrency } from '../utils/money.js';
-import { addToHistory, orderHistory } from '../../data/ordersHistory.js';
 
 export const renderPaymentSummary = () => {
     amazonCart.calculateCartTotals();
@@ -15,14 +14,18 @@ export const renderPaymentSummary = () => {
 
     const purchaseButton = document.querySelector('.js-pucharse-button');
 
-    purchaseButton.addEventListener('click', () => {
-        console.log('ss')
-        // const totalPrice = amazonCart.calculateCartTotals().orderTotal;
-        // addToHistory({ orderPlaced: getTodayDate(), totalPriceCents: totalPrice, productsArray: amazonCart.cartItems });
-        // console.log(orderHistory)
-        // amazonCart.resetCart();
+    purchaseButton.addEventListener('click', async () => {
+        const httpPost = await fetch('https://supersimplebackend.dev/orders', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ cart: amazonCart.cartItems })
+        });
+
+        const response = await httpPost.json();
+        console.log(response)
     });
 
 
 };
+
 

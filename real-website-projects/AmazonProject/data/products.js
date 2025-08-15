@@ -3,14 +3,14 @@ import { formatCurrency } from '../scripts/utils/money.js';
 export let products = [];
 
 class Product {
-  id;
+  productId;
   name;
   image;
   rating;
   priceCents;
 
   constructor(productDetails) {
-    this.id = productDetails.id;
+    this.productId = productDetails.id;
     this.name = productDetails.name;
     this.image = productDetails.image;
     this.rating = productDetails.rating;
@@ -60,9 +60,11 @@ export async function loadProducts() {
 
 
 
+
 }
 
 
-export const getProduct = (productId) => {
-  return products.find(currentProduct => currentProduct.id === productId);
+export const getProduct = (id) => {
+  return products.find(currentProduct => currentProduct.productId === id);
 };
+

@@ -58,7 +58,7 @@ const loadProductsGrid = () => {
           Added
       </div>
 
-      <button data-product-id="${product.id}" class="add-to-cart-button button-primary js-add-to-cart" >
+      <button data-product-id="${product.productId}" class="add-to-cart-button button-primary js-add-to-cart" >
         Add to Cart
       </button>
     </div > `;
@@ -82,6 +82,7 @@ const loadProductsGrid = () => {
       amazonCart.showCartQuantityText()
       addedCartAnim(productContainer);
 
+
     });
   });
 
@@ -101,7 +102,6 @@ async function loadAmazonPage() {
 
 
 loadAmazonPage()
-
 
 
 

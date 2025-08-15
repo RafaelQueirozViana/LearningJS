@@ -39,13 +39,13 @@ export const renderOrderSummary = () => { // loading all the initial html with a
   }
 
   amazonCart.cartItems.forEach(cartProduct => {
-    const productProperties = getProduct(cartProduct.id) // finding the all properties of the current cart product using the ID in the products array
+    const productProperties = getProduct(cartProduct.productId) // finding the all properties of the current cart product using the ID in the products array
 
     const deliveryDetails = getDelivery(cartProduct.deliveryOptionId); // returns the delivery time of the product
     const estimatedShipping = getEstimatedDeliveryDate(deliveryDetails.deliveryTime);
 
     gridContainer.innerHTML += `
-           <div class="cart-item-container js-cart-item-id-${cartProduct.id}">
+           <div class="cart-item-container js-cart-item-id-${cartProduct.productId}">
           <div class="delivery-date">
             Delivery date: ${estimatedShipping}
           </div>
@@ -65,14 +65,14 @@ export const renderOrderSummary = () => { // loading all the initial html with a
                   Quantity: <span class="quantity-label">${cartProduct.quantity}</span>
                 </span>
                   <span class="update-container">
-                  <span class="update-quantity-link link-primary js-update-button" data-product-id="${cartProduct.id}"> Update</span>
+                  <span class="update-quantity-link link-primary js-update-button" data-product-id="${cartProduct.productId}"> Update</span>
                   <div class="update-box hidden">
                     <input type="number">
-                    <span class="link-primary js-save-button" data-product-id="${cartProduct.id}">Save</span>
+                    <span class="link-primary js-save-button" data-product-id="${cartProduct.productId}">Save</span>
                   </div>
 
                 </span>
-                <span class="delete-quantity-link link-primary js-delete-button" data-product-id="${cartProduct.id}">
+                <span class="delete-quantity-link link-primary js-delete-button" data-product-id="${cartProduct.productId}">
                   Delete
                 </span>
               </div>
@@ -83,7 +83,7 @@ export const renderOrderSummary = () => { // loading all the initial html with a
                 Choose a delivery option:
               </div>
 
-              ${generateDeliveryHtml(cartProduct.id, cartProduct.deliveryOptionId)}
+              ${generateDeliveryHtml(cartProduct.productId, cartProduct.deliveryOptionId)}
            
            
             
@@ -151,9 +151,6 @@ export const renderOrderSummary = () => { // loading all the initial html with a
 
       }
 
-      else {
-        console.log('inside a value between 0 and 1000');
-      }
 
       renderOrderSummary();
       amazonCart.showCartQuantityText()
@@ -170,12 +167,14 @@ export const renderOrderSummary = () => { // loading all the initial html with a
       const { productId, shippingId } = optionButton.dataset
 
       amazonCart.changeDeliveryOption(productId, shippingId);
-      return renderOrderSummary()
+      renderOrderSummary()
 
 
 
     });
   });
+
+  console.log(amazonCart.cartItems)
 
 
   renderPaymentSummary();

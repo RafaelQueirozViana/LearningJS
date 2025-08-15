@@ -11,15 +11,16 @@ class Cart {
     }
 
     addToCart(productId, quantityValue) { // Method for add a product to the cart
-        const existingProduct = this.cartItems.find(product => product.id === productId);
+        const existingProduct = this.cartItems.find(product => product.productId === productId);
 
         // it was used for verify if the cart has the same product as you want to add to cart
 
         if (!existingProduct) {
             this.cartItems.push({
-                id: productId, // i just utilized only id and quantity attributes, because from the id i can search the all others attributes
+                productId: productId, // i just utilized only id and quantity attributes, because from the id i can search the all others attributes
                 quantity: quantityValue,
-                deliveryOptionId: '1'
+                deliveryOptionId: '1',
+                priceCents: getProduct(productId).priceCents
             });
 
         }
@@ -73,7 +74,7 @@ class Cart {
         this.cartItems.forEach(cartProduct => {
             const product = getProduct(cartProduct.id)
             const deliveryProperties = getDelivery(cartProduct.deliveryOptionId);
-            paymentSummary.totalItemsPrice += product.priceCents * cartProduct.quantity;
+            paymentSummary.totalItemsPrice += cartProduct.priceCents * cartProduct.quantity;
             paymentSummary.totalShipping += deliveryProperties.priceCents;
 
         });
@@ -91,12 +92,6 @@ class Cart {
         localStorage.setItem('cart', JSON.stringify(resetedCart));
     };
 
-    async loadCart() {
-        const httpRequest = await fetch('https://supersimplebackend.dev/cart');
-        const cartProducts = await httpRequest.text();
-
-        return cartProducts;
-    }
 
 }
 
