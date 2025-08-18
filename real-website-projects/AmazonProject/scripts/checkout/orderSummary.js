@@ -96,11 +96,13 @@ export const renderOrderSummary = () => { // loading all the initial html with a
 
   document.querySelectorAll('.js-delete-button').forEach(button => {
     button.addEventListener('click', () => {
+
       const productId = button.dataset.productId; // getting the product id for find the corresponding product of the html
       const productContainer = document.querySelector(`.js-cart-item-id-${productId}`);
 
       amazonCart.removeFromCart(productId);
       amazonCart.showCartQuantityText()
+
       renderOrderSummary()
 
 
@@ -139,6 +141,7 @@ export const renderOrderSummary = () => { // loading all the initial html with a
       if (inputValue > 0 && inputValue <= 1000) {
         quantityBox.classList.add('hidden');
         updateButton.classList.remove('hidden');
+        console.log(inputValue)
         amazonCart.updateCartQuantity(productId, inputValue);
         quantityText.textContent = inputValue;
 
@@ -174,7 +177,6 @@ export const renderOrderSummary = () => { // loading all the initial html with a
     });
   });
 
-  console.log(amazonCart.cartItems)
 
 
   renderPaymentSummary();

@@ -34,7 +34,7 @@ class Cart {
     };
 
     removeFromCart(productId) { // method to remove a product of the cart
-        const newCart = this.cartItems.filter(product => product.id !== productId);
+        const newCart = this.cartItems.filter(product => product.productId !== productId);
         this.cartItems = newCart;
         this.#saveToStorage()
     };
@@ -48,7 +48,7 @@ class Cart {
     };
 
     updateCartQuantity(productId, actuallyQuantity) { // method for change the selected quantity of the product
-        const changedProduct = this.cartItems.find(product => product.id === productId);
+        const changedProduct = this.cartItems.find(product => product.productId === productId);
         changedProduct.quantity = actuallyQuantity;
         this.#saveToStorage()
     };

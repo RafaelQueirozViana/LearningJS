@@ -9,7 +9,6 @@ async function loadCheckoutPage() {
         await loadProducts();
         renderOrderSummary();
 
-
     }
 
     catch (error) {
