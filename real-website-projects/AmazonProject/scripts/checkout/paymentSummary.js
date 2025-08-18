@@ -16,14 +16,27 @@ export const renderPaymentSummary = () => {
     const purchaseButton = document.querySelector('.js-pucharse-button');
 
     purchaseButton.addEventListener('click', async () => {
-        const httpPost = await fetch('https://supersimplebackend.dev/orders', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ cart: amazonCart.cartItems })
-        });
 
-        const response = await httpPost.json();
-        userOrder.addOrder(response)
+        try {
+            const httpPost = await fetch('https://supersimplebackend.dev/orders', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ cart: amazonCart.cartItems })
+            });
+
+            const response = await httpPost.json();
+            userOrder.addOrder(response);
+            window.location.href = 'orders.html'
+        }
+
+        catch (error) {
+            console.log(error)
+        }
+
+
+
+
+
     });
 
 
