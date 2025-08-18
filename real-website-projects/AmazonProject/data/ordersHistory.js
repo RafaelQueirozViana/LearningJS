@@ -1,6 +1,6 @@
 import dayjs from 'https://unpkg.com/supersimpledev@8.5.0/dayjs/esm/index.js';
 
-class amazonOrders {
+class AmazonOrders {
     constructor() {
         this.orders = JSON.parse(localStorage.getItem('userOrders')) || [];
     }
@@ -12,6 +12,6 @@ class amazonOrders {
     };
 };
 
-export const userOrder = new amazonOrders();
+export const userOrder = new AmazonOrders();
 
 

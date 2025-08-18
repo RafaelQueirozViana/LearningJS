@@ -26,7 +26,7 @@ export const renderPaymentSummary = () => {
 
             const response = await httpPost.json();
             userOrder.addOrder(response);
-            window.location.href = 'orders.html'
+            window.location.href = 'orders.html';
         }
 
         catch (error) {

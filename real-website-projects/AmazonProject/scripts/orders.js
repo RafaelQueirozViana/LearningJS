@@ -3,15 +3,15 @@ import { formatCurrency } from './utils/money.js';
 import { loadProducts, getProduct } from '../data/products.js';
 
 const loadOrdersGrid = () => {
-
-  const container = document.querySelector('.orders-grid');
   console.log(userOrder)
 
+  const container = document.querySelector('.orders-grid');
+
   let totalHtml = '';
-  userOrder.orders.forEach(order => {
+  userOrder.orders.forEach(currentOrder => {
     let productHtml = '';
 
-    order.products.forEach(product => {
+    currentOrder.products.forEach(product => {
       const productDetails = getProduct(product.productId);
 
       productHtml += `<div class="order-details-grid">
@@ -55,13 +55,13 @@ const loadOrdersGrid = () => {
             </div>
             <div class="order-total">
               <div class="order-header-label">Total:</div>
-              <div>$${formatCurrency(order.totalPriceCents)}</div>
+              <div>$${formatCurrency(currentOrder.totalPriceCents)}</div>
             </div>
           </div>
 
           <div class="order-header-right-section">
             <div class="order-header-label">Order ID:</div>
-            <div>${order.orderId}</div>
+            <div>${currentOrder.orderId}</div>
           </div>
         </div>
          ${productHtml}
@@ -72,14 +72,14 @@ const loadOrdersGrid = () => {
 
   container.innerHTML = totalHtml;
 
-
-
-
-
 };
+
+
+
 
 async function loadOrdersPage() {
   await loadProducts();
+
   loadOrdersGrid()
 }
 
