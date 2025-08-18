@@ -51,17 +51,17 @@ const loadOrdersGrid = () => {
           <div class="order-header-left-section">
             <div class="order-date">
               <div class="order-header-label">Order Placed:</div>
-              <div>August 12</div>
+              <div></div>
             </div>
             <div class="order-total">
               <div class="order-header-label">Total:</div>
-              <div>$${formatCurrency(currentOrder.totalPriceCents)}</div>
+              <div>$${formatCurrency(currentOrder.totalCostCents)}</div>
             </div>
           </div>
 
           <div class="order-header-right-section">
             <div class="order-header-label">Order ID:</div>
-            <div>${currentOrder.orderId}</div>
+            <div>${currentOrder.id}</div>
           </div>
         </div>
          ${productHtml}
