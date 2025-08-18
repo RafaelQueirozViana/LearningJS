@@ -2,6 +2,7 @@ import { getProduct } from '../../data/products.js';
 import { amazonCart } from '../../data/cart.js';
 import { getDelivery, getTodayDate } from '../../data/delivery.js';
 import { formatCurrency } from '../utils/money.js';
+import { userOrder } from '../../data/ordersHistory.js';
 
 export const renderPaymentSummary = () => {
     amazonCart.calculateCartTotals();
@@ -22,7 +23,7 @@ export const renderPaymentSummary = () => {
         });
 
         const response = await httpPost.json();
-        console.log(response)
+        userOrder.addOrder(response)
     });
 
 
