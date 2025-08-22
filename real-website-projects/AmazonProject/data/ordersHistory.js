@@ -14,3 +14,4 @@ class AmazonOrders { // created the class
 export const userOrder = new AmazonOrders(); // create a new object to orders
 
 console.log('s')
+console.log(`${userOrder} is working`)
