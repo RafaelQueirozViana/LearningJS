@@ -4,6 +4,10 @@ import { getDelivery, getTodayDate } from '../../data/delivery.js';
 import { formatCurrency } from '../utils/money.js';
 import { userOrder } from '../../data/ordersHistory.js';
 
+const onError = (errorText) => {
+    console.log(`Ocurred the error: ${errorText}`);
+}
+
 export const renderPaymentSummary = () => {
     amazonCart.calculateCartTotals();
 
@@ -30,7 +34,9 @@ export const renderPaymentSummary = () => {
         }
 
         catch (error) {
-            console.log(error)
+            onError(error);
+
+
         }
 
 
