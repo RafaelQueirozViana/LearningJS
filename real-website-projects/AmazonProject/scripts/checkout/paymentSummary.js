@@ -35,7 +35,7 @@ export const renderPaymentSummary = () => {
 
         catch (error) {
             onError(error);
-
+            console.log(`used the onError function `)
 
         }
 
