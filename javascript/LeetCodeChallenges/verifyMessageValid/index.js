@@ -35,14 +35,9 @@ const verifyMessage = (message) => {
     return haveEnd;
 
 
-
-
-
-
-
 }
 
-console.log(verifyMessage('([])')
+console.log(verifyMessage('[()]') // ([)]
 )
 
 
