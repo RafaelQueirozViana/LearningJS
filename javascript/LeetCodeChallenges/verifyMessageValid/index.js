@@ -72,6 +72,29 @@ const verifyMessage = (message) => {
 
 
             }
+
+            else if (currentLetter == specialCharacter[1]) {
+                const areClosed = verifyClosing(separatedWords, specialCharacter[0]); // necessary be true
+                const areNextClosed = verifyNextLetter(separatedWords[i + 1], specialCharacter[1]); // not necessary be true
+                const areLastClosed = verifyLastLetter(separatedWords, specialCharacter[1]); // not necessary be true
+
+
+                if (areClosed && areNextClosed) {
+
+                }
+
+                else if (areClosed && areLastClosed) {
+
+                }
+
+                else {
+
+                    isValid = false;
+                }
+
+
+            }
+
         });
     }
 
@@ -80,7 +103,7 @@ const verifyMessage = (message) => {
 
 }
 
-console.log(verifyMessage('{[}]')) // ([)]
+console.log(verifyMessage('}(){')) // ([)] // verificar se esta fechando
 
 
 
