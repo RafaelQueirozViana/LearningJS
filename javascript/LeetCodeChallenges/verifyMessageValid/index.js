@@ -38,6 +38,9 @@ const verifyLastLetter = (sepWords, closeChar) => {
 
 
 }
+console.log(`${verifyLastLetter} is the last letter `)
+
+
 
 
 
