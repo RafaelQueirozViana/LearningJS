@@ -42,7 +42,7 @@ console.log(`${verifyLastLetter} is the last letter `)
 
 
 
-
+console.log(verifyClosing())
 
 const verifyMessage = (message) => {
     const separatedWords = [...message];
