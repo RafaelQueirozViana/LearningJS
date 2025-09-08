@@ -49,13 +49,23 @@ const loadProductsHtml = (productsArray) => {
           Added
         </div>
 
-        <button class="add-to-cart-button button-primary">
+        <button data-product-id="${currentProduct.id}" class="add-to-cart-button button-primary js-add-to-cart">
           Add to Cart
         </button>
       </div>`
   });
 
-}
+  const addCartButtons = document.querySelectorAll('.js-add-to-cart');
+  addCartButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      const productId = button.dataset.productId;
+      
+    });
+  });
+
+
+
+};
 
 const loadAmazonPage = async () => {
   await amazonProducts.loadProducts();
