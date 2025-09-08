@@ -96,6 +96,9 @@ const verifyMessage = (message) => {
                 }
 
 
+                console.log('testing git ')
+
+
             }
 
         });
