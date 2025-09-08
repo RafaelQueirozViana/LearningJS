@@ -1,12 +1,13 @@
 import { amazonProducts } from '../data/products.js';
+import { formatCurrency } from '../scripts/utils/money.js'
 
 const loadProductsHtml = (productsArray) => {
-    const productsGrid = document.querySelector('.products-grid');
+  const productsGrid = document.querySelector('.products-grid');
 
-    productsGrid.innerHTML = '';
+  productsGrid.innerHTML = '';
 
-    productsArray.forEach(currentProduct => {
-        productsGrid.innerHTML += `<div class="product-container">
+  productsArray.forEach(currentProduct => {
+    productsGrid.innerHTML += `<div class="product-container">
         <div class="product-image-container">
           <img class="product-image" src="${currentProduct.image}">
         </div>
@@ -23,7 +24,7 @@ const loadProductsHtml = (productsArray) => {
         </div>
 
         <div class="product-price">
-          ${currentProduct.priceCents}
+          ${formatCurrency(currentProduct.priceCents)}
         </div>
 
         <div class="product-quantity-container">
@@ -52,15 +53,15 @@ const loadProductsHtml = (productsArray) => {
           Add to Cart
         </button>
       </div>`
-    });
+  });
 
 }
 
 const loadAmazonPage = async () => {
-    await amazonProducts.loadProducts();
-    const productsList = amazonProducts.products;
+  await amazonProducts.loadProducts();
+  const productsList = amazonProducts.products;
 
-
+  loadProductsHtml(productsList);
 
 
 
