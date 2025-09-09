@@ -32,6 +32,11 @@ class Cart {
 
     }
 
+    calculateTotalItems() {
+        return this.cartItems.reduce((acumulator, currentValue) => acumulator += currentValue.quantity, 0)
+
+    }
+
 
 
 };

@@ -1,7 +1,6 @@
 import { amazonProducts } from '../data/products.js';
 import { formatCurrency } from '../scripts/utils/money.js'
 import { amazonCart } from '../data/cart.js';
-console.log(amazonCart.cartItems);
 
 
 const loadProductsHtml = (productsArray) => {
@@ -63,21 +62,29 @@ const loadProductsHtml = (productsArray) => {
       const productId = button.dataset.productId;
       const messageGrid = document.querySelectorAll('.added-to-cart')[position];
       const quantitySelected = Number(document.querySelectorAll('.js-select-quantity')[position].value);
-
       amazonCart.addToCart(productId, quantitySelected);
+
       messageGrid.classList.toggle('active');
-      
+      updateCartQuantity(amazonCart.calculateTotalItems());
+
+
     });
   });
 
-
 };
+
+const updateCartQuantity = (quantity) => {
+  document.querySelector('.cart-quantity').textContent = quantity;
+}
+
+
 
 const loadAmazonPage = async () => {
   await amazonProducts.loadProducts();
   const productsList = amazonProducts.products;
 
   loadProductsHtml(productsList);
+  updateCartQuantity(amazonCart.calculateTotalItems());
 
 
 
@@ -86,3 +93,4 @@ const loadAmazonPage = async () => {
 }
 
 loadAmazonPage();
+
