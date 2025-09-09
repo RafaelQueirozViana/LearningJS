@@ -37,8 +37,6 @@ class Cart {
         matchingProduct.deliveryOptionId = newDeliveryId;
     }
 
-
-
     calculateTotalItems() {
         return this.cartItems.reduce((acumulator, currentValue) => acumulator += currentValue.quantity, 0)
 

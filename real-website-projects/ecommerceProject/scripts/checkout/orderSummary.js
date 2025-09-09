@@ -13,14 +13,16 @@ const ordersGrid = document.querySelector('.order-summary');
 const renderOrderSummary = () => {
   ordersGrid.innerHTML = '';
 
-  const generateDeliveryHtml = (productId) => {
+  const generateDeliveryHtml = (matchingProduct) => {
     let deliveryHtml = '';
 
     amazonDelivery.deliveryOptions.forEach(deliveryOption => {
       const deliveryPrice = deliveryOption.priceCents > 0 ? `$${formatCurrency(deliveryOption.priceCents)} - ` : 'FREE';
+      const isChecked = deliveryOption.id == matchingProduct.deliveryOptionId ? 'CHECKED' : '';
+      console.log(matchingProduct.deliveryOptionId)
 
       deliveryHtml += ` <div class="delivery-option">
-                <input type="radio" class="delivery-option-input" name="delivery-option-${productId}">
+                <input ${isChecked} type="radio" class="delivery-option-input" name="delivery-option-${matchingProduct.id}">
                 <div>
                   <div class="delivery-option-date">
                     ${amazonDelivery.getShippingDate(deliveryOption.deliveryTime)}
@@ -73,7 +75,7 @@ const renderOrderSummary = () => {
                 Choose a delivery option:
               </div>
 
-              ${generateDeliveryHtml(productDetails.id)}
+              ${generateDeliveryHtml(cartProduct)}
 
 
 
@@ -110,7 +112,6 @@ export const loadOrderSummary = () => {
 
 
 }
-
 
 
 
