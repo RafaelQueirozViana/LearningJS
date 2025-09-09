@@ -21,10 +21,9 @@ class Cart {
         else {
             this.cartItems.push({
                 id: productDetails.id,
-                name: productDetails.name,
                 priceCents: productDetails.priceCents,
-                image: productDetails.image,
                 quantity: quantityChosen,
+                deliveryOptionId: 1,
             });
         }
 
@@ -32,10 +31,19 @@ class Cart {
 
     }
 
+    changeDeliveryOption(productId, newDeliveryId) {
+        const matchingProduct = amazonProducts.getProduct(productId);
+        matchingProduct.deliveryOptionId = newDeliveryId;
+    }
+
+
+
     calculateTotalItems() {
         return this.cartItems.reduce((acumulator, currentValue) => acumulator += currentValue.quantity, 0)
 
     }
+
+
 
 
 
