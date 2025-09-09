@@ -17,6 +17,8 @@ const renderOrderSummary = () => {
     let deliveryHtml = '';
 
     amazonDelivery.deliveryOptions.forEach(deliveryOption => {
+      const deliveryPrice = deliveryOption.priceCents > 0 ? `$${formatCurrency(deliveryOption.priceCents)} - ` : 'FREE';
+
       deliveryHtml += ` <div class="delivery-option">
                 <input type="radio" class="delivery-option-input" name="delivery-option-${productId}">
                 <div>
@@ -24,7 +26,7 @@ const renderOrderSummary = () => {
                     ${amazonDelivery.getShippingDate(deliveryOption.deliveryTime)}
                   </div>
                   <div class="delivery-option-price">
-                    $${formatCurrency(deliveryOption.priceCents)} - Shipping
+                    ${deliveryPrice}  Shipping
                   </div>
                 </div>
               </div>`
@@ -82,11 +84,22 @@ const renderOrderSummary = () => {
     });
   }
 
+  const addEventToButtons = () => {
+    document.querySelector()
+  }
+
   generateProductsHtml()
 
 
 
+
+
+
 };
+
+
+
+
 
 
 

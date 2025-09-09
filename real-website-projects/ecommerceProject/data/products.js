@@ -1,4 +1,4 @@
-class ProductsController {
+class ProductsModel {
   constructor() {
     this.products = [];
   }
@@ -14,7 +14,7 @@ class ProductsController {
   }
 }
 
-export const amazonProducts = new ProductsController();
+export const amazonProducts = new ProductsModel();
 
 
 
