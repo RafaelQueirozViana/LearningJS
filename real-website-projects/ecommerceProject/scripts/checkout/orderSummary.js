@@ -1,15 +1,17 @@
 import { amazonCart } from '../../data/cart.js';
 import { formatCurrency } from '../utils/money.js';
 import { amazonProducts } from '../../data/products.js';
+
+const onlyHere = 'test'
+
 const ordersGrid = document.querySelector('.order-summary');
 
 const loadProductsHtml = () => {
-    ordersGrid.innerHTML = '';
+  ordersGrid.innerHTML = '';
 
-    amazonCart.cartItems.forEach(cartProduct => {
-        const productDetails = amazonProducts.getProduct(cartProduct.id);
-
-        ordersGrid.innerHTML += `
+  amazonCart.cartItems.forEach(cartProduct => {
+    const productDetails = amazonProducts.getProduct(cartProduct.id);
+    ordersGrid.innerHTML += `
              <div class="cart-item-container">
             <div class="delivery-date">
               Delivery date: Wednesday, June 15
@@ -17,14 +19,14 @@ const loadProductsHtml = () => {
 
             <div class="cart-item-details-grid">
               <img class="product-image"
-                src="images/products/intermediate-composite-basketball.jpg">
+                src="${productDetails.image}">
 
               <div class="cart-item-details">
                 <div class="product-name">
                   ${productDetails.name}
                 </div>
                 <div class="product-price">
-                 ${formatCurrency(productDetails.priceCents)}
+                 $${formatCurrency(productDetails.priceCents)}
                 </div>
                 <div class="product-quantity">
                   <span>
@@ -84,11 +86,24 @@ const loadProductsHtml = () => {
             </div>
           </div>
         `
-    });
+  });
+
+
 };
 
 
-loadProductsHtml()
+
+export const loadOrderSummary = () => {
+  loadProductsHtml();
+
+
+
+
+}
+
+
+
+
 
 
 

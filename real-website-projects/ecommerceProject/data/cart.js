@@ -7,6 +7,7 @@ class Cart {
 
     #saveToStorage() {
         localStorage.setItem('cart', JSON.stringify(this.cartItems));
+
     };
 
     addToCart(productId, quantityChosen) {
@@ -48,7 +49,9 @@ class Cart {
 
 
 
+
 };
 
 export const amazonCart = new Cart();
+
 
