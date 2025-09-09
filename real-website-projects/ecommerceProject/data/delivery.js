@@ -18,7 +18,10 @@ class Delivery {
         }];
     };
 
-    shippingDate(deliveryId) {
-        return
+    getShippingDate(deliveryTime) {
+        return dayjs().add(deliveryTime, 'days').format('dddd, MMMM D');
+
     }
 };
+
+export const amazonDelivery = new Delivery();
