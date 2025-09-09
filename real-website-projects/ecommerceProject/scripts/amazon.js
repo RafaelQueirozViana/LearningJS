@@ -1,5 +1,8 @@
 import { amazonProducts } from '../data/products.js';
 import { formatCurrency } from '../scripts/utils/money.js'
+import { amazonCart } from '../data/cart.js';
+console.log(amazonCart.cartItems);
+
 
 const loadProductsHtml = (productsArray) => {
   const productsGrid = document.querySelector('.products-grid');
@@ -28,7 +31,7 @@ const loadProductsHtml = (productsArray) => {
         </div>
 
         <div class="product-quantity-container">
-          <select>
+          <select class="js-select-quantity">
             <option selected value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
@@ -55,14 +58,17 @@ const loadProductsHtml = (productsArray) => {
       </div>`
   });
 
-  const addCartButtons = document.querySelectorAll('.js-add-to-cart');
-  addCartButtons.forEach(button => {
+  document.querySelectorAll('.js-add-to-cart').forEach((button, position) => {
     button.addEventListener('click', () => {
       const productId = button.dataset.productId;
+      const messageGrid = document.querySelectorAll('.added-to-cart')[position];
+      const quantitySelected = Number(document.querySelectorAll('.js-select-quantity')[position].value);
+
+      amazonCart.addToCart(productId, quantitySelected);
+      messageGrid.classList.toggle('active');
       
     });
   });
-
 
 
 };
