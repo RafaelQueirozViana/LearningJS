@@ -47,6 +47,7 @@ class Cart {
 
 
 
+
 };
 
 export const amazonCart = new Cart();
