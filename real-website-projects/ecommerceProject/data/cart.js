@@ -44,24 +44,29 @@ class Cart {
         console.log(this.cartItems)
     }
 
-    calculateTotalItems() {
+    getCartSummary() {
         const taxPercentage = 0.1;
         const paymentSummary = {
-            getItemsQuantity: 0,
+            getCartQuantity: 0,
+            getItemsPrice: 0,
             getTotalShipping: 0,
-            totalBeforeTax: 0,
-            totalTax: 0,
-            orderTotal: 0,
+            getTotalBefTax: 0,
+            getTax: 0,
+            getOrderTotal: 0,
         }
 
-        paymentSummary.getItemsQuantity = this.cartItems.reduce((acumulator, cartItem) => acumulator += cartItem.quantity, 0);
+        paymentSummary.getCartQuantity = this.cartItems.reduce((acumulator, cartItem) => acumulator += cartItem.quantity, 0);
+        paymentSummary.getItemsPrice = this.cartItems.reduce((acumulator, cartItem) => acumulator += (cartItem.priceCents * cartItem.quantity), 0)
         paymentSummary.getTotalShipping = this.cartItems.reduce((acumulator, cartItem) => {
             const matchingDelivery = amazonDelivery.deliveryOptions.find(option => option.id === cartItem.deliveryOptionId);
             return acumulator += matchingDelivery.priceCents;
         }, 0);
-        paymentSummary.getTotalBefTax = this.cartItems.reduce((acumulator, cartItem) => acumulator += cartItem.priceCents, 0);
+        paymentSummary.getTotalBefTax = paymentSummary.getItemsPrice + paymentSummary.getTotalShipping;
+        paymentSummary.getTax = paymentSummary.getTotalBefTax * taxPercentage;
+        paymentSummary.getOrderTotal = paymentSummary.getTotalBefTax + paymentSummary.getTax;
 
-        return paymentSummary
+
+        return paymentSummary;
 
 
 

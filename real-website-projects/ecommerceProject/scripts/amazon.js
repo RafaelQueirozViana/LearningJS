@@ -73,7 +73,7 @@ const loadAmazonPage = async () => {
 
         amazonCart.addToCart(productId, quantitySelected);
         messageGrid.classList.toggle('active');
-        updateCartQuantity(amazonCart.calculateTotalItems().itemsQuantity);
+        updateCartQuantity(amazonCart.getCartSummary().getCartQuantity);
 
 
       });
@@ -86,7 +86,7 @@ const loadAmazonPage = async () => {
 
   loadProductsHtml(amazonProducts.products);
   addEventToButtons();
-  updateCartQuantity(amazonCart.calculateTotalItems().itemsQuantity);
+  updateCartQuantity(amazonCart.getCartSummary().getCartQuantity);
 
 }
 
