@@ -32,9 +32,15 @@ class Cart {
 
     }
 
+
+
+
     changeDeliveryOption(productId, newDeliveryId) {
-        const matchingProduct = amazonProducts.getProduct(productId);
+        const matchingProduct = this.cartItems.find(cartItem => cartItem.id === productId);
         matchingProduct.deliveryOptionId = newDeliveryId;
+        console.log(matchingProduct.deliveryOptionId);
+        this.#saveToStorage();
+        console.log(this.cartItems)
     }
 
     calculateTotalItems() {

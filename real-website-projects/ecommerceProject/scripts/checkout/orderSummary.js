@@ -4,10 +4,6 @@ import { amazonDelivery } from '../../data/delivery.js';
 import { formatCurrency } from '../utils/money.js';
 
 
-
-
-
-
 const ordersGrid = document.querySelector('.order-summary');
 
 const renderOrderSummary = () => {
@@ -19,10 +15,9 @@ const renderOrderSummary = () => {
     amazonDelivery.deliveryOptions.forEach(deliveryOption => {
       const deliveryPrice = deliveryOption.priceCents > 0 ? `$${formatCurrency(deliveryOption.priceCents)} - ` : 'FREE';
       const isChecked = deliveryOption.id == matchingProduct.deliveryOptionId ? 'CHECKED' : '';
-      console.log(matchingProduct.deliveryOptionId)
 
       deliveryHtml += ` <div class="delivery-option">
-                <input ${isChecked} type="radio" class="delivery-option-input" name="delivery-option-${matchingProduct.id}">
+                <input ${isChecked} type="radio" class="delivery-option-input" name="delivery-option-${matchingProduct.id}" data-delivery-id="${deliveryOption.id}" data-product-id="${matchingProduct.id}">
                 <div>
                   <div class="delivery-option-date">
                     ${amazonDelivery.getShippingDate(deliveryOption.deliveryTime)}
@@ -87,10 +82,20 @@ const renderOrderSummary = () => {
   }
 
   const addEventToButtons = () => {
-    document.querySelector()
-  }
+    document.querySelectorAll('.delivery-option-input').forEach(inputBtn => {
+      inputBtn.addEventListener('change', () => {
+        const productId = inputBtn.dataset.productId;
+        const deliveryId = Number(inputBtn.dataset.deliveryId);
 
-  generateProductsHtml()
+        amazonCart.changeDeliveryOption(productId, deliveryId);
+
+      });
+    });
+  };
+
+  generateProductsHtml();
+
+  addEventToButtons();
 
 
 
@@ -98,10 +103,6 @@ const renderOrderSummary = () => {
 
 
 };
-
-
-
-
 
 
 
