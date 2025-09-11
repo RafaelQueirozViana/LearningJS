@@ -49,7 +49,7 @@ class Cart {
         const paymentSummary = {
             getCartQuantity: 0,
             getItemsPrice: 0,
-            getTotalShipping: 0,
+            getShippingCents: 0,
             getTotalBefTax: 0,
             getTax: 0,
             getOrderTotal: 0,
@@ -57,26 +57,17 @@ class Cart {
 
         paymentSummary.getCartQuantity = this.cartItems.reduce((acumulator, cartItem) => acumulator += cartItem.quantity, 0);
         paymentSummary.getItemsPrice = this.cartItems.reduce((acumulator, cartItem) => acumulator += (cartItem.priceCents * cartItem.quantity), 0)
-        paymentSummary.getTotalShipping = this.cartItems.reduce((acumulator, cartItem) => {
+        paymentSummary.getShippingCents = this.cartItems.reduce((acumulator, cartItem) => {
             const matchingDelivery = amazonDelivery.deliveryOptions.find(option => option.id === cartItem.deliveryOptionId);
             return acumulator += matchingDelivery.priceCents;
         }, 0);
-        paymentSummary.getTotalBefTax = paymentSummary.getItemsPrice + paymentSummary.getTotalShipping;
+        paymentSummary.getTotalBefTax = paymentSummary.getItemsPrice + paymentSummary.getShippingCents;
         paymentSummary.getTax = paymentSummary.getTotalBefTax * taxPercentage;
         paymentSummary.getOrderTotal = paymentSummary.getTotalBefTax + paymentSummary.getTax;
 
 
         return paymentSummary;
-
-
-
     };
-
-
-
-
-
-
 
 };
 

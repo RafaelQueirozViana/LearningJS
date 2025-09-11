@@ -97,6 +97,7 @@ export const renderOrderSummary = () => {
   generateProductsHtml();
   addEventToButtons();
 
+  console.log(amazonCart.getCartSummary());
 
 
 
