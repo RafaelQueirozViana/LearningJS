@@ -6,7 +6,7 @@ import { formatCurrency } from '../utils/money.js';
 
 const ordersGrid = document.querySelector('.order-summary');
 
-const renderOrderSummary = () => {
+export const renderOrderSummary = () => {
   ordersGrid.innerHTML = '';
 
   const generateDeliveryHtml = (matchingProduct) => {
@@ -17,7 +17,7 @@ const renderOrderSummary = () => {
       const isChecked = deliveryOption.id == matchingProduct.deliveryOptionId ? 'CHECKED' : '';
 
       deliveryHtml += ` <div class="delivery-option">
-                <input ${isChecked} type="radio" class="delivery-option-input" name="delivery-option-${matchingProduct.id}" data-delivery-id="${deliveryOption.id}" data-product-id="${matchingProduct.id}">
+                <input ${isChecked} type="radio" class="delivery-option-input" name="delivery-option-${matchingProduct.id}" data-delivery-id="${deliveryOption.id}">
                 <div>
                   <div class="delivery-option-date">
                     ${amazonDelivery.getShippingDate(deliveryOption.deliveryTime)}
@@ -36,7 +36,7 @@ const renderOrderSummary = () => {
     amazonCart.cartItems.forEach(cartProduct => {
       const productDetails = amazonProducts.getProduct(cartProduct.id);
       ordersGrid.innerHTML += `
-             <div class="cart-item-container">
+             <div class="cart-item-container" data-product-id="${productDetails.id}">
             <div class="delivery-date">
               Delivery date: Wednesday, June 15
             </div>
@@ -84,7 +84,8 @@ const renderOrderSummary = () => {
   const addEventToButtons = () => {
     document.querySelectorAll('.delivery-option-input').forEach(inputBtn => {
       inputBtn.addEventListener('change', () => {
-        const productId = inputBtn.dataset.productId;
+        const elementParent = inputBtn.closest('.cart-item-container');
+        const productId = elementParent.dataset.productId;
         const deliveryId = Number(inputBtn.dataset.deliveryId);
 
         amazonCart.changeDeliveryOption(productId, deliveryId);
@@ -94,25 +95,12 @@ const renderOrderSummary = () => {
   };
 
   generateProductsHtml();
-
   addEventToButtons();
 
 
 
 
-
-
 };
-
-
-
-export const loadOrderSummary = () => {
-  renderOrderSummary();
-
-
-
-
-}
 
 
 
