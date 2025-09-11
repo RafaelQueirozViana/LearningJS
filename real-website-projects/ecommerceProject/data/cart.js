@@ -33,9 +33,6 @@ class Cart {
 
     }
 
-
-
-
     changeDeliveryOption(productId, newDeliveryId) {
         const matchingProduct = this.cartItems.find(cartItem => cartItem.id === productId);
         matchingProduct.deliveryOptionId = newDeliveryId;

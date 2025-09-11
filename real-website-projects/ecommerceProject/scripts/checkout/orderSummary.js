@@ -2,12 +2,12 @@ import { amazonCart } from '../../data/cart.js';
 import { amazonProducts } from '../../data/products.js';
 import { amazonDelivery } from '../../data/delivery.js';
 import { formatCurrency } from '../utils/money.js';
+import { renderPaymentSummary } from './paymentSummary.js';
 
 
-const ordersGrid = document.querySelector('.order-summary');
 
 export const renderOrderSummary = () => {
-  ordersGrid.innerHTML = '';
+
 
   const generateDeliveryHtml = (matchingProduct) => {
     let deliveryHtml = '';
@@ -33,6 +33,9 @@ export const renderOrderSummary = () => {
   }
 
   const generateProductsHtml = () => {
+    const ordersGrid = document.querySelector('.order-summary');
+    ordersGrid.innerHTML = '';
+
     amazonCart.cartItems.forEach(cartProduct => {
       const productDetails = amazonProducts.getProduct(cartProduct.id);
       ordersGrid.innerHTML += `
@@ -89,15 +92,13 @@ export const renderOrderSummary = () => {
         const deliveryId = Number(inputBtn.dataset.deliveryId);
 
         amazonCart.changeDeliveryOption(productId, deliveryId);
-
+        renderPaymentSummary();
       });
     });
   };
 
   generateProductsHtml();
   addEventToButtons();
-
-  console.log(amazonCart.getCartSummary());
 
 
 
