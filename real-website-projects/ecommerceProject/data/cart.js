@@ -1,4 +1,5 @@
 import { amazonProducts } from '../data/products.js';
+import { amazonDelivery } from './delivery.js';
 
 class Cart {
     constructor() {
@@ -44,9 +45,27 @@ class Cart {
     }
 
     calculateTotalItems() {
-        return this.cartItems.reduce((acumulator, currentValue) => acumulator += currentValue.quantity, 0)
+        const taxPercentage = 0.1;
+        const paymentSummary = {
+            getItemsQuantity: 0,
+            getTotalShipping: 0,
+            totalBeforeTax: 0,
+            totalTax: 0,
+            orderTotal: 0,
+        }
 
-    }
+        paymentSummary.getItemsQuantity = this.cartItems.reduce((acumulator, cartItem) => acumulator += cartItem.quantity, 0);
+        paymentSummary.getTotalShipping = this.cartItems.reduce((acumulator, cartItem) => {
+            const matchingDelivery = amazonDelivery.deliveryOptions.find(option => option.id === cartItem.deliveryOptionId);
+            return acumulator += matchingDelivery.priceCents;
+        }, 0);
+        paymentSummary.getTotalBefTax = this.cartItems.reduce((acumulator, cartItem) => acumulator += cartItem.priceCents, 0);
+
+        return paymentSummary
+
+
+
+    };
 
 
 
