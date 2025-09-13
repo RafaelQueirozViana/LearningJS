@@ -11,6 +11,11 @@ class Cart {
 
     };
 
+    findInCart(productId) {
+        const cartItem = this.cartItems.find(cartItem => cartItem.id === productId);
+        return cartItem
+    }
+
     addToCart(productId, quantityChosen) {
         const productDetails = amazonProducts.getProduct(productId);
 
@@ -34,7 +39,7 @@ class Cart {
     }
 
     changeDeliveryOption(productId, newDeliveryId) {
-        const matchingProduct = this.cartItems.find(cartItem => cartItem.id === productId);
+        const matchingProduct = this.findInCart(productId);
         matchingProduct.deliveryOptionId = newDeliveryId;
         console.log(matchingProduct.deliveryOptionId);
         this.#saveToStorage();
@@ -64,6 +69,12 @@ class Cart {
 
 
         return paymentSummary;
+    };
+
+    updateCartQuantity({ productId, newQuantity }) {
+        const matchingProduct = this.findInCart(productId);
+        matchingProduct.quantity = newQuantity;
+        this.#saveToStorage();
     };
 
 };

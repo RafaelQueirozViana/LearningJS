@@ -59,7 +59,7 @@ export const renderOrderSummary = () => {
                   <span>
                     Quantity: <span class="quantity-label">${cartProduct.quantity}</span>
                   </span>
-                  <span class="update-quantity-link link-primary">
+                  <span class="update-quantity-link link-primary js-update-button">
                     Update
                   </span>
                   <span class="delete-quantity-link link-primary">
@@ -93,6 +93,12 @@ export const renderOrderSummary = () => {
 
         amazonCart.changeDeliveryOption(productId, deliveryId);
         renderPaymentSummary();
+      });
+    });
+
+    document.querySelectorAll('.js-update-button').forEach(button => {
+      button.addEventListener('click', () => {
+        
       });
     });
 
