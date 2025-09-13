@@ -95,6 +95,9 @@ export const renderOrderSummary = () => {
         renderPaymentSummary();
       });
     });
+
+
+
   };
 
   generateProductsHtml();
@@ -104,7 +107,6 @@ export const renderOrderSummary = () => {
 
 };
 
-ConstantSourceNode.closest(generateDeliveryHtml())
 
 
 
