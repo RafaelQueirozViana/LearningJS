@@ -32,6 +32,15 @@
   align-items: start;
 }
 
+.quantity-input {
+  width: 50px;
+}
+
+.hidden {
+  display: none;
+  opacity: 0;
+}
+
 @media (max-width: 1000px) {
   .main {
     max-width: 500px;

@@ -58,11 +58,13 @@ export const renderOrderSummary = () => {
                 <div class="product-quantity">
                   <span>
                     Quantity: <span class="quantity-label">${cartProduct.quantity}</span>
+                    <input type="number" class="quantity-input hidden">
+
                   </span>
                   <span class="update-quantity-link link-primary js-update-button">
                     Update
                   </span>
-                  <span class="delete-quantity-link link-primary">
+                  <span class="delete-quantity-link link-primary js-delete-item">
                     Delete
                   </span>
                 </div>
@@ -98,7 +100,16 @@ export const renderOrderSummary = () => {
 
     document.querySelectorAll('.js-update-button').forEach(button => {
       button.addEventListener('click', () => {
-        
+        const elementParent = button.closest('.cart-item-container');
+        const productId = elementParent.dataset.productId;
+        const inputContainer = elementParent.querySelector('.quantity-input');
+        const deleteContainer = elementParent.querySelector('.js-delete-item');
+
+        inputContainer.classList.remove('hidden');
+        deleteContainer.classList.add('hidden');
+      
+
+        amazonCart.updateCartQuantity({ productId: productId, newQuantity: 4 });
       });
     });
 
