@@ -94,23 +94,39 @@ export const renderOrderSummary = () => {
         const deliveryId = Number(inputBtn.dataset.deliveryId);
 
         amazonCart.changeDeliveryOption(productId, deliveryId);
-        renderPaymentSummary();
+        renderOrderSummary()
       });
     });
 
     document.querySelectorAll('.js-update-button').forEach(button => {
+      const elementParent = button.closest('.cart-item-container');
+      const inputContainer = elementParent.querySelector('.quantity-input');
+      const deleteContainer = elementParent.querySelector('.js-delete-item');
+      const productId = elementParent.dataset.productId;
+
+
       button.addEventListener('click', () => {
-        const elementParent = button.closest('.cart-item-container');
-        const productId = elementParent.dataset.productId;
-        const inputContainer = elementParent.querySelector('.quantity-input');
-        const deleteContainer = elementParent.querySelector('.js-delete-item');
 
-        inputContainer.classList.remove('hidden');
-        deleteContainer.classList.add('hidden');
-      
+        if (button.classList.contains('js-update-button')) {
+          inputContainer.classList.remove('hidden');
+          deleteContainer.classList.add('hidden');
+          button.classList.replace('js-update-button', 'js-save-quantity');
+          button.textContent = 'Save'
+        }
 
-        amazonCart.updateCartQuantity({ productId: productId, newQuantity: 4 });
+        else if (button.classList.contains('js-save-quantity')) {
+          const inputValue = Number(inputContainer.value);
+
+          amazonCart.updateCartQuantity({ productId: productId, newQuantity: inputValue });
+          renderOrderSummary();
+
+        }
+
+
       });
+
+
+
     });
 
 
@@ -119,6 +135,8 @@ export const renderOrderSummary = () => {
 
   generateProductsHtml();
   addEventToButtons();
+  renderPaymentSummary();
+
 
 
 
