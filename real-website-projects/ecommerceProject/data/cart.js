@@ -81,4 +81,6 @@ class Cart {
 
 export const amazonCart = new Cart();
 
+console.log(amazonCart)
+
 
