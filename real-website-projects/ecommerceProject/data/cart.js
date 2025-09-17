@@ -80,7 +80,9 @@ class Cart {
 };
 
 export const amazonCart = new Cart();
+amazonCart.getCartSummary();
 
-console.log(amazonCart)
+console.log(amazonCart.getCartSummary()
+)
 
 
