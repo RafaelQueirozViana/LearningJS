@@ -85,4 +85,7 @@ amazonCart.getCartSummary();
 console.log(amazonCart.getCartSummary()
 )
 
+console.log(amazonCart.updateCartQuantity()
+)
+
 
