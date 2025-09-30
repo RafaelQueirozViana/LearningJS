@@ -79,6 +79,8 @@ class Cart {
 
 };
 
+console.log(amazonCart.findInCart(22323234))
+
 export const amazonCart = new Cart();
 amazonCart.getCartSummary();
 
