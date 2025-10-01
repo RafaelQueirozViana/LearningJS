@@ -84,10 +84,12 @@ console.log(amazonCart.findInCart(22323234))
 export const amazonCart = new Cart();
 amazonCart.getCartSummary();
 
+
 console.log(amazonCart.getCartSummary()
 )
 
 console.log(amazonCart.updateCartQuantity()
 )
 
+console.log('hello test')
 
