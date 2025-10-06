@@ -1,0 +1,1 @@
+import { simpleCalculator } from './data/calculator.js'
