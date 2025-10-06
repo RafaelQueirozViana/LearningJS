@@ -3,9 +3,9 @@ class Calculator {
         this.result = 0;
     };
 
-    addToDisplay(number) {
-        const display = document.querySelector('.display');
-        display.value += number;
+    addToDisplay(number, container) {
+        const inputDisplay = document.querySelector(`.${container}`);
+        inputDisplay.value += number;
 
     }
 
