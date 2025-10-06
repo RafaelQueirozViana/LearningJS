@@ -7,14 +7,20 @@
 
 .grid-wrapper {
     display: grid;
-    grid-template-columns: 4fr 1fr;
-    grid-template-rows: 100px 1fr 100px;
     min-height: 100vh;
-    gap: 1rem;
+    grid-template-areas:
+        "header header header"
+        "nav section section"
+        "footer footer footer";
+
+    grid-template-columns: 300px 1fr;
+    grid-template-rows: 100px 1fr 100px;
 }
 
+
+
 .grid-wrapper>* {
-    min-height: 100px;
+
     display: flex;
     align-items: center;
     justify-content: center;
@@ -24,24 +30,19 @@
 
 .grid-wrapper header {
     background-color: aqua;
-    grid-column: 1/-1;
-
-
-
+    grid-area: header;
 }
 
 .grid-wrapper nav {
     background-color: rgb(255, 255, 0);
-    grid-row: 2/ 3;
-    grid-column: 2/-1;
-
-
-
+    grid-area: nav;
 
 }
 
 .grid-wrapper section {
     background-color: rgb(81, 0, 255);
+    grid-area: section;
+
 
 
 }
@@ -54,7 +55,7 @@
 .grid-wrapper footer {
     background-color: rgb(2, 150, 249);
     font-size: 20px;
-    grid-column: 1/-1;
+    grid-area: footer;
 
 
 
