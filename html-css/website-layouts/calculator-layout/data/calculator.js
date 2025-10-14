@@ -3,8 +3,8 @@ class Calculator {
         this.result = 0;
     };
 
-    addToDisplay(number, container) {
-        const inputDisplay = document.querySelector(`.${container}`);
+    addToDisplay({ number, container }) {
+        const inputDisplay = document.querySelector(`${container}`);
         inputDisplay.value += number;
 
     }
@@ -12,4 +12,4 @@ class Calculator {
 
 };
 
-const simpleCalculator = new Calculator();
+export const simpleCalculator = new Calculator();

@@ -21,9 +21,15 @@ body {
     border-radius: 20px;
     padding: 20px;
     display: grid;
-    grid-template-rows: 2fr repeat(5, 1fr);
+    grid-template-rows: 1fr 3fr;
+    grid-template-columns: 1fr 2px;
+
+}
+
+.buttons-container {
+    display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 25px;
+    gap: 20px;
 }
 
 input {
@@ -59,7 +65,7 @@ button {
 }
 
 .equal {
-    grid-row: 5/7;
+    grid-row: 4/6;
     grid-column: 4;
 }
 

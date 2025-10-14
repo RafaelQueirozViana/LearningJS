@@ -103,7 +103,7 @@ async function loadAmazonPage() {
 
 loadAmazonPage()
 
-// addOrder({ products: [products[1], products[2]], totalCost: 2022 })
+addOrder({ products: [products[1], products[2]], totalCost: 2022 })
 
 
 
