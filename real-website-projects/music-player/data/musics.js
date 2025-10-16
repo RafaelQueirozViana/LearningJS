@@ -1,7 +1,7 @@
 class musicSystem {
 
     constructor() {
-        this.musicList = ['neffex-inside', 'neffex-rain'];
+        this.musicList = ['neffex-rain', 'neffex-inside'];
         this.musicsLength = this.musicList.length - 1;
         this.currentMusic = 0;
     }
@@ -13,6 +13,7 @@ class musicSystem {
     playMusic(audioPlayer) {
         audioPlayer.play();
         console.log(this.currentMusic);
+
     }
 
     nextMusic(audioPlayer) {
@@ -24,11 +25,11 @@ class musicSystem {
             this.currentMusic++;
 
         }
-
-        audioPlayer.src = `./src/audio/${this.musicList[this.currentMusic]}.mp3`
-
         console.log(this.currentMusic)
-        console.log(this.musicList[this.currentMusic])
+        audioPlayer.src = `./src/audio/${this.musicList[this.currentMusic]}.mp3`
+        audioPlayer.play();
+
+
         // audioPlayer.play();
 
 

@@ -29,3 +29,21 @@ h1 {
     height: 40px;
     cursor: pointer;
 }
+
+.toggle-button img {
+    display: none;
+}
+
+.toggle-button.pause .pause-button {
+    display: block;
+}
+
+.toggle-button.play .play-button {
+    display: block;
+}
+
+.music-box__control-panel {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
