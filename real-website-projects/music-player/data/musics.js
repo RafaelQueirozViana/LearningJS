@@ -1,7 +1,7 @@
 class musicSystem {
 
     constructor() {
-        this.musicList = ['neffex-inside', 'neffex-rain'];
+        this.musicList = ['neffex-inside', 'neffex-rain', 'neffex-other'];
         this.musicsLength = this.musicList.length - 1;
         this.currentMusic = 0;
     }
@@ -16,18 +16,21 @@ class musicSystem {
     }
 
     nextMusic(audioPlayer) {
-        console.log(this.currentMusic);
-
-
         if (this.currentMusic === this.musicsLength) {
             this.currentMusic = 0
         }
 
         else {
             this.currentMusic++;
-            audioPlayer.src = this.musicList[this.currentMusic + 1];
-            audioPlayer.play();
+
         }
+
+        audioPlayer.src = `./src/audio/${this.musicList[this.currentMusic]}`
+
+        console.log(this.currentMusic)
+        console.log(this.musicList[this.currentMusic])
+        // audioPlayer.play();
+
 
 
 
@@ -42,9 +45,7 @@ class musicSystem {
             this.currentMusic = this.musicsLength;
         }
 
-
-
-        audioPlayer.src = this.musicList[this.currentMusic - 1];
+        audioPlayer.src = `./src/audio/${this.musicList[this.currentMusic - 1]}`;
         audioPlayer.play();
     }
 
