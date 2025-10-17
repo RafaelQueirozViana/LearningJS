@@ -47,3 +47,14 @@ h1 {
     align-items: center;
     gap: 20px;
 }
+
+.music-box__name {
+    text-transform: capitalize;
+    letter-spacing: 1.5px;
+}
+
+.music-box__author-name {
+    font-size: 1.3rem;
+    color: #ffffffa3;
+    text-transform: uppercase;
+}

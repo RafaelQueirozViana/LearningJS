@@ -8,6 +8,16 @@ const audioPlayer = document.getElementById('audio-player');
 
 
 const loadMusicPage = () => {
+    const musicDetails = musicManager.getMusicDetails();
+
+    const musicImage = document.querySelector('.music-box__image');
+    const musicText = document.querySelector('.music-box__name');
+    const authorText = document.querySelector('.music-box__author-name');
+
+    musicImage.src = musicDetails.image;
+    musicText.textContent = musicDetails.name;
+    authorText.textContent = musicDetails.author;
+
 
     const addEventListeners = () => {
         toggleMusicButton.addEventListener('click', () => {

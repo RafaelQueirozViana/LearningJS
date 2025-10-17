@@ -30,7 +30,7 @@ class musicSystem {
 
     nextMusic(audioPlayer) {
         if (this.currentMusic === this.musicsLength) {
-            this.currentMusic = 0
+            this.currentMusic = 0;
         }
 
         else {
@@ -39,14 +39,6 @@ class musicSystem {
 
         audioPlayer.src = `./src/audio/${this.musicList[this.currentMusic].id}.mp3`
         audioPlayer.play();
-
-
-        // audioPlayer.play();
-
-
-
-
-
 
 
     }
@@ -68,6 +60,13 @@ class musicSystem {
 
 
     }
+
+    getMusicDetails() {
+        const currentMusic = this.musicList[this.currentMusic];
+        return currentMusic;
+    }
+
+
 
 }
 
