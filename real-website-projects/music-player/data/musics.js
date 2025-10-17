@@ -1,14 +1,16 @@
 class musicSystem {
 
+
+
     constructor() {
         this.musicList = [
             {
-                name: 'neffex rain',
+                name: 'neffex-rain',
                 author: 'neffex',
                 image: 'https://i.scdn.co/image/ab67616d00001e02ef862ce3e11a0619c493478f',
                 id: 1,
             }, {
-                name: 'neffex inside',
+                name: 'neffex-inside',
                 author: 'neffex',
                 image: 'https://i1.sndcdn.com/artworks-xXTdcy7omxVHzZ7K-83upCA-t1080x1080.jpg',
                 id: 2,
@@ -16,8 +18,10 @@ class musicSystem {
 
         ];
         this.musicsLength = this.musicList.length - 1;
-        this.currentMusic = 0;
+        this.currentMusic = JSON.parse(localStorage.getItem('currentMusic')) || 0;
     }
+
+
 
     pauseMusic(audioPlayer) {
         audioPlayer.pause();
@@ -29,16 +33,23 @@ class musicSystem {
     }
 
     nextMusic(audioPlayer) {
-        if (this.currentMusic === this.musicsLength) {
-            this.currentMusic = 0;
+        console.log(this.currentMusic);
+
+        if (this.currentMusic !== 1) {
+            this.currentMusic++;
+
         }
 
         else {
-            this.currentMusic++;
+            this.currentMusic = 0;
         }
 
-        audioPlayer.src = `./src/audio/${this.musicList[this.currentMusic].id}.mp3`
+
+        audioPlayer.src = `./src/audio/${this.musicList[this.currentMusic].name}.mp3`
         audioPlayer.play();
+
+
+
 
 
     }
@@ -53,10 +64,12 @@ class musicSystem {
             this.currentMusic--;
         }
 
-        audioPlayer.src = `./src/audio/${this.musicList[this.currentMusic].id}.mp3`
+        audioPlayer.src = `./src/audio/${this.musicList[this.currentMusic].name}.mp3`
+        audioPlayer.play();
 
-        console.log(this.musicList[this.currentMusic])
-        audioPlayer.play()
+
+
+
 
 
     }
@@ -71,3 +84,6 @@ class musicSystem {
 }
 
 export const musicManager = new musicSystem();
+
+console.log(localStorage)
+

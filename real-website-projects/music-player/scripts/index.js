@@ -8,16 +8,18 @@ const audioPlayer = document.getElementById('audio-player');
 
 
 const loadMusicPage = () => {
-    const musicDetails = musicManager.getMusicDetails();
 
-    const musicImage = document.querySelector('.music-box__image');
-    const musicText = document.querySelector('.music-box__name');
-    const authorText = document.querySelector('.music-box__author-name');
+    const loadMusicHtml = () => {
+        const musicDetails = musicManager.getMusicDetails();
 
-    musicImage.src = musicDetails.image;
-    musicText.textContent = musicDetails.name;
-    authorText.textContent = musicDetails.author;
+        const musicImage = document.querySelector('.music-box__image');
+        const musicText = document.querySelector('.music-box__name');
+        const authorText = document.querySelector('.music-box__author-name');
 
+        musicImage.src = musicDetails.image;
+        musicText.textContent = musicDetails.name;
+        authorText.textContent = musicDetails.author;
+    }
 
     const addEventListeners = () => {
         toggleMusicButton.addEventListener('click', () => {
@@ -34,18 +36,25 @@ const loadMusicPage = () => {
 
         nextButton.addEventListener('click', () => {
             musicManager.nextMusic(audioPlayer);
-            toggleMusicButton.classList.replace('play', 'pause')
+            toggleMusicButton.classList.replace('play', 'pause');
+            loadMusicHtml()
+
         });
 
         backButton.addEventListener('click', () => {
             musicManager.backMusic(audioPlayer);
-            toggleMusicButton.classList.replace('play', 'pause')
+            toggleMusicButton.classList.replace('play', 'pause');
+            loadMusicHtml();
+
+
 
 
         });
     }
 
     addEventListeners();
+    loadMusicHtml();
+
 
 
 

@@ -58,3 +58,12 @@ h1 {
     color: #ffffffa3;
     text-transform: uppercase;
 }
+
+.music-box__img-container {
+    width: 350px;
+}
+
+.music-box__img-container img {
+    width: 100%;
+    border-radius: 5px;
+}
