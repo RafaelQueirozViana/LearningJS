@@ -1,0 +1,43 @@
+.header__nav {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    height: 80px;
+}
+
+.header__input-box {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 38px;
+
+}
+
+.header__input-box input {
+    width: 100%;
+    font-size: var(--font-size-small);
+    outline: none;
+
+
+}
+
+
+.header__input-box input::placeholder {
+    color: #0000005f;
+
+}
+
+.header__links-list {
+    display: flex;
+    justify-self: end;
+    gap: 40px;
+    align-items: center;
+}
+
+.header__categories-list {
+    background-color: var(--dark-gray);
+}
+
+.header__categories-list li a {
+    color: var(--light-gray);
+}
