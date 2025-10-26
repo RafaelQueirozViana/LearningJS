@@ -1,3 +1,5 @@
+header {}
+
 .header__nav {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -34,10 +36,24 @@
     align-items: center;
 }
 
-.header__categories-list {
+.header__bottom {
     background-color: var(--dark-gray);
 }
 
+.header__categories-list {
+    display: flex;
+    justify-content: space-between;
+}
+
+
 .header__categories-list li a {
+    display: flex;
+    align-items: center;
+    gap: 15px;
     color: var(--light-gray);
+}
+
+
+.header__categories-list li img {
+    opacity: 0.6;
 }
