@@ -13,14 +13,20 @@ body {
 :root {
     --lateral-website-spacing: 1rem;
     --font-size-small: 18px;
+    --font-size-medium: 28px;
+    --font-size-large: 2.5rem;
+    --font-extra-large: 3.5rem;
+    --font-ultra-large: 5.5rem;
+
     --dark-gray: #2E2E2E;
     --light-gray: #979797;
 }
 
 .centered-spacing {
-    max-width: 1600px;
+    max-width: 1400px;
+    width: 100%;
     margin: 0 auto;
-    padding: 1rem var(--lateral-website-spacing);
+    padding: 0 var(--lateral-website-spacing);
 }
 
 a {
@@ -43,4 +49,22 @@ p,
 a,
 li {
     font-size: var(--font-size-small);
+}
+
+button {
+    cursor: pointer;
+}
+
+.button-border {
+    border: 1px solid #fff;
+    text-align: center;
+    border-radius: 10px;
+    background-color: transparent;
+    color: #fff;
+    padding: 1rem 3rem;
+    font-size: var(--font-size-small);
+}
+
+.extra-bold {
+    font-weight: 600;
 }
