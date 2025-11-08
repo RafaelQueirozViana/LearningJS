@@ -127,8 +127,6 @@ header nav ul li:hover:after {
 .product-item.active {
     transform: translateX(0);
 
-
-
 }
 
 
