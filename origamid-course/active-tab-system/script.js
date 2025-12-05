@@ -1,11 +1,12 @@
 const initTabMenu = () => {
 
-    const activeClass = 'active'
+    const activeClass = 'ativo'
     const tabClickMenu = document.querySelectorAll('.js-tabmenu li');
-    const tabDescriptions = document.querySelectorAll('.js-tab-description aside');
+    const tabDescriptions = document.querySelectorAll('.js-tab-description section');
 
 
     if (tabClickMenu.length && tabDescriptions.length) {
+
         const openTabDesc = (index) => {
             tabDescriptions.forEach(box => box.classList.remove(activeClass));
             tabDescriptions[index].classList.add(activeClass);
@@ -13,7 +14,8 @@ const initTabMenu = () => {
 
         tabClickMenu.forEach((btn, index) => {
             btn.addEventListener('click', () => {
-                openTabDesc(index);
+                openTabDesc(index)
+
             })
         })
     }
@@ -22,8 +24,7 @@ const initTabMenu = () => {
 initTabMenu();
 
 const initAccordion = () => {
-
-    const activeClass = 'active';
+    const activeClass = 'ativo';
     const accordionButtons = document.querySelectorAll('.js-accordion h3')
     const accordionBox = document.querySelectorAll('.js-accordion li');
 
@@ -42,9 +43,7 @@ const initAccordion = () => {
 initAccordion()
 
 const initExternalLinks = () => {
-
     const internalLinks = document.querySelectorAll('.js-internal-links a[href^="#"]');
-
 
     function scrollToSection(event) {
         event.preventDefault();
@@ -56,8 +55,6 @@ const initExternalLinks = () => {
             block: "start"
         })
 
-
-
     }
 
 
@@ -66,3 +63,5 @@ const initExternalLinks = () => {
         link.addEventListener('click', scrollToSection)
     })
 }
+
+initExternalLinks()
