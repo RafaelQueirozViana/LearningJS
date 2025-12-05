@@ -19,20 +19,41 @@ const initTabMenu = () => {
     }
 }
 
-initTabMenu()
+initTabMenu();
+
+const initAccordion = () => {
+
+    const activeClass = 'active';
+    const accordionButtons = document.querySelectorAll('.js-accordion h3')
+    const accordionBox = document.querySelectorAll('.js-accordion li');
 
 
-const activeClass = 'active';
-const accordionButtons = document.querySelectorAll('.js-accordion h3')
-const accordionBox = document.querySelectorAll('.js-accordion li');
+    function activeAccordion() {
+        const container = this.parentElement;
+        container.classList.toggle(activeClass);
+    }
 
 
-function activeAccordion() {
-    const container = this.parentElement;
-    container.classList.toggle(activeClass);
+    accordionButtons.forEach(button => {
+        button.addEventListener('click', activeAccordion)
+    });
+}
+
+initAccordion()
+
+const internalLinks = document.querySelectorAll('.js-internal-links a[href^="#"]');
+
+
+function scrollToSection(event) {
+    event.preventDefault();
+    const href = event.currentTarget.getAttribute('href');
+    const section = document.querySelector(href)
+    console.log(section.offsetTop)
+    window.scrollTo(0, section.offsetTop)
 }
 
 
-accordionButtons.forEach(button => {
-    button.addEventListener('click', activeAccordion)
-});
+
+internalLinks.forEach(link => {
+    link.addEventListener('click', scrollToSection)
+})
