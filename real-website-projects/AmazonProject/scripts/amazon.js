@@ -2,6 +2,9 @@ import { products, loadProducts } from '../data/products.js';
 import { amazonCart } from '../data/cart.js';
 
 const loadProductsGrid = () => {
+  console.log(products)
+
+
   const productGrid = document.querySelector('.js-all-products');
   const cartNumberText = document.querySelector('.js-cart-quantity');
 
@@ -92,10 +95,14 @@ const loadProductsGrid = () => {
 };
 
 
+
+
 async function loadAmazonPage() {
   const products = await loadProducts();
 
   loadProductsGrid();
+
+
 
 }
 
@@ -103,7 +110,6 @@ async function loadAmazonPage() {
 
 loadAmazonPage()
 
-addOrder({ products: [products[1], products[2]], totalCost: 2022 })
 
 
 
