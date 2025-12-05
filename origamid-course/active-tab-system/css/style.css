@@ -235,10 +235,17 @@ body {
   display: none;
 }
 
-.js-tabcontent section.ativo {
-  display: block !important;
+
+
+
+
+.js-tab-description section.ativo {
+  display: block;
   animation: show .5s forwards;
+
 }
+
+
 
 @keyframes show {
   from {
@@ -269,6 +276,17 @@ body {
   display: block;
   animation: slideDown .5s forwards;
 }
+
+.js-scroll {
+  opacity: 0;
+}
+
+.js-scroll.ativo {
+  opacity: 1;
+  transition: opacity .3s ease;
+}
+
+
 
 @keyframes slideDown {
   from {
