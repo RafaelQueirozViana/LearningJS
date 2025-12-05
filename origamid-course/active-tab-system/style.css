@@ -1,3 +1,14 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    padding: 30px;
+}
+
+
 #first-section {
     display: flex;
     flex-direction: column;
@@ -15,9 +26,13 @@ button {
 
 ul,
 li {
+
+    list-style: none;
+}
+
+.animals-list {
     display: flex;
     gap: 20px;
-    list-style: none;
 }
 
 #second-section {
@@ -28,7 +43,7 @@ li {
 
 .js-tab-description {
     margin: 0 auto;
-    max-width: 500px;
+    max-width: 1000px;
 }
 
 .js-tab-description aside {
@@ -38,6 +53,45 @@ li {
 .js-tab-description aside.active {
     display: block;
     animation: show .4s forwards;
+}
+
+#faq-section {
+    margin: 0 auto;
+    margin-top: 200px;
+
+    max-width: 1000px;
+}
+
+.faq-container {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+}
+
+.faq-container li {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+
+.js-accordion li.active p {
+    display: block !important;
+    animation: show .4s ease;
+}
+
+
+
+
+.faq-container h3 {
+    font-size: 2.5rem;
+    text-transform: capitalize;
+}
+
+
+.faq-container p {
+    font-size: 1.2rem;
+    display: none;
 }
 
 @keyframes show {
