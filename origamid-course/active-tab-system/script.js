@@ -21,6 +21,7 @@ const initTabMenu = () => {
 
 initTabMenu()
 
+
 const activeClass = 'active';
 const accordionButtons = document.querySelectorAll('.js-accordion h3')
 const accordionBox = document.querySelectorAll('.js-accordion li');
