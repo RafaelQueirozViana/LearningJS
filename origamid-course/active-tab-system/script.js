@@ -41,19 +41,28 @@ const initAccordion = () => {
 
 initAccordion()
 
-const internalLinks = document.querySelectorAll('.js-internal-links a[href^="#"]');
+const initExternalLinks = () => {
+
+    const internalLinks = document.querySelectorAll('.js-internal-links a[href^="#"]');
 
 
-function scrollToSection(event) {
-    event.preventDefault();
-    const href = event.currentTarget.getAttribute('href');
-    const section = document.querySelector(href)
-    console.log(section.offsetTop)
-    window.scrollTo(0, section.offsetTop)
+    function scrollToSection(event) {
+        event.preventDefault();
+        const href = event.currentTarget.getAttribute('href');
+        const section = document.querySelector(href);
+
+        section.scrollIntoView({
+            behavior: 'smooth',
+            block: "start"
+        })
+
+
+
+    }
+
+
+
+    internalLinks.forEach(link => {
+        link.addEventListener('click', scrollToSection)
+    })
 }
-
-
-
-internalLinks.forEach(link => {
-    link.addEventListener('click', scrollToSection)
-})
