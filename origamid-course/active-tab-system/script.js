@@ -94,28 +94,76 @@ function initScrollAnimation() {
 
 initScrollAnimation();
 
+const testingStrings = () => {
 
-const completeName = 'Anthony gomes';
+    const completeName = 'Anthony gomes';
 
-const firstName = completeName.slice(0, completeName.indexOf(' '));
+    const firstName = completeName.slice(0, completeName.indexOf(' '));
 
-const cpf = '333.444.555-01';
+    const cpf = '333.444.555-01';
 
-const formatedCpf = cpf.replaceAll('.', '').replaceAll('-', '');
+    const formatedCpf = cpf.replaceAll('.', '').replaceAll('-', '');
 
-const value = ' R$ 3223';
+    const value = ' R$ 3223';
 
-const formatedvalue = value.trim();
-
-
-
+    const formatedvalue = value.trim();
 
 
-console.log(firstName)
+    console.log(firstName)
 
-console.log(formatedCpf);
+    console.log(formatedCpf);
 
-console.log(formatedvalue)
+    console.log(formatedvalue)
+
+
+}
+
+
+const transacoes = [
+    {
+        descricao: 'Taxa do Pão',
+        valor: 'R$ 39',
+    },
+    {
+        descricao: 'Taxa do Mercado',
+        valor: 'R$ 129',
+    },
+    {
+        descricao: 'Recebimento de Cliente',
+        valor: 'R$ 99',
+    },
+    {
+        descricao: 'Taxa do Banco',
+        valor: 'R$ 129',
+    },
+    {
+        descricao: 'Recebimento de Cliente',
+        valor: 'R$ 49',
+    },
+];
+
+const availableValue = transacoes.reduce((acumulator, transaction) => {
+    const description = transaction.descricao.toLowerCase();
+    const transactionValue = Number(transaction.valor.replace(/[^\d]/g, ''));
+
+    if (description.includes('tax')) {
+        return acumulator -= transactionValue;
+    }
+    else {
+        return acumulator += transactionValue;
+
+    }
+
+
+
+
+}, 0);
+
+
+console.log(availableValue)
+
+
+
 
 
 
