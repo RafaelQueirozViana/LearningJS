@@ -109,3 +109,19 @@ const stringMethodsExercises = () => {
 
 
 }
+
+const numberMethodsExercises = () => {
+    const priceCents = 43223;
+    const price = +(priceCents / 100).toFixed(2);
+
+    const numbers = '32, 21, 2, 56 , 21';
+    const numbersArray = numbers.split(', ');
+    const maxNumber = Math.max(...numbersArray)
+    console.log(maxNumber)
+
+
+}
+
+numberMethodsExercises();
+
+
