@@ -66,24 +66,58 @@ const initExternalLinks = () => {
 
 initExternalLinks()
 
-
-const sections = document.querySelectorAll('.js-scroll');
-const sectionHalf = window.innerHeight * 0.6;
-
-function scrolAnimation() {
-    const activeClass = 'ativo'
-
-    sections.forEach(section => {
-        const sectionTop = section.getBoundingClientRect().top - sectionHalf;
-
-        if (sectionTop <= 0) {
-            section.classList.add(activeClass);
-        }
-    });
+function initScrollAnimation() {
 
 
-};
+    const sections = document.querySelectorAll('.js-scroll');
+    const sectionHalf = window.innerHeight * 0.6;
 
-scrolAnimation();
+    function scrolAnimation() {
+        const activeClass = 'ativo'
 
-window.addEventListener('scroll', scrolAnimation)
+        sections.forEach(section => {
+            const sectionTop = section.getBoundingClientRect().top - sectionHalf;
+
+            if (sectionTop <= 0) {
+                section.classList.add(activeClass);
+            }
+        });
+
+
+    };
+
+    scrolAnimation();
+
+    window.addEventListener('scroll', scrolAnimation)
+}
+
+
+initScrollAnimation();
+
+
+const completeName = 'Anthony gomes';
+
+const firstName = completeName.slice(0, completeName.indexOf(' '));
+
+const cpf = '333.444.555-01';
+
+const formatedCpf = cpf.replaceAll('.', '').replaceAll('-', '');
+
+const value = ' R$ 3223';
+
+const formatedvalue = value.trim();
+
+
+
+
+
+console.log(firstName)
+
+console.log(formatedCpf);
+
+console.log(formatedvalue)
+
+
+
+
+
