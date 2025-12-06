@@ -117,7 +117,24 @@ const numberMethodsExercises = () => {
     const numbers = '32, 21, 2, 56 , 21';
     const numbersArray = numbers.split(', ');
     const maxNumber = Math.max(...numbersArray)
-    console.log(maxNumber)
+
+    const pricesListCents = [20000, 4351, 183000, 355003];
+
+    const formatPrice = (priceCents) => {
+        const price = (priceCents / 100).toFixed(2);
+        return `R$ ${price}`
+    }
+
+    const priceListFormated = pricesListCents.map(currentPrice => formatPrice(currentPrice));
+
+    console.log(priceListFormated)
+
+
+
+
+
+
+
 
 
 }
