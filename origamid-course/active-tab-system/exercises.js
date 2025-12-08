@@ -139,6 +139,52 @@ const numberMethodsExercises = () => {
 
 }
 
-numberMethodsExercises();
+const arrayMethods = () => {
+    let instruments = ['violin', 'sax', 'flaut', 'microphone'];
+    instruments.sort();
+
+
+    const compras = [
+        {
+            item: 'Banana',
+            preco: 'R$ 4,99'
+        },
+        {
+            item: 'Ovo',
+            preco: 'R$ 2,99'
+        },
+        {
+            item: 'Carne',
+            preco: 'R$ 25,49'
+        },
+        {
+            item: 'Refrigerante',
+            preco: 'R$ 5,35'
+        },
+        {
+            item: 'Queijo',
+            preco: 'R$ 30,60'
+        }
+    ]
+
+    const totalPurchasesValue = compras.reduce((acumulator, purchase) => {
+        const purchasePrice = +purchase.preco.replace('R$ ', '').replace(',', '.');
+        return acumulator + purchasePrice;
+    }, 0);
+
+
+
+
+
+}
+
+
+const learningObjectMethods = () => {
+
+};
+
+
+
+
 
 
