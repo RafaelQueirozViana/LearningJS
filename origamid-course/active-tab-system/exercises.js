@@ -180,8 +180,21 @@ const arrayMethods = () => {
 
 
 const learningObjectMethods = () => {
+    const fruits = ['banana', 'strawberry', 'orange']
+    const user = {
+        name: 'raf',
+        age: 19,
+    };
+
+    console.log(Object.values(user).forEach(attribute => console.log(attribute)))
 
 };
+
+const a = 'hello'
+
+console.log(String.prototype)
+
+learningObjectMethods()
 
 
 
