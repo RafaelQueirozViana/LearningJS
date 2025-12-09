@@ -27,11 +27,11 @@ initTabMenu();
 
 const initAccordion = () => {
     const activeClass = 'ativo';
-    const accordionButtons = document.querySelectorAll('.js-accordion h3')
-    const accordionBox = document.querySelectorAll('.js-accordion li');
+    const accordionButtons = document.querySelectorAll('[data-accordion="on"] h3')
+    const accordionBox = document.querySelectorAll('[data-accordion="on"] li');
 
 
-    function activeAccordion() {
+    function activeAccordion(event) {
         const container = this.parentElement;
         container.classList.toggle(activeClass);
     }
@@ -50,7 +50,7 @@ const initExternalLinks = () => {
     function scrollToSection(event) {
         event.preventDefault();
         const href = event.currentTarget.getAttribute('href');
-        const section = document.querySelector(href);
+        const section = document.querySelector(href); // it returns #nameofsection
 
         section.scrollIntoView({
             behavior: 'smooth',
@@ -69,9 +69,8 @@ const initExternalLinks = () => {
 initExternalLinks()
 
 function initScrollAnimation() {
+    const sections = document.querySelectorAll('[data-section-anim="scroll"]');
 
-
-    const sections = document.querySelectorAll('.js-scroll');
     const sectionHalf = window.innerHeight * 0.6;
 
     function scrolAnimation() {

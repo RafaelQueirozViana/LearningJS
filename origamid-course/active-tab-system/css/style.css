@@ -253,29 +253,29 @@ body {
 
 
 
-.js .js-accordion li p {
+.js [data-accordion="on"] li p {
   display: none;
 }
 
-.js-accordion li h3::after {
+[data-accordion="on"] li h3::after {
   content: '⬎';
   margin-left: 10px;
 }
 
-.js-accordion li.ativo h3::after {
+[data-accordion="on"] li.ativo h3::after {
   content: '⬏';
 }
 
-.js-accordion li.ativo p {
+[data-accordion="on"] li.ativo p {
   display: block;
   animation: slideDown .5s forwards;
 }
 
-.js-scroll {
+[data-section-anim="scroll"] {
   opacity: 0;
 }
 
-.js-scroll.ativo {
+[data-section-anim="scroll"].ativo {
   opacity: 1;
   transition: opacity .3s ease;
 }
