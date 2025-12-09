@@ -180,21 +180,54 @@ const arrayMethods = () => {
 
 
 const learningObjectMethods = () => {
-    const fruits = ['banana', 'strawberry', 'orange']
-    const user = {
-        name: 'raf',
-        age: 19,
+    // Object Keys
+
+    const car = {
+        brand: "Toyota",
+        model: "Corolla",
+        year: 2020
     };
 
-    console.log(Object.values(user).forEach(attribute => console.log(attribute)))
+    const carAttributes = Object.keys(car);
+
+    const user = {
+        name: "Lucas",
+        age: 19,
+        country: "Brazil"
+    };
+
+    const propertiesLength = Object.keys(user).length;
+    console.log(propertiesLength);
+
+
+
+
+    // Object Values
+
+    const product = {
+        name: "Mouse",
+        price: 50,
+        stock: 20
+    };
+
+    const values = Object.values(product);
+    console.log(values)
+
+
+
+
 
 };
 
-const a = 'hello'
+const domEffects = () => {
 
-console.log(String.prototype)
+}
 
-learningObjectMethods()
+domEffects();
+
+
+
+
 
 
 
