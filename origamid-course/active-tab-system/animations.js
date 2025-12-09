@@ -9,7 +9,9 @@ const initTabMenu = () => {
 
         const openTabDesc = (index) => {
             tabDescriptions.forEach(box => box.classList.remove(activeClass));
-            tabDescriptions[index].classList.add(activeClass);
+            const matchTextBox = tabDescriptions[index];
+
+            matchTextBox.classList.add(activeClass);
         }
 
         tabClickMenu.forEach((btn, index) => {
