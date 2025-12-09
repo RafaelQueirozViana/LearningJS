@@ -2,7 +2,7 @@ const initTabMenu = () => {
 
     const activeClass = 'ativo'
     const tabClickMenu = document.querySelectorAll('.js-tabmenu li');
-    const tabDescriptions = document.querySelectorAll('.js-tab-description section');
+    const tabDescriptions = document.querySelectorAll('[data-tab="content"] section');
 
 
     if (tabClickMenu.length && tabDescriptions.length) {

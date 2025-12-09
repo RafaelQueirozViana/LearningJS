@@ -231,7 +231,7 @@ body {
   }
 }
 
-.js .js-tab-description section {
+.js [data-tab="content"] section {
   display: none;
 }
 
@@ -239,21 +239,17 @@ body {
 
 
 
-.js-tab-description section.ativo {
+[data-tab="content"] section.ativo {
   display: block;
 }
 
-.js-tab-description section.ativo[data-animate-direction='anim-down'] {
+[data-tab="content"] section.ativo[data-animate-direction='anim-down'] {
   animation: show .5s forwards;
 }
 
-
-.js-tab-description section.ativo[data-animate-direction='anim-right'] {
+[data-tab="content"] section.ativo[data-animate-direction='anim-right'] {
   animation: slideDown .5s forwards;
 }
-
-
-
 
 
 
