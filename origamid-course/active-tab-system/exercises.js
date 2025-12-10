@@ -220,9 +220,9 @@ const learningObjectMethods = () => {
 };
 
 const domEffects = () => {
-const learningModal = () => {
-    
-};
+    const learningModal = () => {
+
+    };
 };
 
 domEffects();

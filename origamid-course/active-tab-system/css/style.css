@@ -24,6 +24,10 @@ body {
   background: #faf6ed;
   color: #222;
   -webkit-font-smoothing: antialiased;
+
+}
+
+.grid-section {
   display: grid;
   grid-template-columns: 1fr 120px minmax(300px, 800px) 1fr;
 }
@@ -231,12 +235,42 @@ body {
   }
 }
 
-.js [data-tab="content"] section {
-  display: none;
+.login-modal {
+  background-color: #FB5;
+  width: 100%;
+  max-width: 500px;
+  height: 400px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 15px;
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+}
+
+
+.login-modal__container form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+
+.login-modal__container form div {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
 }
 
 
 
+
+.js [data-tab="content"] section {
+  display: none;
+}
 
 
 [data-tab="content"] section.ativo {
