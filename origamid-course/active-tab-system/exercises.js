@@ -220,12 +220,22 @@ const learningObjectMethods = () => {
 };
 
 const domEffects = () => {
-    const learningModal = () => {
+    const learningEvent = () => {
 
+        function mostUsedEventFeatures(event) {
+            console.log(event.type); // get the type of eventListener, like click or scroll
+            console.log(event.preventDefault); // block the default of an element
+            console.log(event.currentTarget) // get the exactly element that you specified with the class in the addEventListener, for ex: in this case will always return the div with #test
+            console.log(event.target) // gets the exactly element that was clicked, independent of the element wasn't the element that you specified using addEventListener.
+        }
+
+
+        document.querySelector('#test').addEventListener('click', mostUsedEventFeatures)
     };
+
+    learningEvent()
 };
 
-domEffects();
 
 
 

@@ -15,12 +15,23 @@ export const initModal = () => {
             modalContainer.classList.add(activeClass);
 
         }
-    }
 
-    function closeModal() {
+
+
+
+    };
+
+    function closeModal(event) {
+        console.log(event)
         modalContainer.classList.remove(activeClass);
 
-    }
+    };
+    closeModal()
+
+    function clickOutsiteModal() {
+
+        closeModal();
+    };
 
     openButton.addEventListener('click', openModal);
     closeButton.addEventListener('click', closeModal);
