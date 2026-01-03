@@ -6,35 +6,25 @@ export const initModal = () => {
 
     function openModal(event) {
         event.preventDefault();
-
-        if (modalContainer.classList.contains(activeClass)) {
-            closeModal();;
-        }
-
-        else {
-            modalContainer.classList.add(activeClass);
-
-        }
-
-
-
+        modalContainer.classList.add(activeClass);
 
     };
 
     function closeModal(event) {
-        console.log(event)
         modalContainer.classList.remove(activeClass);
 
     };
-    closeModal()
 
-    function clickOutsiteModal() {
+    function clickOutsiteModal(event) {
+        if (event.target === event.currentTarget) {
+            closeModal()
+        }
 
-        closeModal();
     };
 
     openButton.addEventListener('click', openModal);
     closeButton.addEventListener('click', closeModal);
+    modalContainer.addEventListener('click', clickOutsiteModal);
 
 }
 
