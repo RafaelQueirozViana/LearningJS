@@ -4,26 +4,21 @@ export const initModal = () => {
     const modalContainer = document.querySelector('[data-modal="container"');
     const activeClass = 'active'
 
-    function openModal(event) {
+    function toggleModal(event) {
         event.preventDefault();
-        modalContainer.classList.add(activeClass);
-
-    };
-
-    function closeModal(event) {
-        modalContainer.classList.remove(activeClass);
+        modalContainer.classList.toggle(activeClass);
 
     };
 
     function clickOutsiteModal(event) {
         if (event.target === event.currentTarget) {
-            closeModal()
+            toggleModal(event);
         }
 
     };
 
-    openButton.addEventListener('click', openModal);
-    closeButton.addEventListener('click', closeModal);
+    openButton.addEventListener('click', toggleModal);
+    closeButton.addEventListener('click', toggleModal);
     modalContainer.addEventListener('click', clickOutsiteModal);
 
 }
