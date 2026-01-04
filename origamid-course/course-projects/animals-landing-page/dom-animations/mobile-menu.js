@@ -1,11 +1,20 @@
+import { outsideclick } from './outsideclick.js'
+
 export const initMobileMenu = () => {
+
     const menuButton = document.querySelector('[data-menu="button"]');
     const menuList = document.querySelector('[data-menu="list"');
 
 
 
-    const toggleMobileMenu = () => {
-        menuList.classList.toggle('active')
+    function toggleMobileMenu() {
+        menuButton.classList.add('active');
+        menuList.classList.add('active');
+        outsideclick(menuList, ['click', 'touchstart'], () => {
+            menuButton.classList.remove('active');
+            menuList.classList.remove('active');
+
+        })
     }
 
 

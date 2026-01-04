@@ -6,13 +6,14 @@ button[data-menu="button"] {
     font-size: 1.1rem;
     border: none;
     margin: 10px;
-    display: flex;
     align-items: center;
     position: relative;
     z-index: 1111;
     gap: 5px;
     cursor: pointer;
+    transition: transform .3s ease;
     display: none;
+
 
 }
 
@@ -22,8 +23,13 @@ button[data-menu="button"]::before {
     height: 2px;
     background: #fff;
     box-shadow: 0 5px #fff, 0 -5px #fff;
+    transition: transform .3s ease;
+
+}
 
 
+button[data-menu="button"].active::before {
+    transform: rotate(90deg);
 }
 
 
@@ -31,7 +37,7 @@ button[data-menu="button"]::before {
 @media(max-width:700px) {
 
     button[data-menu="button"] {
-        display: block;
+        display: flex;
     }
 
 
