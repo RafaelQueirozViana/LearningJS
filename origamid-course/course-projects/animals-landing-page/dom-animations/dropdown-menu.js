@@ -15,9 +15,6 @@ export const initDropdown = () => {
     };
 };
 
-setTimeout(() => {
-
-}, 1000)
 
 
 
