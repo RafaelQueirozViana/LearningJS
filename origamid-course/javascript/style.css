@@ -1,0 +1,7 @@
+body {
+    background-color: blue;
+}
+
+body.active {
+    background-color: red;
+}
