@@ -30,6 +30,8 @@ body {
 .grid-section {
   display: grid;
   grid-template-columns: 1fr 120px minmax(300px, 800px) 1fr;
+  padding: 0 !important;
+
 }
 
 .menu {
@@ -61,8 +63,6 @@ body {
 [data-dropdown] {
   position: relative;
 }
-
-
 
 [data-dropdown] .dropdown-menu {
   display: none;
@@ -103,8 +103,6 @@ body {
   border-left: 10px solid transparent;
   border-right: 10px solid transparent;
   border-bottom: 10px solid #E54;
-
-
 }
 
 
@@ -248,8 +246,8 @@ body {
 }
 
 @media (max-width: 700px) {
-  body {
-    grid-template-columns: 1fr;
+  .grid-section {
+    grid-template-columns: 1fr !important;
   }
 
   .menu,

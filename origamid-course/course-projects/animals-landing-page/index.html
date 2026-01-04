@@ -9,13 +9,15 @@
     <link href="https://fonts.googleapis.com/css?family=Playfair+Display+SC" rel="stylesheet">
     <script>document.documentElement.className += ' js';</script>
     <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <link rel="stylesheet" href="./css/mobile-menu.css">
 </head>
 
 <body>
 
     <div class="grid-section">
         <nav class="menu">
-            <ul class="js-internal-links">
+            <button data-menu="button">Menu</button>
+            <ul data-menu="list" class="js-internal-links">
                 <li><a href="#animais">Animais</a></li>
                 <li data-dropdown>
                     <a>Sobre</a>
@@ -31,7 +33,7 @@
                 <li><a href="#faq">Faq</a></li>
 
                 <li><a href="#contato">Contato</a></li>
-                <li><a href="https://www.origamid.com/" data-modal="open-button">Dev →</a></li>
+                <li><a href="https://www.origamid.com/" data-modal="open-button">Login →</a></li>
             </ul>
         </nav>
 
@@ -235,7 +237,6 @@
     </footer>
 
     <script type="module" src="index.js"></script>
-    <script src="./exercises.js"></script>
 </body>
 
 </html>

@@ -4,6 +4,7 @@ import { initExternalLinks } from './dom-animations/external-links.js';
 import { initScrollAnimation } from './dom-animations/smooth-scroll.js';
 import { initModal } from './dom-animations/modal.js';
 import { initDropdown } from './dom-animations/dropdown-menu.js';
+import { initMobileMenu } from './dom-animations/mobile-menu.js';
 
 initTabMenu();
 
@@ -16,3 +17,5 @@ initScrollAnimation();
 initModal();
 
 initDropdown();
+
+initMobileMenu();
