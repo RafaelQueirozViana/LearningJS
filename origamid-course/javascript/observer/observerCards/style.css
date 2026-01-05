@@ -1,0 +1,21 @@
+.cards-container {
+    display: grid;
+    gap: 30px;
+}
+
+.card {
+    border: 1px solid black;
+    font-size: 2rem;
+    padding: 10px 20px;
+    border-radius: 10px;
+    width: max-content;
+    opacity: 0;
+    transform: translateX(100px);
+    transition: all .3s ease;
+
+}
+
+.card.active {
+    transform: translateX(0);
+    opacity: 1;
+}
