@@ -12,7 +12,7 @@ export const initAnimatedNumbers = () => {
                 number.innerText = total;
                 clearInterval(timer);
             }
-        }, 5)
+        }, 20 * Math.random())
 
 
     });
