@@ -4,13 +4,14 @@ export const initMobileMenu = () => {
 
     const menuButton = document.querySelector('[data-menu="button"]');
     const menuList = document.querySelector('[data-menu="list"');
+    const userEvents = ['click', 'touchstart'];
 
 
 
     function toggleMobileMenu() {
         menuButton.classList.add('active');
         menuList.classList.add('active');
-        outsideclick(menuList, ['click', 'touchstart'], () => {
+        outsideclick(menuList, userEvents, () => {
             menuButton.classList.remove('active');
             menuList.classList.remove('active');
 
@@ -18,7 +19,7 @@ export const initMobileMenu = () => {
     }
 
 
-    menuButton.addEventListener('click', toggleMobileMenu)
+    userEvents.forEach(userEvent => menuButton.addEventListener(userEvent, toggleMobileMenu));
 };
 
 
