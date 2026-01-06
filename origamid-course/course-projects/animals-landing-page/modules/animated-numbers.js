@@ -23,12 +23,12 @@ export const initAnimatedNumbers = () => {
 
 
     const handleObserver = (entries) => {
-        entries.forEach(entry => {
-            if (entry.target.classList.contains('active')) {
-                startNumAnimation()
-            }
 
-        })
+        if (entries[0].target.classList.contains('active')) {
+            startNumAnimation();
+            observer.disconnect();
+        }
+
     }
 
     const observerTarget = document.querySelector('.numeros');
@@ -36,6 +36,8 @@ export const initAnimatedNumbers = () => {
 
 
     observer.observe(observerTarget, { attributes: true });
+
+
 
 
 

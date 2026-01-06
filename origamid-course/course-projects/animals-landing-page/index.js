@@ -5,7 +5,8 @@ import { initScrollAnimation } from './modules/smooth-scroll.js';
 import { initModal } from './modules/modal.js';
 import { initDropdown } from './modules/dropdown-menu.js';
 import { initMobileMenu } from './modules/mobile-menu.js';
-import {initAnimatedNumbers} from './modules/animated-numbers.js';
+import { initAnimatedNumbers } from './modules/animated-numbers.js';
+import { initOperatingTime } from './modules/operating-time.js';
 
 initTabMenu();
 
@@ -22,3 +23,5 @@ initDropdown();
 initMobileMenu();
 
 initAnimatedNumbers();
+
+initOperatingTime()
