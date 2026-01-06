@@ -224,6 +224,7 @@ body {
 .dados li {
   margin-bottom: 1rem;
   font-family: Helvetica, Arial;
+  width: max-content;
 }
 
 .dados li::before {
@@ -419,6 +420,37 @@ form {
   opacity: 1;
   transition: opacity .3s ease;
 }
+
+
+[data-opening-week] {
+  position: relative;
+}
+
+[data-opening-week]::after {
+  content: '';
+  position: absolute;
+  right: -20px;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgb(196, 24, 24);
+  border-radius: 50%;
+  border: 2px solid black;
+  width: 8px;
+  height: 8px;
+}
+
+
+
+[data-opening-week].open::after {
+  background-color: green;
+}
+
+
+
+
+
+
+
 
 
 
