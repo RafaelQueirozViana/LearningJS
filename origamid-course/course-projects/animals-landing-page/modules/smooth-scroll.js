@@ -29,11 +29,8 @@ export function initScrollAnimation() {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('active');
-                observer.unobserve(entry.target)
-
+                observer.unobserve(entry.target);
             }
-
-
         });
     };
 
