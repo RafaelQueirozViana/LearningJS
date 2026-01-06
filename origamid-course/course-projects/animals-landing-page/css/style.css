@@ -415,7 +415,7 @@ form {
   opacity: 0;
 }
 
-[data-section-anim="scroll"].ativo {
+[data-section-anim="scroll"].active {
   opacity: 1;
   transition: opacity .3s ease;
 }
