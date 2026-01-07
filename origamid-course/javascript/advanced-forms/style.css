@@ -1,0 +1,31 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+    background-color: gray;
+}
+
+form {
+    width: 400px;
+}
+
+label {
+    display: block;
+    margin: 20px 0;
+    font-size: 1.5rem;
+}
+
+input {
+    height: 30px;
+    border: 2px solid black;
+    width: 100%;
+    font-size: 1rem;
+    padding: 10px;
+}
